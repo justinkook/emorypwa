@@ -1,0 +1,15 @@
+{
+  "short_name": "Emory Rehab",
+  "name": "Emory Rehabilitation",
+  "icons": [
+    {
+      "src": "./erlogo.png",
+      "sizes": "200x200",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#064386",
+  "background_color": "#ffffff"
+}

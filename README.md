@@ -1,68 +1,82 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# CoinCheck
 
-## Available Scripts
+This project is for learning purposes only.
 
-In the project directory, you can run:
+A Progressive Web App for real-time cryptocurrency prices for BTC, ETH, and LTC with historical prices from the last 5 days.
 
-### `npm start`
+Built using MongoDB, Express, React, and Node.js with Pusher-channel websockets API for real time feed.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Getting Started
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+**1. Checkout the repo**
 
-### `npm test`
+```
+git clone https://github.com/justinkook/CoinCheck.git
+git checkout master
+yarn install
+```
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**2. Add pusher credentials to server.js and Today.js**
 
-### `npm run build`
+Inside server.js
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+const pusher = new Pusher({
+    appId: 'appId here',
+    key: 'yourkey',
+    secret: 'secretkey',
+    cluster: 'clusterserver',
+    encrypted: true
+});
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Inside Today.js
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+this.pusher = new Pusher('appId', {
+			cluster: 'clusterserver',
+			forceTLS: true
+		});
+```
 
-### `npm run eject`
+**3. Start server and client**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+yarn start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## API Routes
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Get Latest prices of BTC, ETH, and LTC in United States Dollars.**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**GET** ```https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,LTC&tsyms=USD```
 
-## Learn More
+**@Return**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+{"BTC":{"USD":3548.77},"ETH":{"USD":115.91},"LTC":{"USD":30.1}}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Post coin prices to the Pusher channel to emit to everyone subscribed to the price channel.**
 
-### Code Splitting
+**POST** ```/prices/new```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+**@Params**
 
-### Analyzing the Bundle Size
+```
+{
+  prices: Return Object from GET route
+};
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+**@Return**
 
-### Making a Progressive Web App
+```Status 200```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Acknowledgments
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Original Repo
+ * https://github.com/yomete/pushercoins
+ 
+Tutorial
+ * https://pusher.com/tutorials/pwa-react
