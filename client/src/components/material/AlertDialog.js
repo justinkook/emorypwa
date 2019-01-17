@@ -14,12 +14,16 @@ class AlertDialog extends React.Component {
     lat: null,
     lng: null,
     errorMessage: '',
-    servicesOn: false,
+    servicesOn: null,
     locationInput: '',
     haveOpened: false,
   };
 
   componentDidMount = () => {
+    let servicesOn = localStorage.getItem('servicesOn');
+    if (servicesOn === 'true') {
+      this.setState({ servicesOn: true })
+    }
   }
 
   locationServices = () => {
@@ -30,6 +34,7 @@ class AlertDialog extends React.Component {
   };
 
   geocode = (location) => {
+    localStorage.setItem('servicesOn', true);
     const queryURL = 'http://localhost:5000/api/geocode/' + location;
     axios.get(queryURL)
       .then((data) => {
@@ -38,13 +43,13 @@ class AlertDialog extends React.Component {
         let addressComponents = data.data.results[0].address_components;
         let locationOptions = addressComponents.map(e => e.short_name);
         let locationIndex = locationOptions.length - 2;
-        this.setState({ locationInput: locationOptions[locationIndex], servicesOn: true })
+        this.setState({ locationInput: locationOptions[locationIndex] })
         // callAddressCityIndex(locationOptions[locationIndex], formattedAddress, centerCoord);
       })
   };
 
   handleClickOpen = () => {
-    if (!this.state.haveOpened) {
+    if (!this.state.haveOpened && !this.state.servicesOn) {
       this.setState({ open: true, haveOpened: true });
     } else {
       this.locationServices();
@@ -52,7 +57,7 @@ class AlertDialog extends React.Component {
   }
 
   handleAccept = () => {
-    this.setState({ open: false, servicesOn: true });
+    this.setState({ open: false });
     this.locationServices();
   }
 

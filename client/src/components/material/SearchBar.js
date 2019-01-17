@@ -20,7 +20,6 @@ const styles = {
         margin: '20px'
     },
     input: {
-        marginLeft: 8,
         flex: 1,
         color: 'rgb(6, 47, 94)',
     },
