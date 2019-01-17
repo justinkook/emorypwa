@@ -23,6 +23,7 @@ class AlertDialog extends React.Component {
     let servicesOn = localStorage.getItem('servicesOn');
     if (servicesOn === 'true') {
       this.setState({ servicesOn: true })
+      this.locationServices();
     }
   }
 
