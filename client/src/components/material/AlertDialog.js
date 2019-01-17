@@ -7,7 +7,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import LocationOnIcon from '@material-ui/icons/LocationOnOutlined';
-import config from '../../config';
 
 class AlertDialog extends React.Component {
   state = {
@@ -17,10 +16,10 @@ class AlertDialog extends React.Component {
     errorMessage: '',
     servicesOn: false,
     locationInput: '',
+    haveOpened: false,
   };
 
-  componentDidMount() {
-    if (this.state.servicesOn) this.locationServices()
+  componentDidMount = () => {
   }
 
   locationServices = () => {
@@ -31,7 +30,7 @@ class AlertDialog extends React.Component {
   };
 
   geocode = (location) => {
-    const queryURL = `${config.url}api/geocode/${location}`;
+    const queryURL = 'http://localhost:5000/api/geocode/' + location;
     axios.get(queryURL)
       .then((data) => {
         let centerCoord = data.data.results[0].geometry.location;
@@ -39,15 +38,19 @@ class AlertDialog extends React.Component {
         let addressComponents = data.data.results[0].address_components;
         let locationOptions = addressComponents.map(e => e.short_name);
         let locationIndex = locationOptions.length - 2;
-        console.log(locationOptions);
         this.setState({ locationInput: locationOptions[locationIndex], servicesOn: true })
         // callAddressCityIndex(locationOptions[locationIndex], formattedAddress, centerCoord);
       })
   };
 
   handleClickOpen = () => {
-    this.setState({ open: true });
-  };
+    if (!this.state.haveOpened) {
+      this.setState({ open: true, haveOpened: true });
+    } else {
+      this.locationServices();
+    }
+  }
+
   handleAccept = () => {
     this.setState({ open: false, servicesOn: true });
     this.locationServices();
@@ -60,21 +63,19 @@ class AlertDialog extends React.Component {
   render() {
     return (
       <div>
-        <LocationOnIcon >
-          <button variant="outlined" color="primary" onClick={this.handleClickOpen}>
-          </button>
-        </LocationOnIcon>
+        <Button variant="text" onClick={this.handleClickOpen} >
+          <LocationOnIcon />
+        </Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">{"Use location service?"}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              Let Google help apps determine location. This means sending anonymous location data to
-              Google, even when no apps are running.
+              Help apps determine location automatically.
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -86,7 +87,7 @@ class AlertDialog extends React.Component {
             </Button>
           </DialogActions>
         </Dialog>
-      </div>
+      </div >
     );
   }
 }

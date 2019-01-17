@@ -40,6 +40,7 @@ module.exports = function (app) {
         })
             .then(function (result) {
                 res.json(result.data);
+                console.log(data.results);
             })
             .catch(function (err) {
                 res.json(err);
