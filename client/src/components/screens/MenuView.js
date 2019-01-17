@@ -103,7 +103,7 @@ class ResponsiveDrawer extends React.Component {
                 <AppBar position="fixed" className={classes.appBar}>
                     <Toolbar className={classes.root} >
                         <IconButton
-                            color="black"
+                            color="default"
                             aria-label="Open drawer"
                             onClick={this.handleDrawerToggle}
                             className={classes.menuButton}
