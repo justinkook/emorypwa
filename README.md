@@ -1,82 +1,49 @@
-# CoinCheck
+# Emory Rehabilitation
+This is a mobile progressive web app for Emory Rehabilitation Outpatient services that allows users to search for Emory postacute care services by specialty type, location, and languages.
 
-This project is for learning purposes only.
+ **Future Implementations:**
 
-A Progressive Web App for real-time cryptocurrency prices for BTC, ETH, and LTC with historical prices from the last 5 days.
+* Login feature with personalized landing page
+  - Shows user's doctor, insurance, upcoming appointments.
+* Filter by insurance and user's current insurance provider.
+* Each location shows hours and affiliated doctors.
+* Appointment reservation system if it does not conflict with Health-Connection
 
-Built using MongoDB, Express, React, and Node.js with Pusher-channel websockets API for real time feed.
+* Swap Mongo database to Firestore for real time accepted insurances.
 
 ## Getting Started
 
-**1. Checkout the repo**
+To get started with this project you will need to clone into the repository on your machine. Once you have cloned the repository you will need to run `npm install` to install all of the needed packages to run the app. After you have installed the needed packages you can start a local server by running `npm start` in your terminal. Now you are ready run our app locally. 
 
-```
-git clone https://github.com/justinkook/CoinCheck.git
-git checkout master
-yarn install
-```
+### Prerequisites
 
-**2. Add pusher credentials to server.js and Today.js**
+You will need the following isntalled on your machine to be able to run our app:
 
-Inside server.js
+* Node.js
+* Express
+* Mongoose
 
-```
-const pusher = new Pusher({
-    appId: 'appId here',
-    key: 'yourkey',
-    secret: 'secretkey',
-    cluster: 'clusterserver',
-    encrypted: true
-});
-```
+Our project uses dotenv node package.
 
-Inside Today.js
+You need to create an .env file with GEOCODE_KEY={YOUR-API-KEY} as an environmental variables for the results to render.
 
-```
-this.pusher = new Pusher('appId', {
-			cluster: 'clusterserver',
-			forceTLS: true
-		});
-```
+## Deployment
 
-**3. Start server and client**
+We have our app set to run on port 3000. If you prefer to use a different port feel free to change the port after cloning into the repository.
 
-```
-yarn start
-```
+## Contributing
 
-## API Routes
+We are currently accepting contributions to this project. Feel free to open any custom issues or bugs.
 
-**Get Latest prices of BTC, ETH, and LTC in United States Dollars.**
+## Authors
 
-**GET** ```https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,LTC&tsyms=USD```
+* **Justin Kook** (https://github.com/justinkook)
+  
+## License
 
-**@Return**
-
-```
-{"BTC":{"USD":3548.77},"ETH":{"USD":115.91},"LTC":{"USD":30.1}}
-```
-
-**Post coin prices to the Pusher channel to emit to everyone subscribed to the price channel.**
-
-**POST** ```/prices/new```
-
-**@Params**
-
-```
-{
-  prices: Return Object from GET route
-};
-```
-
-**@Return**
-
-```Status 200```
+This project is licensed under the MIT License
 
 ## Acknowledgments
 
-Original Repo
- * https://github.com/yomete/pushercoins
- 
-Tutorial
- * https://pusher.com/tutorials/pwa-react
+  * Dr. David Burke
+  * Melanie Harris
