@@ -12,9 +12,16 @@ import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import ComplexGrid from './ComplexGrid';
 
+const drawerWidth = 240;
+
 const styles = theme => ({
   root: {
     width: '100%',
+    marginLeft: drawerWidth,
+    [theme.breakpoints.up('sm')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+    },
+    background: 'white',
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
