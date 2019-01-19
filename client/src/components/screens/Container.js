@@ -37,6 +37,10 @@ const styles = {
         height: 28,
         margin: 4,
     },
+    leftArrow: {
+        fill: 'rgb(6, 47, 94)',
+        fontSize: 30
+    }
 }
 
 class Container extends React.Component {
@@ -46,7 +50,7 @@ class Container extends React.Component {
                 <Paper style={styles.paper}>
                     <IconButton style={styles.iconButton} aria-label="Search">
                         <Link to={`/`} style={{ display: 'flex' }} >
-                            <KeyboardArrowLeft />
+                            <KeyboardArrowLeft style={styles.leftArrow} />
                         </Link>
                     </IconButton>
                     <InputBase style={styles.input} placeholder="Search by Zip Code" required={true} autoComplete="shipping postal-code" type='tel' />

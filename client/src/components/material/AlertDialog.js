@@ -45,7 +45,7 @@ class AlertDialog extends React.Component {
         let addressComponents = data.data.results[0].address_components;
         let locationOptions = addressComponents.map(e => e.short_name);
         let locationIndex = locationOptions.length - 2;
-        this.setState({ locationInput: locationOptions[locationIndex] })
+        localStorage.setItem('locationInput', locationOptions[locationIndex])
         // callAddressCityIndex(locationOptions[locationIndex], formattedAddress, centerCoord);
       })
   };

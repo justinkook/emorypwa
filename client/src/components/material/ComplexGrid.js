@@ -46,11 +46,11 @@ function ComplexGrid(props) {
                             </Typography>
                             <Typography gutterBottom>Admissions</Typography>
                             <Typography color="textSecondary">
-                                Telephone: <a href="#sub-labels-and-columns" className={classes.link}>
+                                Telephone: <a href={`tel:+${props.phone1}`} className={classes.link}>
                                     {props.phone1} </a>
                             </Typography>
                             <Typography color="textSecondary">
-                                Email: <a href="#sub-labels-and-columns" className={classes.link}>
+                                Email: <a href={`mailto: ${props.email1}`} className={classes.link}>
                                     {props.email1} </a>
                             </Typography>
                         </Grid>
@@ -74,11 +74,11 @@ function ComplexGrid(props) {
                             </Typography>
                             <Typography gutterBottom>Admissions</Typography>
                             <Typography color="textSecondary">
-                                Telephone: <a href="#sub-labels-and-columns" className={classes.link}>
+                                Telephone: <a href={`tel:+${props.phone2}`} className={classes.link}>
                                     {props.phone2} </a>
                             </Typography>
                             <Typography color="textSecondary">
-                                Email: <a href="#sub-labels-and-columns" className={classes.link}>
+                                Email: <a href={`mailto: ${props.email2}`} className={classes.link}>
                                     {props.email2} </a>
                             </Typography>
                         </Grid>
