@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
-import { autoPlay } from 'react-swipeable-views-utils';
 
 const AutoPlaySwipeableViews = SwipeableViews;
 
@@ -44,6 +43,7 @@ const styles = theme => ({
     root: {
         maxWidth: 400,
         flexGrow: 1,
+        background: 'white'
     },
     header: {
         display: 'flex',
@@ -58,6 +58,10 @@ const styles = theme => ({
         maxWidth: 400,
         overflow: 'hidden',
         width: '100%',
+    },
+    details: {
+        display: 'flex',
+        padding: 8,
     },
 });
 
@@ -101,7 +105,7 @@ class SwipeableTextMobileStepper extends React.Component {
                     {tutorialSteps.map((step, index) => (
                         <div key={step.label}>
                             {Math.abs(activeStep - index) <= 2 ? (
-                                <img className={classes.img} src={step.imgPath} alt={step.label} />
+                                null
                             ) : null}
                         </div>
                     ))}

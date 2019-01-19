@@ -19,6 +19,7 @@ import BeenHereIcon from '@material-ui/icons/BeenhereOutlined';
 import InsertInvitation from '@material-ui/icons/InsertInvitationOutlined';
 import CloudOffIcon from '@material-ui/icons/CloudOffOutlined';
 import DesktopWindowsIcon from '@material-ui/icons/DesktopWindowsOutlined';
+import Paper from '@material-ui/core/Paper';
 
 const drawerWidth = 240;
 
@@ -57,6 +58,16 @@ const styles = theme => ({
     content: {
         flexGrow: 1,
         padding: theme.spacing.unit * 3,
+    },
+    paper: {
+        padding: '2px 4px',
+        display: 'flex',
+        alignItems: 'center',
+        maxWidth: 350,
+        justifyContent: 'center',
+        border: '2px solid rgb(6, 67, 94)',
+        borderRadius: 6 + 'px',
+        margin: '20px',
     },
 });
 
@@ -119,7 +130,9 @@ class ResponsiveDrawer extends React.Component {
                             title="Emory Rehab"
                         />
                     </Toolbar>
-                    <CustomizedInputBase />
+                    <Paper className={classes.paper}>
+                        <CustomizedInputBase />
+                    </Paper>
                 </AppBar>
                 <nav className={classes.drawer}>
                     {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -156,8 +169,6 @@ class ResponsiveDrawer extends React.Component {
 
 ResponsiveDrawer.propTypes = {
     classes: PropTypes.object.isRequired,
-    // Injected by the documentation to work in an iframe.
-    // You won't need it on your project.
     container: PropTypes.object,
     theme: PropTypes.object.isRequired,
 };

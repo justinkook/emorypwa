@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -67,7 +68,9 @@ function DetailedExpansionPanel(props) {
         <Divider />
         <ExpansionPanelActions>
           <Button size="small" color="primary">
-            Search Clinics
+            <Link to={`/search`} style={{ color: '#3f51b5', textDecoration: 'none' }} >
+              Search Clinics
+            </Link>
           </Button>
         </ExpansionPanelActions>
       </ExpansionPanel>
@@ -83,7 +86,9 @@ function DetailedExpansionPanel(props) {
         <Divider />
         <ExpansionPanelActions>
           <Button size="small" color="primary">
-            Search Nursing
+            <Link to={`/search`} style={{ color: '#3f51b5', textDecoration: 'none' }} >
+              Search Nursing
+            </Link>
           </Button>
         </ExpansionPanelActions>
       </ExpansionPanel>
@@ -100,7 +105,9 @@ function DetailedExpansionPanel(props) {
         <Divider />
         <ExpansionPanelActions>
           <Button size="small" color="primary">
-            Map View
+            <Link to={`/search`} style={{ color: '#3f51b5', textDecoration: 'none' }} >
+              Map View
+            </Link>
           </Button>
         </ExpansionPanelActions>
       </ExpansionPanel>
@@ -115,9 +122,9 @@ function DetailedExpansionPanel(props) {
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>
-          <Button size="small" color="primary">
-            Map View
-          </Button>
+          <Link to={`/search`} style={{ color: '#3f51b5', textDecoration: 'none' }} >
+            <Button size="small" color="primary">Map View</Button>
+          </Link>
         </ExpansionPanelActions>
       </ExpansionPanel>
     </div>

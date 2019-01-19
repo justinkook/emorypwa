@@ -1,31 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
-import CloseIcon from '@material-ui/icons/Close'
 import AlertDialog from '../material/AlertDialog';
 
 const styles = {
-    root: {
-        padding: '2px 4px',
-        display: 'flex',
-        alignItems: 'center',
-        maxWidth: 350,
-        justifyContent: 'center',
-        borderRadius: 6 + 'px',
-        border: '2px solid rgb(6, 67, 94)',
-        margin: '20px'
+    container: {
+        display: 'flex'
     },
     input: {
         flex: 1,
         color: 'rgb(6, 47, 94)',
+        paddingLeft: 10
     },
     iconButton: {
         padding: 10,
         color: 'rgb(6, 47, 94)',
+        paddingRight: 0
     },
     divider: {
         width: 1,
@@ -38,15 +31,15 @@ function CustomizedInputBase(props) {
     const { classes } = props;
 
     return (
-        <Paper className={classes.root} elevation={1}>
+        <div style={styles.container}>
             <IconButton className={classes.iconButton} aria-label="Search">
                 <SearchIcon />
             </IconButton>
-            <InputBase className={classes.input} placeholder="Search by Zip Code" required={true} autoFocus={true} autoComplete="shipping postal-code" type='tel' />
+            <InputBase className={classes.input} placeholder="Search by Zip Code" required={true} autoComplete="shipping postal-code" type='tel' />
             <IconButton className={classes.iconButton} aria-label="LocationServices">
-                {<AlertDialog /> || <CloseIcon />}
+                <AlertDialog />
             </IconButton>
-        </Paper>
+        </div>
     );
 }
 
