@@ -17,9 +17,9 @@ const drawerWidth = 240;
 const styles = theme => ({
   root: {
     width: '100%',
-    marginLeft: drawerWidth,
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: drawerWidth,
     },
     background: 'white',
   },
@@ -75,6 +75,19 @@ const ltach = () => {
   localStorage.setItem('searchTerm', 'ltach');
 }
 
+const rehabList = [
+  {
+    title: 'Center for Rehabilitation Medicine',
+    phone: '706-728-0283',
+    email: 'justinkook@gmail.com',
+  },
+  {
+    title: 'Dekalb',
+    phone: '706-728-0283',
+    email: 'justinkook@gmail.com',
+  }
+]
+
 function DetailedExpansionPanel(props) {
   const { classes } = props;
   return (
@@ -105,6 +118,11 @@ function DetailedExpansionPanel(props) {
           </div>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails className={classes.details}>
+          {rehabList.map(e => {
+            return (
+              <ComplexGrid title={`${e.title}`} phone={`${e.phone}`} email={`${e.email}`} />
+            )
+          })}
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>
@@ -123,7 +141,9 @@ function DetailedExpansionPanel(props) {
           </div>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails className={classes.details}>
-          <ComplexGrid title1='Center for Rehabilitation Medicine' title2='Dekalb' phone1='706-728-0283' phone2='706-728-0283' email1='justinkook@gmail.com' email2='justinkook@gmail.com' />
+          {rehabList.map(e => (
+            <ComplexGrid title={`${e.title}`} phone={`${e.phone}`} email={`${e.email}`} />
+          ))}
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>
@@ -141,7 +161,11 @@ function DetailedExpansionPanel(props) {
           </div>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails className={classes.details}>
-          <ComplexGrid title1='Emory Decatur | LTACH' title2='Emory & Select' phone1='706-728-0283' phone2='706-728-0283' email1='justinkook@gmail.com' email2='justinkook@gmail.com' />
+          {rehabList.map(e => {
+            return (
+              <ComplexGrid title={`${e.title}`} phone={`${e.phone}`} email={`${e.email}`} />
+            )
+          })}
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>

@@ -24,7 +24,6 @@ class AlertDialog extends React.Component {
     let servicesOn = localStorage.getItem('servicesOn');
     if (servicesOn === 'true') {
       this.setState({ servicesOn: true })
-      this.locationServices();
     }
   }
 
@@ -40,13 +39,10 @@ class AlertDialog extends React.Component {
     const queryURL = 'http://localhost:5000/api/geocode/' + location;
     axios.get(queryURL)
       .then((data) => {
-        let centerCoord = data.data.results[0].geometry.location;
-        let formattedAddress = data.data.results[0].formatted_address;
         let addressComponents = data.data.results[0].address_components;
         let locationOptions = addressComponents.map(e => e.short_name);
         let locationIndex = locationOptions.length - 2;
         localStorage.setItem('locationInput', locationOptions[locationIndex])
-        // callAddressCityIndex(locationOptions[locationIndex], formattedAddress, centerCoord);
       })
   };
 

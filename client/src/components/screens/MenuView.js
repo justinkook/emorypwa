@@ -20,6 +20,7 @@ import InsertInvitation from '@material-ui/icons/InsertInvitationOutlined';
 import CloudOffIcon from '@material-ui/icons/CloudOffOutlined';
 import DesktopWindowsIcon from '@material-ui/icons/DesktopWindowsOutlined';
 import Paper from '@material-ui/core/Paper';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeftOutlined';
 
 const drawerWidth = 240;
 
@@ -33,6 +34,13 @@ const styles = theme => ({
             width: drawerWidth,
             flexShrink: 0,
         },
+    },
+    toolbarIcon: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        padding: '0 8px',
+        ...theme.mixins.toolbar,
     },
     appBar: {
         marginLeft: drawerWidth,
@@ -85,7 +93,11 @@ class ResponsiveDrawer extends React.Component {
 
         const drawer = (
             <div>
-                <div className={classes.toolbar} />
+                <div className={classes.toolbarIcon}>
+                    <IconButton onClick={this.handleDrawerToggle} className={classes.menuButton} >
+                        <ChevronLeftIcon />
+                    </IconButton>
+                </div>
                 <Divider />
                 <List>
                     {['Insurance', 'Appointments', 'Offline', 'Desktop'].map((text, index) => (

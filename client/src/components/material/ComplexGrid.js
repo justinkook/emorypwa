@@ -8,6 +8,7 @@ import { Divider } from '@material-ui/core';
 const styles = theme => ({
     root: {
         flexGrow: 1,
+        overflow: 'auto',
     },
     paper: {
         padding: theme.spacing.unit * 2,
@@ -31,27 +32,30 @@ const styles = theme => ({
             textDecoration: 'underline',
         },
     },
+    overflow: {
+        overflow: 'scroll'
+    }
 });
 
 function ComplexGrid(props) {
     const { classes } = props;
     return (
         <div className={classes.root}>
-            <Grid container spacing={16}>
-                <Grid item xs={12} sm container>
-                    <Grid item xs container direction="column" spacing={16}>
-                        <Grid item xs>
+            <Grid container spacing={16} className={classes.overflow}>
+                <Grid item xs={12} sm container >
+                    <Grid item xs container direction="column" spacing={16} >
+                        <Grid item xs >
                             <Typography gutterBottom variant="subtitle1">
-                                {props.title1}
+                                {props.title}
                             </Typography>
                             <Typography gutterBottom>Admissions</Typography>
                             <Typography color="textSecondary">
-                                Telephone: <a href={`tel:+${props.phone1}`} className={classes.link}>
-                                    {props.phone1} </a>
+                                Telephone: <a href={`tel:+${props.phone}`} className={classes.link}>
+                                    {props.phone} </a>
                             </Typography>
                             <Typography color="textSecondary">
-                                Email: <a href={`mailto: ${props.email1}`} className={classes.link}>
-                                    {props.email1} </a>
+                                Email: <a href={`mailto: ${props.email}`} className={classes.link}>
+                                    {props.email} </a>
                             </Typography>
                         </Grid>
                         <Grid item>
@@ -65,32 +69,6 @@ function ComplexGrid(props) {
             </Grid>
             <Divider />
             <br />
-            <Grid container spacing={16}>
-                <Grid item xs={12} sm container>
-                    <Grid item xs container direction="column" spacing={16}>
-                        <Grid item xs>
-                            <Typography gutterBottom variant="subtitle1">
-                                {props.title2}
-                            </Typography>
-                            <Typography gutterBottom>Admissions</Typography>
-                            <Typography color="textSecondary">
-                                Telephone: <a href={`tel:+${props.phone2}`} className={classes.link}>
-                                    {props.phone2} </a>
-                            </Typography>
-                            <Typography color="textSecondary">
-                                Email: <a href={`mailto: ${props.email2}`} className={classes.link}>
-                                    {props.email2} </a>
-                            </Typography>
-                        </Grid>
-                        <Grid item>
-                            <Typography style={{ cursor: 'pointer' }}></Typography>
-                        </Grid>
-                    </Grid>
-                    <Grid item>
-                        <Typography variant="subtitle1"></Typography>
-                    </Grid>
-                </Grid>
-            </Grid>
         </div>
     );
 }
