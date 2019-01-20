@@ -50,7 +50,6 @@ const styles = theme => ({
         background: 'white',
     },
     menuButton: {
-        marginRight: 20,
         [theme.breakpoints.up('sm')]: {
             display: 'none',
         },
