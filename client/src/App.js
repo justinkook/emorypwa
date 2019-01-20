@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
 import IconAvatars from './components/material/IconAvatars';
 import DetailedExpansionPanel from './components/material/DetailedExpansionPanel';
 import MenuView from './components/screens/MenuView';
 
 class App extends Component {
-  state = {
-    dataSource: []
-  }
-
   styles = {
     resultsContainer: {
       padding: .8 + 'em',

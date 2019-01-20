@@ -88,11 +88,11 @@ const styles = {
     column: {
         flexBasis: '100%',
         paddingTop: 4,
-        paddingLeft: 32,
+        marginLeft: 32,
         position: 'absolute',
         textAlign: 'center',
-        left: 0,
-        right: 0,
+        left: 10 + '%',
+        right: 10 + '%',
     },
     input: {
         flex: 1,
@@ -153,12 +153,12 @@ class Container extends React.Component {
                 </div>
                 <div style={styles.ResultsCard}>
                     <ExpansionPanel >
-                        <ExpansionPanelSummary style={styles.sticky} expandIcon={<ExpandMoreIcon />}>
+                        <ExpansionPanelSummary style={styles.sticky} expandIcon={<ExpandMoreIcon style={styles.heading} />}>
                             <Link to={`/`} style={{ display: 'flex', padding: '0 20px 0 20px' }} >
                                 <KeyboardArrowLeft style={styles.leftArrow} />
                             </Link>
                             <div style={styles.column}>
-                                <Typography variant="title" className={styles.heading}>Therapy Clinics</Typography>
+                                <Typography variant="title" style={styles.heading}>Therapy Clinics</Typography>
                             </div>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails style={styles.minHeight} className={styles.details}>

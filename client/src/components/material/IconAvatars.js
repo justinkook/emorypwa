@@ -18,43 +18,48 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 const styles = {
     one: {
         margin: 3,
-        backgroundColor: '#2185d0',
+        backgroundColor: 'rgb(255, 59, 48)',
         color: '#fff',
     },
     two: {
         margin: 3,
         color: '#fff',
-        backgroundColor: '#21ba45',
+        backgroundColor: 'rgb(255, 149, 0)',
     },
     three: {
         margin: 3,
         color: '#fff',
-        backgroundColor: '#db2828',
+        backgroundColor: 'rgb(255, 204, 0)',
     },
     four: {
         margin: 3,
-        backgroundColor: '#db9328',
+        backgroundColor: 'rgb(76, 217, 100)',
         color: '#fff',
     },
     five: {
         margin: 3,
         color: '#fff',
-        backgroundColor: '#28dbbd',
+        backgroundColor: 'rgb(90, 200, 250)',
     },
     six: {
         margin: 3,
         color: '#fff',
-        backgroundColor: '#bd28db',
+        backgroundColor: 'rgb(0, 122, 255)',
     },
     seven: {
         margin: 3,
         color: '#fff',
-        backgroundColor: '#eb2ddb',
+        backgroundColor: 'rgb(88, 86, 214)',
     },
     eight: {
         margin: 3,
         color: '#fff',
-        backgroundColor: '#000000',
+        backgroundColor: 'rgb(255, 45, 85)',
+    },
+    nine: {
+        margin: 3,
+        color: '#fff',
+        backgroundColor: 'rgb(6, 67, 134)',
     },
     margin: {
         margin: 15 + 'px',
@@ -62,7 +67,7 @@ const styles = {
     },
     justify: {
         justifyContent: 'space-evenly',
-        display: 'flex'
+        display: 'flex',
     },
     link: {
         textDecoration: 'none',
@@ -127,7 +132,7 @@ function IconAvatars(props) {
                 <Link to={`/search`} style={styles.link} onClick={occupational} >
                     <FormControlLabel
                         value="Occupational"
-                        control={<Avatar className={classes.two}>
+                        control={<Avatar className={classes.six}>
                             <ThumbsUpAltIcon />
                         </Avatar>}
                         label="Occupational"
@@ -138,7 +143,7 @@ function IconAvatars(props) {
                 <Link to={`/search`} style={styles.link} onClick={functional} >
                     <FormControlLabel
                         value="Functional"
-                        control={<Avatar className={classes.three}>
+                        control={<Avatar className={classes.seven}>
                             <FavoriteBorderIcon />
                         </Avatar>}
                         label="Functional"
@@ -151,7 +156,7 @@ function IconAvatars(props) {
                 <Link to={`/search`} style={styles.link} onClick={pelvic} >
                     <FormControlLabel
                         value="Pelvic"
-                        control={<Avatar className={classes.five}>
+                        control={<Avatar className={classes.two}>
                             <SeatIcon />
                         </Avatar>}
                         label="Pelvic"
@@ -162,7 +167,7 @@ function IconAvatars(props) {
                 <Link to={`/search`} style={styles.link} onClick={vestibular} >
                     <FormControlLabel
                         value="Vestibular"
-                        control={<Avatar className={classes.six}>
+                        control={<Avatar className={classes.five}>
                             <HearingIcon />
                         </Avatar>}
                         label="Vestibular"
@@ -173,7 +178,7 @@ function IconAvatars(props) {
                 <Link to={`/search`} style={styles.link} onClick={women} >
                     <FormControlLabel
                         value="Women"
-                        control={<Avatar className={classes.seven}>
+                        control={<Avatar className={classes.eight}>
                             <NaturePeopleIcon />
                         </Avatar>}
                         label="Women's"
@@ -186,7 +191,7 @@ function IconAvatars(props) {
                 <Link to={`/search`} style={styles.link} onClick={intramuscular} >
                     <FormControlLabel
                         value="Intramuscular"
-                        control={<Avatar className={classes.four}>
+                        control={<Avatar className={classes.three}>
                             <FitnessCenterIcon />
                         </Avatar>}
                         label="Intramuscular"
@@ -197,7 +202,7 @@ function IconAvatars(props) {
                 <Link to={`/search`} style={styles.link} onClick={work} >
                     <FormControlLabel
                         value="Work"
-                        control={<Avatar className={classes.eight}>
+                        control={<Avatar className={classes.four}>
                             <WorkIcon />
                         </Avatar>}
                         label="Work"
@@ -208,7 +213,7 @@ function IconAvatars(props) {
                 <Link to={`/search`} style={styles.link} onClick={needling} >
                     <FormControlLabel
                         value="Dry Needling"
-                        control={<Avatar className={classes.eight}>
+                        control={<Avatar className={classes.nine}>
                             <FormatIcon />
                         </Avatar>}
                         label="Dry Needling"

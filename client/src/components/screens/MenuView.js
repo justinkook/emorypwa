@@ -137,7 +137,7 @@ class ResponsiveDrawer extends React.Component {
                             alt="Emory Rehab"
                             className={classes.media}
                             height="40"
-                            image="/logo-emory-footer.png"
+                            image="/assets/logo-emory-footer.png"
                             title="Emory Rehab"
                         />
                     </Toolbar>
