@@ -1,14 +1,16 @@
 {
   "short_name": "Emory Rehab",
   "name": "Emory Rehabilitation",
+  "description": "Find Nearby Emory Care.",
   "icons": [
     {
-      "src": "./assets/emorymanifest.png",
+      "src": "assets/emorymanifest.png",
       "sizes": "400x400",
       "type": "image/png"
     }
   ],
   "start_url": "./index.html",
+  "orientation": "portrait-primary",
   "display": "standalone",
   "theme_color": "#064386",
   "background_color": "#ffffff"
