@@ -8,7 +8,8 @@ import AlertDialog from '../material/AlertDialog';
 
 const styles = {
     container: {
-        display: 'flex'
+        display: 'flex',
+        width: 100 + '%',
     },
     input: {
         flex: 1,
@@ -35,7 +36,7 @@ function CustomizedInputBase(props) {
             <IconButton className={classes.iconButton} aria-label="Search">
                 <SearchIcon />
             </IconButton>
-            <InputBase className={classes.input} placeholder="Search by Zip Code" required={true} autoComplete="shipping postal-code" type='tel' />
+            <InputBase className={classes.input} placeholder="Search by Zip Code" autoComplete="shipping postal-code" type='tel' />
             <IconButton className={classes.iconButton} aria-label="LocationServices">
                 <AlertDialog />
             </IconButton>

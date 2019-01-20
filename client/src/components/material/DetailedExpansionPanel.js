@@ -169,9 +169,10 @@ function DetailedExpansionPanel(props) {
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>
-          <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={ltach} >
-            <Button size="small" color="primary">Map View</Button>
-          </Link>
+          <Button size="small" color="primary">
+            <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={ltach} >
+              Map View</Link>
+          </Button>
         </ExpansionPanelActions>
       </ExpansionPanel>
     </div>
