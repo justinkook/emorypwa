@@ -9,7 +9,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "%PUBLIC_URL%/",
   "orientation": "portrait-primary",
   "display": "standalone",
   "theme_color": "#064386",
