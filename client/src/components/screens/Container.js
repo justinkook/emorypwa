@@ -72,6 +72,7 @@ const styles = {
         width: 100 + '%',
         maxWidth: 500,
         zIndex: 400,
+        marginTop: 70
     },
     heading: {
         color: 'rgb(6, 67, 94)',
