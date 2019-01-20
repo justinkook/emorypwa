@@ -21,11 +21,11 @@ const styles = theme => ({
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
     },
-    background: 'white',
+    background: 'rgba(6, 67, 134, 0)',
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
-    color: 'rgb(6, 67, 94)'
+    color: 'rgb(6, 67, 134)'
   },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
