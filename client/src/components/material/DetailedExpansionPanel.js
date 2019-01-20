@@ -41,7 +41,7 @@ const styles = theme => ({
     display: 'block',
   },
   font: {
-    fontSize: 16,
+    fontSize: 18,
   },
   column: {
     flexBasis: '100%',

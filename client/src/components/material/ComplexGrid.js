@@ -37,6 +37,7 @@ function ComplexGrid(props) {
     const { classes } = props;
     return (
         <div className={classes.root}>
+            <br />
             <Grid container spacing={16} >
                 <Grid item xs={12} sm container >
                     <Grid item xs container direction="column" spacing={16} >
@@ -64,7 +65,6 @@ function ComplexGrid(props) {
                 </Grid>
             </Grid>
             <Divider />
-            <br />
         </div>
     );
 }

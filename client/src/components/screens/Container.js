@@ -83,6 +83,7 @@ const styles = {
     minHeight: {
         minHeight: 60 + 'vh',
         flexDirection: 'column',
+        paddingTop: 70,
     },
     column: {
         flexBasis: '100%',
