@@ -33,6 +33,15 @@ const styles = theme => ({
     },
 });
 
+const formatPhoneNumbers = function (phoneNumber) {
+    //     'phone': '+14048733088'
+    let noCountryCode = phoneNumber.substring(2);
+    let areaCode = noCountryCode.substring(0, 3);
+    let prefix = noCountryCode.substring(3, 6);
+    let lineNumber = noCountryCode.substring(6);
+    return `(${areaCode}) ${prefix}-${lineNumber}`;
+}
+
 function ComplexGrid(props) {
     const { classes } = props;
     return (
@@ -47,8 +56,8 @@ function ComplexGrid(props) {
                             </Typography>
                             <Typography gutterBottom>Admissions</Typography>
                             <Typography color="textSecondary">
-                                Telephone: <a href={`tel:+${props.phone}`} className={classes.link}>
-                                    {props.phone} </a>
+                                Telephone: <a href={`tel:${props.phone}`} className={classes.link}>
+                                    {formatPhoneNumbers(props.phone)} </a>
                             </Typography>
                             <Typography color="textSecondary">
                                 Email: <a href={`mailto: ${props.email}`} className={classes.link}>

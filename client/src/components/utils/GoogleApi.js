@@ -9,7 +9,7 @@ export const GoogleApi = function (opts) {
     const googleVersion = 'weekly';
     let script = null;
     let google = window.google = null;
-    let loading = false;
+    let loading = loading;
     let channel = null;
     let language = null;
     let region = null;

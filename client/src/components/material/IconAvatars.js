@@ -62,7 +62,7 @@ const styles = {
         backgroundColor: 'rgb(6, 67, 134)',
     },
     margin: {
-        margin: 15 + 'px',
+        margin: 10,
         color: 'rgb(6, 47, 94)',
     },
     justify: {
@@ -84,8 +84,8 @@ function IconAvatars(props) {
         localStorage.setItem('searchTerm', 'aquatic');
     }
 
-    const occupational = () => {
-        localStorage.setItem('searchTerm', 'occupational');
+    const hand = () => {
+        localStorage.setItem('searchTerm', 'hand');
     }
 
     const functional = () => {
@@ -118,24 +118,24 @@ function IconAvatars(props) {
     return (
         <div style={styles.justify}>
             <Grid container justify="space-evenly" alignItems="center">
-                <Link to={`/search`} style={styles.link} onClick={aquatic} >
+                <Link to={`/search`} style={styles.link} onClick={hand} >
                     <FormControlLabel
-                        value="Aquatic"
+                        value="Hand"
                         control={<Avatar className={classes.one}>
-                            <PoolIcon />
+                            <ThumbsUpAltIcon />
                         </Avatar>}
-                        label="Aquatic"
+                        label="Hand"
                         labelPlacement="bottom"
                         className={classes.margin}
                     />
                 </Link>
-                <Link to={`/search`} style={styles.link} onClick={occupational} >
+                <Link to={`/search`} style={styles.link} onClick={aquatic} >
                     <FormControlLabel
-                        value="Occupational"
+                        value="Aquatic"
                         control={<Avatar className={classes.six}>
-                            <ThumbsUpAltIcon />
+                            <PoolIcon />
                         </Avatar>}
-                        label="Occupational"
+                        label="Aquatic"
                         labelPlacement="bottom"
                         className={classes.margin}
                     />

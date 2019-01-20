@@ -9,6 +9,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ComplexGrid from '../material/ComplexGrid';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeftOutlined';
 import { Link } from 'react-router-dom';
+import LinearDeterminate from '../material/Loading';
+
+let Loading = () => <div><LinearDeterminate className={styles.loading} /></div>;
 
 const rehabList = [
     {
@@ -125,7 +128,10 @@ const styles = {
         background: 'white',
         boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)'
     },
-
+    loading: {
+        position: 'absolute',
+        bottom: 20,
+    }
 }
 
 class Container extends React.Component {
@@ -136,6 +142,7 @@ class Container extends React.Component {
     }
 
     componentDidMount = () => {
+        Loading = null;
         let localList = localStorage.getItem('resultsList');
         (!localList) ? this.getSearchResults() : this.setState({ resultsList: localList });
     }
@@ -173,10 +180,7 @@ class Container extends React.Component {
     }
 }
 
-const Loading = () => <div>Fancy loading container</div>;
-
 export default GoogleApiComponent({
     apiKey: 'AIzaSyCFA-SqdzzXS4HC_kujnGLRSIW1-rgkjqk',
-    libraries: ['places', 'visualization'],
     LoadingContainer: Loading
 })(Container);

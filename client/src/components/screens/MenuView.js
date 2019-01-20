@@ -27,7 +27,13 @@ const drawerWidth = 240;
 const styles = theme => ({
     root: {
         display: 'flex',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+        [theme.breakpoints.up('sm')]: {
+            position: 'absolute',
+            right: 0,
+            margin: '15px 15px 0 15px',
+        },
     },
     drawer: {
         [theme.breakpoints.up('sm')]: {
@@ -55,8 +61,11 @@ const styles = theme => ({
         },
     },
     media: {
-        width: 30 + '%',
+        maxWidth: 150,
         objectFit: 'contain',
+        [theme.breakpoints.up('sm')]: {
+            height: 60,
+        },
     },
     toolbar: theme.mixins.toolbar,
     drawerPaper: {

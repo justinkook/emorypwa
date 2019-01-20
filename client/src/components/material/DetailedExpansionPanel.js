@@ -77,13 +77,26 @@ const ltach = () => {
 
 const rehabList = [
   {
-    title: 'Center for Rehabilitation Medicine',
-    phone: '706-728-0283',
+    title: 'Emory Rehabilitation Hospital',
+    phone: '+14047127593',
     email: 'justinkook@gmail.com',
   },
   {
-    title: 'Dekalb',
-    phone: '706-728-0283',
+    title: 'Emory Dekalb Rehabilitation',
+    phone: '+14045013646',
+    email: 'justinkook@gmail.com',
+  }
+]
+
+const ltachList = [
+  {
+    title: 'Emory Decatur | LTACH',
+    phone: '+14045016226',
+    email: 'justinkook@gmail.com',
+  },
+  {
+    title: 'Emory & Select',
+    phone: '+14044664600',
     email: 'justinkook@gmail.com',
   }
 ]
@@ -161,7 +174,7 @@ function DetailedExpansionPanel(props) {
           </div>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails className={classes.details}>
-          {rehabList.map(e => {
+          {ltachList.map(e => {
             return (
               <ComplexGrid title={`${e.title}`} phone={`${e.phone}`} email={`${e.email}`} />
             )
