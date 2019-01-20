@@ -44,7 +44,7 @@ class Map extends React.Component {
                 zoomControl: false,
                 rotateControl: true,
                 fullscreenControl: false,
-                gestureHandling: 'cooperative'
+                gestureHandling: 'greedy'
             })
             this.map = new maps.Map(node, mapConfig);
         }

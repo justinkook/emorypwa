@@ -4,12 +4,12 @@
   "description": "Find Nearby Emory Care.",
   "icons": [
     {
-      "src": "assets/emorymanifest.png",
-      "sizes": "400x400",
+      "src": "assets/emoryapplelogo.png",
+      "sizes": "380x380",
       "type": "image/png"
     }
   ],
-  "start_url": "%PUBLIC_URL%/",
+  "start_url": "./",
   "orientation": "portrait-primary",
   "display": "standalone",
   "theme_color": "#064386",
