@@ -3,7 +3,7 @@
   "name": "Emory Rehabilitation",
   "icons": [
     {
-      "src": "./emorylogo.jpg",
+      "src": "./assets/emorylogo.jpg",
       "sizes": "400x400",
       "type": "image/jpg"
     }
