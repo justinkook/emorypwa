@@ -82,8 +82,6 @@ const styles = {
     details: {
         textAlign: 'left',
         display: 'block',
-    },
-    minHeight: {
         minHeight: 60 + 'vh',
         flexDirection: 'column',
         paddingTop: 70,
@@ -116,7 +114,7 @@ const styles = {
     },
     map: {
         position: 'fixed',
-        zIndex: -100,
+        zIndex: 1,
     },
     sticky: {
         position: 'fixed',
@@ -168,7 +166,7 @@ class Container extends React.Component {
                                 <Typography variant="title" style={styles.heading}>Therapy Clinics</Typography>
                             </div>
                         </ExpansionPanelSummary>
-                        <ExpansionPanelDetails style={styles.minHeight} className={styles.details}>
+                        <ExpansionPanelDetails style={styles.details}>
                             {rehabList.map(e => (
                                 <ComplexGrid title={`${e.title}`} phone={`${e.phone}`} email={`${e.email}`} />
                             ))}
