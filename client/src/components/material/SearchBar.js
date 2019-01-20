@@ -10,6 +10,7 @@ const styles = {
     container: {
         display: 'flex',
         width: 100 + '%',
+        alignItems: 'center'
     },
     input: {
         flex: 1,
@@ -37,9 +38,7 @@ function CustomizedInputBase(props) {
                 <SearchIcon />
             </IconButton>
             <InputBase className={classes.input} placeholder="Search by Zip Code" autoComplete="shipping postal-code" type='tel' />
-            <IconButton className={classes.iconButton} aria-label="LocationServices">
-                <AlertDialog />
-            </IconButton>
+            <AlertDialog className={classes.iconButton} />
         </div>
     );
 }

@@ -117,14 +117,14 @@ function IconAvatars(props) {
     }
     return (
         <div style={styles.justify}>
-            <Grid container justify="space-evenly" alignItems="center">
-                <Link to={`/search`} style={styles.link} onClick={hand} >
+            <Grid container spacing={8} justify="space-evenly" alignItems="center">
+                <Link to={`/search`} style={styles.link} onClick={functional} >
                     <FormControlLabel
-                        value="Hand"
+                        value="Functional"
                         control={<Avatar className={classes.one}>
-                            <ThumbsUpAltIcon />
+                            <FavoriteBorderIcon />
                         </Avatar>}
-                        label="Hand"
+                        label="Functional"
                         labelPlacement="bottom"
                         className={classes.margin}
                     />
@@ -140,26 +140,26 @@ function IconAvatars(props) {
                         className={classes.margin}
                     />
                 </Link>
-                <Link to={`/search`} style={styles.link} onClick={functional} >
+                <Link to={`/search`} style={styles.link} onClick={hand} >
                     <FormControlLabel
-                        value="Functional"
+                        value="Hand"
                         control={<Avatar className={classes.seven}>
-                            <FavoriteBorderIcon />
+                            <ThumbsUpAltIcon />
                         </Avatar>}
-                        label="Functional"
+                        label="Hand"
                         labelPlacement="bottom"
                         className={classes.margin}
                     />
                 </Link>
             </Grid>
-            <Grid container justify="space-evenly" alignItems="center">
-                <Link to={`/search`} style={styles.link} onClick={pelvic} >
+            <Grid container spacing={8} justify="space-evenly" alignItems="center">
+                <Link to={`/search`} style={styles.link} onClick={intramuscular} >
                     <FormControlLabel
-                        value="Pelvic"
+                        value="Intramuscular"
                         control={<Avatar className={classes.two}>
-                            <SeatIcon />
+                            <FitnessCenterIcon />
                         </Avatar>}
-                        label="Pelvic"
+                        label="Intramuscular"
                         labelPlacement="bottom"
                         className={classes.margin}
                     />
@@ -187,14 +187,14 @@ function IconAvatars(props) {
                     />
                 </Link>
             </Grid>
-            <Grid container justify="space-evenly" alignItems="center">
-                <Link to={`/search`} style={styles.link} onClick={intramuscular} >
+            <Grid container spacing={8} justify="space-evenly" alignItems="center">
+                <Link to={`/search`} style={styles.link} onClick={pelvic} >
                     <FormControlLabel
-                        value="Intramuscular"
+                        value="Pelvic"
                         control={<Avatar className={classes.three}>
-                            <FitnessCenterIcon />
+                            <SeatIcon />
                         </Avatar>}
-                        label="Intramuscular"
+                        label="Pelvic"
                         labelPlacement="bottom"
                         className={classes.margin}
                     />
@@ -212,11 +212,11 @@ function IconAvatars(props) {
                 </Link>
                 <Link to={`/search`} style={styles.link} onClick={needling} >
                     <FormControlLabel
-                        value="Dry Needling"
+                        value="Needling"
                         control={<Avatar className={classes.nine}>
                             <FormatIcon />
                         </Avatar>}
-                        label="Dry Needling"
+                        label="Needling"
                         labelPlacement="bottom"
                         className={classes.margin}
                     />

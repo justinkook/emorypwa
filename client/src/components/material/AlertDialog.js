@@ -7,7 +7,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import LocationOnIcon from '@material-ui/icons/LocationOnOutlined';
-import { Provider } from '../utils/ContextApi';
 
 class AlertDialog extends React.Component {
   state = {
@@ -65,34 +64,32 @@ class AlertDialog extends React.Component {
 
   render() {
     return (
-      <Provider value={this.state.locationInput} >
-        <div>
-          <Button variant="text" onClick={this.handleClickOpen} >
-            <LocationOnIcon />
-          </Button>
-          <Dialog
-            open={this.state.open}
-            onClose={this.handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogTitle id="alert-dialog-title">{"Use location service?"}</DialogTitle>
-            <DialogContent>
-              <DialogContentText id="alert-dialog-description">
-                Help apps determine location automatically.
+      <div>
+        <Button variant="text" onClick={this.handleClickOpen} >
+          <LocationOnIcon />
+        </Button>
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{"Use location service?"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Help apps determine location automatically.
             </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={this.handleClose} color="primary">
-                Disagree
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleClose} color="primary">
+              Disagree
             </Button>
-              <Button onClick={this.handleAccept} color="primary" autoFocus>
-                Agree
+            <Button onClick={this.handleAccept} color="primary" autoFocus>
+              Agree
             </Button>
-            </DialogActions>
-          </Dialog>
-        </div >
-      </Provider>
+          </DialogActions>
+        </Dialog>
+      </div >
     );
   }
 }
