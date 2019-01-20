@@ -8,7 +8,6 @@ import { Divider } from '@material-ui/core';
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        overflow: 'auto',
     },
     paper: {
         padding: theme.spacing.unit * 2,
@@ -32,16 +31,13 @@ const styles = theme => ({
             textDecoration: 'underline',
         },
     },
-    overflow: {
-        overflow: 'scroll'
-    }
 });
 
 function ComplexGrid(props) {
     const { classes } = props;
     return (
         <div className={classes.root}>
-            <Grid container spacing={16} className={classes.overflow}>
+            <Grid container spacing={16} >
                 <Grid item xs={12} sm container >
                     <Grid item xs container direction="column" spacing={16} >
                         <Grid item xs >

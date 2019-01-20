@@ -55,7 +55,7 @@ const rehabList = [
 
 const styles = {
     paper: {
-        padding: '2px 4px',
+        padding: '2px 0 4px 0',
         display: 'flex',
         alignItems: 'center',
         maxWidth: 350,
@@ -63,7 +63,7 @@ const styles = {
         borderRadius: 6 + 'px',
         margin: '20px',
         background: 'white',
-        position: 'fixed',
+        position: 'sticky',
         top: 10,
         width: 85 + '%',
     },
@@ -86,6 +86,12 @@ const styles = {
     },
     column: {
         flexBasis: '100%',
+        paddingTop: 4,
+        paddingLeft: 32,
+        position: 'absolute',
+        textAlign: 'center',
+        left: 0,
+        right: 0,
     },
     input: {
         flex: 1,
@@ -104,24 +110,21 @@ const styles = {
         fill: 'rgb(6, 47, 94)',
         fontSize: 30
     },
-    flex: {
-        display: 'flex',
-    },
     map: {
         position: 'fixed',
         zIndex: -100,
     },
     sticky: {
-        position: 'sticky',
+        position: 'fixed',
         top: 0,
+        width: 100 + '%',
+        maxWidth: 500,
+        padding: 0,
+        height: 70,
         background: 'white',
-        padding: '0 14px 0 14px',
         boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)'
     },
-    paddingTop: {
-        paddingTop: 4,
-        paddingLeft: 10
-    }
+
 }
 
 class Container extends React.Component {
@@ -150,11 +153,11 @@ class Container extends React.Component {
                 <div style={styles.ResultsCard}>
                     <ExpansionPanel >
                         <ExpansionPanelSummary style={styles.sticky} expandIcon={<ExpandMoreIcon />}>
-                            <Link to={`/`} style={{ display: 'flex' }} >
+                            <Link to={`/`} style={{ display: 'flex', padding: '0 20px 0 20px' }} >
                                 <KeyboardArrowLeft style={styles.leftArrow} />
                             </Link>
-                            <div className={styles.column}>
-                                <Typography variant="title" style={styles.paddingTop} className={styles.heading}>Therapy Clinics</Typography>
+                            <div style={styles.column}>
+                                <Typography variant="title" className={styles.heading}>Therapy Clinics</Typography>
                             </div>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails style={styles.minHeight} className={styles.details}>
