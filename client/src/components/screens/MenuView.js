@@ -27,7 +27,6 @@ const drawerWidth = 240;
 const styles = theme => ({
     root: {
         display: 'flex',
-        justifyContent: 'space-between'
     },
     drawer: {
         [theme.breakpoints.up('sm')]: {
@@ -70,7 +69,7 @@ const styles = theme => ({
         padding: '2px 4px',
         display: 'flex',
         alignItems: 'center',
-        maxWidth: 350,
+        maxWidth: 450,
         justifyContent: 'center',
         border: '2px solid rgb(6, 67, 94)',
         borderRadius: 6 + 'px',
