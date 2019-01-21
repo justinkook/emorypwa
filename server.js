@@ -10,6 +10,14 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 app.use(compression());
 
+/* Redirect http to https */
+app.get('*', (req, res, next) => {
+  if (req.headers['x-forwarded-proto'] !== 'https' && process.env.NODE_ENV === 'production')
+    res.redirect('https://' + req.headers.host + req.url)
+  else
+    next() /* Continue to other routes if we're not redirecting */
+});
+
 // Use body-parser for handling form submissions
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use((req, res, next) => {
