@@ -65,7 +65,7 @@ class AlertDialog extends React.Component {
   render() {
     return (
       <div>
-        <Button variant="text" onClick={this.handleClickOpen} >
+        <Button variant="text" onClick={this.handleClickOpen} name="locationIcon" >
           <LocationOnIcon />
         </Button>
         <Dialog
@@ -81,10 +81,10 @@ class AlertDialog extends React.Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleClose} color="primary" name="disagree" >
               Disagree
             </Button>
-            <Button onClick={this.handleAccept} color="primary" autoFocus>
+            <Button onClick={this.handleAccept} color="primary" autoFocus name="agree" >
               Agree
             </Button>
           </DialogActions>

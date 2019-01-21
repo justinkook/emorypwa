@@ -116,7 +116,7 @@ function DetailedExpansionPanel(props) {
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>
-          <Button size="small" color="primary">
+          <Button size="small" color="primary" name="clinicsButton" >
             <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={clinics} >
               Search Clinics
             </Link>
@@ -139,7 +139,7 @@ function DetailedExpansionPanel(props) {
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>
-          <Button size="small" color="primary">
+          <Button size="small" color="primary" name="nursingButton" >
             <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={nursing}>
               Search Nursing
             </Link>
@@ -160,7 +160,7 @@ function DetailedExpansionPanel(props) {
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>
-          <Button size="small" color="primary">
+          <Button size="small" color="primary" name="rehabButton" >
             <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={rehab}>
               Map View
             </Link>
@@ -182,7 +182,7 @@ function DetailedExpansionPanel(props) {
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>
-          <Button size="small" color="primary">
+          <Button size="small" color="primary" name="ltachButton" >
             <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={ltach} >
               Map View</Link>
           </Button>
