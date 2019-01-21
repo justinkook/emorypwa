@@ -34,11 +34,10 @@ function CustomizedInputBase(props) {
 
     return (
         <div style={styles.container}>
-            <IconButton className={classes.iconButton} aria-label="Search" name="searchIcon" >
+            <IconButton className={classes.iconButton} aria-label="Search" >
                 <SearchIcon />
             </IconButton>
-            <label for="searchZip" />
-            <InputBase id="searchZip" className={classes.input} placeholder="Search by Zip Code" autoComplete="shipping postal-code" type='tel' />
+            <InputBase className={classes.input} placeholder="Search by Zip Code" autoComplete="shipping postal-code" type='tel' aria-label="Search by Zip Code" name="searchZip" />
             <AlertDialog className={classes.iconButton} />
         </div>
     );

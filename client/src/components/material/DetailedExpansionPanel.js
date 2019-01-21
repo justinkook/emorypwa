@@ -116,7 +116,7 @@ function DetailedExpansionPanel(props) {
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>
-          <Button size="small" color="primary" name="clinicsButton" >
+          <Button size="small" color="primary" aria-label="Clinics" >
             <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={clinics} >
               Search Clinics
             </Link>
@@ -139,7 +139,7 @@ function DetailedExpansionPanel(props) {
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>
-          <Button size="small" color="primary" name="nursingButton" >
+          <Button size="small" color="primary" aria-label="Nursing" >
             <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={nursing}>
               Search Nursing
             </Link>
@@ -160,7 +160,7 @@ function DetailedExpansionPanel(props) {
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>
-          <Button size="small" color="primary" name="rehabButton" >
+          <Button size="small" color="primary" aria-label="Rehab" >
             <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={rehab}>
               Map View
             </Link>
@@ -182,7 +182,7 @@ function DetailedExpansionPanel(props) {
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>
-          <Button size="small" color="primary" name="ltachButton" >
+          <Button size="small" color="primary" aria-label="LTACH" >
             <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={ltach} >
               Map View</Link>
           </Button>
