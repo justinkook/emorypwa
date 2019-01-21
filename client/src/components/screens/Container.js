@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import GoogleApiComponent from '../utils/GoogleApiComponent';
-import Map from './Map';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -9,9 +8,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ComplexGrid from '../material/ComplexGrid';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeftOutlined';
 import { Link } from 'react-router-dom';
-import LinearDeterminate from '../material/Loading';
-
-let Loading = () => <div><LinearDeterminate className={styles.loading} /></div>;
+import LinearIndeterminate from '../material/Loading';
+import Map from './Map';
 
 const rehabList = [
     {
@@ -126,10 +124,6 @@ const styles = {
         background: 'white',
         boxShadow: '0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)'
     },
-    loading: {
-        position: 'absolute',
-        bottom: 20,
-    }
 }
 
 class Container extends React.Component {
@@ -140,7 +134,6 @@ class Container extends React.Component {
     }
 
     componentDidMount = () => {
-        Loading = null;
         let localList = localStorage.getItem('resultsList');
         (!localList) ? this.getSearchResults() : this.setState({ resultsList: localList });
     }
@@ -152,33 +145,34 @@ class Container extends React.Component {
 
     render() {
         return (
-            <div >
-                <div style={styles.map}>
-                    <Map google={this.props.google} />
+            <Suspense fallback={<LinearIndeterminate />} >
+                <div >
+                    <div style={styles.map}>
+                        <Map google={this.props.google} />
+                    </div>
+                    <div style={styles.ResultsCard}>
+                        <ExpansionPanel >
+                            <ExpansionPanelSummary style={styles.sticky} expandIcon={<ExpandMoreIcon style={styles.heading} />}>
+                                <Link to={`/`} style={{ display: 'flex', padding: '0 20px 0 20px' }} >
+                                    <KeyboardArrowLeft style={styles.leftArrow} />
+                                </Link>
+                                <div style={styles.column}>
+                                    <Typography variant="title" style={styles.heading}>Therapy Clinics</Typography>
+                                </div>
+                            </ExpansionPanelSummary>
+                            <ExpansionPanelDetails style={styles.details}>
+                                {rehabList.map(e => (
+                                    <ComplexGrid title={`${e.title}`} phone={`${e.phone}`} email={`${e.email}`} />
+                                ))}
+                            </ExpansionPanelDetails>
+                        </ExpansionPanel>
+                    </div>
                 </div>
-                <div style={styles.ResultsCard}>
-                    <ExpansionPanel >
-                        <ExpansionPanelSummary style={styles.sticky} expandIcon={<ExpandMoreIcon style={styles.heading} />}>
-                            <Link to={`/`} style={{ display: 'flex', padding: '0 20px 0 20px' }} >
-                                <KeyboardArrowLeft style={styles.leftArrow} />
-                            </Link>
-                            <div style={styles.column}>
-                                <Typography variant="title" style={styles.heading}>Therapy Clinics</Typography>
-                            </div>
-                        </ExpansionPanelSummary>
-                        <ExpansionPanelDetails style={styles.details}>
-                            {rehabList.map(e => (
-                                <ComplexGrid title={`${e.title}`} phone={`${e.phone}`} email={`${e.email}`} />
-                            ))}
-                        </ExpansionPanelDetails>
-                    </ExpansionPanel>
-                </div>
-            </div>
+            </Suspense>
         );
     }
 }
 
 export default GoogleApiComponent({
     apiKey: 'AIzaSyCFA-SqdzzXS4HC_kujnGLRSIW1-rgkjqk',
-    LoadingContainer: Loading
 })(Container);
