@@ -2,7 +2,14 @@
   "name": "emorypwa",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://localhost:5000",
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:5000",
+      "pathRewrite": {
+        "^/api": "/"
+      }
+    }
+  },
   "dependencies": {
     "@material-ui/core": "^3.8.3",
     "@material-ui/icons": "^3.0.2",
@@ -10,7 +17,6 @@
     "google-maps-react": "^2.0.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-https-redirect": "^1.0.11",
     "react-places-autocomplete": "^7.2.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.3",
