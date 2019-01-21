@@ -1,5 +1,4 @@
 const db = require('../models/');
-// const searchBy = require('../public/js/search.js');
 const axios = require('axios');
 require("dotenv").config();
 const RestfulAPI = require('./RestClass');

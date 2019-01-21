@@ -1,3 +1,4 @@
+const compression = require('compression');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -7,6 +8,7 @@ const PORT = process.env.PORT || 5000;
 
 // Initialize Express
 const app = express();
+app.use(compression());
 
 // Use body-parser for handling form submissions
 app.use(bodyParser.urlencoded({ extended: true }));
