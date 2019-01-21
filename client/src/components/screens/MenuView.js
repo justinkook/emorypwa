@@ -29,11 +29,11 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'flex-end',
-        [theme.breakpoints.up('sm')]: {
-            position: 'absolute',
-            right: 0,
-            margin: '15px 15px 0 15px',
-        },
+        // [theme.breakpoints.up('sm')]: {
+        //     position: 'absolute',
+        //     right: 0,
+        //     margin: '15px 15px 0 15px',
+        // },
     },
     drawer: {
         [theme.breakpoints.up('sm')]: {
