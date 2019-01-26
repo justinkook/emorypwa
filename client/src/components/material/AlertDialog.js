@@ -11,11 +11,8 @@ import LocationOnIcon from '@material-ui/icons/LocationOnOutlined';
 class AlertDialog extends React.Component {
   state = {
     open: false,
-    lat: null,
-    lng: null,
     errorMessage: '',
     servicesOn: null,
-    locationInput: '',
     haveOpened: false,
   };
 
@@ -35,13 +32,13 @@ class AlertDialog extends React.Component {
 
   geocode = (location) => {
     localStorage.setItem('servicesOn', true);
-    const queryURL = 'http://localhost:5000/api/geocode/' + location;
+    const queryURL = '/api/geocode/' + location;
     axios.get(queryURL)
       .then((data) => {
         let addressComponents = data.data.results[0].address_components;
         let locationOptions = addressComponents.map(e => e.short_name);
-        let locationIndex = locationOptions.length - 2;
-        localStorage.setItem('locationInput', locationOptions[locationIndex])
+        let locationIndex = locationOptions.length - 1;
+        this.props.context.geocode(locationOptions[locationIndex]);
       })
   };
 

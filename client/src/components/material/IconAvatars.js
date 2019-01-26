@@ -14,6 +14,7 @@ import FormatIcon from '@material-ui/icons/FormatStrikethrough';
 import NaturePeopleIcon from '@material-ui/icons/NaturePeopleOutlined';
 import Grid from '@material-ui/core/Grid';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { ResultContext } from '../utils/ContextApi';
 
 const styles = {
     one: {
@@ -79,150 +80,118 @@ const styles = {
 
 function IconAvatars(props) {
     const { classes } = props;
-
-    const aquatic = () => {
-        localStorage.setItem('searchTerm', 'aquatic');
-    }
-
-    const hand = () => {
-        localStorage.setItem('searchTerm', 'hand');
-    }
-
-    const functional = () => {
-        localStorage.setItem('searchTerm', 'functional');
-    }
-
-    const pelvic = () => {
-        localStorage.setItem('searchTerm', 'pelvic');
-    }
-
-    const vestibular = () => {
-        localStorage.setItem('searchTerm', 'vestibular');
-    }
-
-    const intramuscular = () => {
-        localStorage.setItem('searchTerm', 'intramuscular');
-    }
-
-    const women = () => {
-        localStorage.setItem('searchTerm', 'women');
-    }
-
-    const work = () => {
-        localStorage.setItem('searchTerm', 'work');
-    }
-
-    const needling = () => {
-        localStorage.setItem('searchTerm', 'needling');
-    }
     return (
-        <div style={styles.justify}>
-            <Grid container spacing={8} justify="space-evenly" alignItems="center">
-                <Link to={`/search`} style={styles.link} onClick={functional} >
-                    <FormControlLabel
-                        value="Functional"
-                        control={<Avatar className={classes.one}>
-                            <FavoriteBorderIcon />
-                        </Avatar>}
-                        label="Functional"
-                        labelPlacement="bottom"
-                        className={classes.margin}
-                    />
-                </Link>
-                <Link to={`/search`} style={styles.link} onClick={aquatic} >
-                    <FormControlLabel
-                        value="Aquatic"
-                        control={<Avatar className={classes.six}>
-                            <PoolIcon />
-                        </Avatar>}
-                        label="Aquatic"
-                        labelPlacement="bottom"
-                        className={classes.margin}
-                    />
-                </Link>
-                <Link to={`/search`} style={styles.link} onClick={hand} >
-                    <FormControlLabel
-                        value="Hand"
-                        control={<Avatar className={classes.seven}>
-                            <ThumbsUpAltIcon />
-                        </Avatar>}
-                        label="Hand"
-                        labelPlacement="bottom"
-                        className={classes.margin}
-                    />
-                </Link>
-            </Grid>
-            <Grid container spacing={8} justify="space-evenly" alignItems="center">
-                <Link to={`/search`} style={styles.link} onClick={intramuscular} >
-                    <FormControlLabel
-                        value="Intramuscular"
-                        control={<Avatar className={classes.two}>
-                            <FitnessCenterIcon />
-                        </Avatar>}
-                        label="Intramuscular"
-                        labelPlacement="bottom"
-                        className={classes.margin}
-                    />
-                </Link>
-                <Link to={`/search`} style={styles.link} onClick={vestibular} >
-                    <FormControlLabel
-                        value="Vestibular"
-                        control={<Avatar className={classes.five}>
-                            <HearingIcon />
-                        </Avatar>}
-                        label="Vestibular"
-                        labelPlacement="bottom"
-                        className={classes.margin}
-                    />
-                </Link>
-                <Link to={`/search`} style={styles.link} onClick={women} >
-                    <FormControlLabel
-                        value="Women"
-                        control={<Avatar className={classes.eight}>
-                            <NaturePeopleIcon />
-                        </Avatar>}
-                        label="Women's"
-                        labelPlacement="bottom"
-                        className={classes.margin}
-                    />
-                </Link>
-            </Grid>
-            <Grid container spacing={8} justify="space-evenly" alignItems="center">
-                <Link to={`/search`} style={styles.link} onClick={pelvic} >
-                    <FormControlLabel
-                        value="Pelvic"
-                        control={<Avatar className={classes.three}>
-                            <SeatIcon />
-                        </Avatar>}
-                        label="Pelvic"
-                        labelPlacement="bottom"
-                        className={classes.margin}
-                    />
-                </Link>
-                <Link to={`/search`} style={styles.link} onClick={work} >
-                    <FormControlLabel
-                        value="Work"
-                        control={<Avatar className={classes.four}>
-                            <WorkIcon />
-                        </Avatar>}
-                        label="Work"
-                        labelPlacement="bottom"
-                        className={classes.margin}
-                    />
-                </Link>
-                <Link to={`/search`} style={styles.link} onClick={needling} >
-                    <FormControlLabel
-                        value="Needling"
-                        control={<Avatar className={classes.nine}>
-                            <FormatIcon />
-                        </Avatar>}
-                        label="Needling"
-                        labelPlacement="bottom"
-                        className={classes.margin}
-                    />
-                </Link>
-            </Grid>
-        </div>
+        <ResultContext.Consumer>
+            {context => (
+                <div style={styles.justify}>
+                    <Grid container spacing={8} justify="space-evenly" alignItems="center">
+                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('functional')} >
+                            <FormControlLabel
+                                value="Functional"
+                                control={<Avatar className={classes.one}>
+                                    <FavoriteBorderIcon />
+                                </Avatar>}
+                                label="Functional"
+                                labelPlacement="bottom"
+                                className={classes.margin}
+                            />
+                        </Link>
+                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('aquatic')} >
+                            <FormControlLabel
+                                value="Aquatic"
+                                control={<Avatar className={classes.six}>
+                                    <PoolIcon />
+                                </Avatar>}
+                                label="Aquatic"
+                                labelPlacement="bottom"
+                                className={classes.margin}
+                            />
+                        </Link>
+                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('hand')} >
+                            <FormControlLabel
+                                value="Hand"
+                                control={<Avatar className={classes.seven}>
+                                    <ThumbsUpAltIcon />
+                                </Avatar>}
+                                label="Hand"
+                                labelPlacement="bottom"
+                                className={classes.margin}
+                            />
+                        </Link>
+                    </Grid>
+                    <Grid container spacing={8} justify="space-evenly" alignItems="center">
+                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('intramuscular')} >
+                            <FormControlLabel
+                                value="Intramuscular"
+                                control={<Avatar className={classes.two}>
+                                    <FitnessCenterIcon />
+                                </Avatar>}
+                                label="Intramuscular"
+                                labelPlacement="bottom"
+                                className={classes.margin}
+                            />
+                        </Link>
+                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('vestibular')} >
+                            <FormControlLabel
+                                value="Vestibular"
+                                control={<Avatar className={classes.five}>
+                                    <HearingIcon />
+                                </Avatar>}
+                                label="Vestibular"
+                                labelPlacement="bottom"
+                                className={classes.margin}
+                            />
+                        </Link>
+                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('women')} >
+                            <FormControlLabel
+                                value="Women"
+                                control={<Avatar className={classes.eight}>
+                                    <NaturePeopleIcon />
+                                </Avatar>}
+                                label="Women's"
+                                labelPlacement="bottom"
+                                className={classes.margin}
+                            />
+                        </Link>
+                    </Grid>
+                    <Grid container spacing={8} justify="space-evenly" alignItems="center">
+                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('pelvic')} >
+                            <FormControlLabel
+                                value="Pelvic"
+                                control={<Avatar className={classes.three}>
+                                    <SeatIcon />
+                                </Avatar>}
+                                label="Pelvic"
+                                labelPlacement="bottom"
+                                className={classes.margin}
+                            />
+                        </Link>
+                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('work')} >
+                            <FormControlLabel
+                                value="Work"
+                                control={<Avatar className={classes.four}>
+                                    <WorkIcon />
+                                </Avatar>}
+                                label="Work"
+                                labelPlacement="bottom"
+                                className={classes.margin}
+                            />
+                        </Link>
+                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('needling')} >
+                            <FormControlLabel
+                                value="Needling"
+                                control={<Avatar className={classes.nine}>
+                                    <FormatIcon />
+                                </Avatar>}
+                                label="Needling"
+                                labelPlacement="bottom"
+                                className={classes.margin}
+                            />
+                        </Link>
+                    </Grid>
+                </div>
+            )}
+        </ResultContext.Consumer>
     );
 }
 

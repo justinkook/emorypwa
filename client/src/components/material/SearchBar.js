@@ -5,6 +5,7 @@ import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import AlertDialog from '../material/AlertDialog';
+import { ResultContext } from '../utils/ContextApi';
 
 const styles = {
     container: {
@@ -33,13 +34,19 @@ function CustomizedInputBase(props) {
     const { classes } = props;
 
     return (
-        <div style={styles.container}>
-            <IconButton className={classes.iconButton} aria-label="Search" >
-                <SearchIcon />
-            </IconButton>
-            <InputBase className={classes.input} placeholder="Search by Zip Code" autoComplete="shipping postal-code" type='tel' aria-label="Search by Zip Code" name="searchZip" />
-            <AlertDialog className={classes.iconButton} />
-        </div>
+        <ResultContext.Consumer>
+            {context => (
+                <div style={styles.container}>
+                    <IconButton className={classes.iconButton} aria-label="Search" >
+                        <SearchIcon />
+                    </IconButton>
+                    <InputBase className={classes.input} placeholder="Search by Zip Code" autoComplete="shipping postal-code" type='tel'
+                        aria-label="Search by Zip Code" value={context.state.locationInput}
+                        onChange={(e) => context.handleLocationUpdate(e)} />
+                    <AlertDialog className={classes.iconButton} context={context} />
+                </div>
+            )}
+        </ResultContext.Consumer>
     );
 }
 

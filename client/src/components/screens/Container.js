@@ -10,49 +10,7 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeftOutlined';
 import { Link } from 'react-router-dom';
 import LinearIndeterminate from '../material/Loading';
 import Map from './Map';
-
-const rehabList = [
-    {
-        title: 'Center for Rehabilitation Medicine',
-        phone: '706-728-0283',
-        email: 'justinkook@gmail.com',
-    },
-    {
-        title: 'Dekalb',
-        phone: '706-728-0283',
-        email: 'justinkook@gmail.com',
-    },
-    {
-        title: 'Dekalb',
-        phone: '706-728-0283',
-        email: 'justinkook@gmail.com',
-    },
-    {
-        title: 'Dekalb',
-        phone: '706-728-0283',
-        email: 'justinkook@gmail.com',
-    },
-    {
-        title: 'Dekalb',
-        phone: '706-728-0283',
-        email: 'justinkook@gmail.com',
-    },
-    {
-        title: 'Dekalb',
-        phone: '706-728-0283',
-        email: 'justinkook@gmail.com',
-    },
-    {
-        title: 'Dekalb',
-        phone: '706-728-0283',
-        email: 'justinkook@gmail.com',
-    },
-    {
-        title: 'Dekalb',
-        phone: '706-728-0283',
-        email: 'justinkook@gmail.com',
-    },
-]
+import { ResultContext } from '../utils/ContextApi';
 
 const styles = {
     paper: {
@@ -127,47 +85,36 @@ const styles = {
 }
 
 class Container extends React.Component {
-    state = {
-        resultsList: [],
-        locationInput: '',
-        searchTerm: '',
-    }
-
-    componentDidMount = () => {
-        let localList = localStorage.getItem('resultsList');
-        (!localList) ? this.getSearchResults() : this.setState({ resultsList: localList });
-    }
-
-    getSearchResults = () => {
-        this.setState({ resultsList: rehabList });
-        localStorage.setItem('resultsList', rehabList);
-    }
 
     render() {
         return (
             <Suspense fallback={<LinearIndeterminate />} >
-                <div >
-                    <div style={styles.map}>
-                        <Map google={this.props.google} />
-                    </div>
-                    <div style={styles.ResultsCard}>
-                        <ExpansionPanel >
-                            <ExpansionPanelSummary style={styles.sticky} expandIcon={<ExpandMoreIcon style={styles.heading} />}>
-                                <Link to={`/`} style={{ display: 'flex', padding: '0 20px 0 20px' }} >
-                                    <KeyboardArrowLeft style={styles.leftArrow} />
-                                </Link>
-                                <div style={styles.column}>
-                                    <Typography variant="title" style={styles.heading}>Therapy Clinics</Typography>
-                                </div>
-                            </ExpansionPanelSummary>
-                            <ExpansionPanelDetails style={styles.details}>
-                                {rehabList.map(e => (
-                                    <ComplexGrid title={`${e.title}`} phone={`${e.phone}`} email={`${e.email}`} />
-                                ))}
-                            </ExpansionPanelDetails>
-                        </ExpansionPanel>
-                    </div>
-                </div>
+                <ResultContext.Consumer>
+                    {context => (
+                        <div >
+                            <div style={styles.map}>
+                                <Map google={this.props.google} />
+                            </div>
+                            <div style={styles.ResultsCard}>
+                                <ExpansionPanel >
+                                    <ExpansionPanelSummary style={styles.sticky} expandIcon={<ExpandMoreIcon style={styles.heading} />}>
+                                        <Link to={`/`} replace style={{ display: 'flex', padding: '0 20px 0 20px' }} >
+                                            <KeyboardArrowLeft style={styles.leftArrow} />
+                                        </Link>
+                                        <div style={styles.column}>
+                                            <Typography variant="title" style={styles.heading}>Therapy Clinics</Typography>
+                                        </div>
+                                    </ExpansionPanelSummary>
+                                    <ExpansionPanelDetails style={styles.details}>
+                                        {context.state.resultList.map((e, i) => (
+                                            <ComplexGrid key={i} title={`${e.title}`} phone={`${e.phone}`} email={`${e.email}`} />
+                                        ))}
+                                    </ExpansionPanelDetails>
+                                </ExpansionPanel>
+                            </div>
+                        </div>
+                    )}
+                </ResultContext.Consumer>
             </Suspense>
         );
     }
