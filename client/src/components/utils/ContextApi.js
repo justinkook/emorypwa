@@ -53,24 +53,22 @@ export class MyProvider extends Component {
         ],
         nursingList: [
             {
-                name: "Emory Decatur-LTACH",
+                name: "AG Rhodes",
                 location: {
                     display_address: [
-                        "450 N. Candler Street",
-                        "Decatur, GA 30030"
+                        "Jornette Malone"
                     ]
                 },
-                phone: "+14045016226",
+                phone: "+14043150900",
             },
             {
-                name: "Emory & Select",
+                name: "Budd Terrace",
                 location: {
                     display_address: [
-                        "705 Juniper Street NE",
-                        "Atlanta, GA 30308"
+                        "Sahebi Saiyed, MD - sahebi.a.saiyed@emory.edu",
                     ]
                 },
-                phone: "+14044664600",
+                phone: "+14047286515",
             },
         ],
         resultList: [],

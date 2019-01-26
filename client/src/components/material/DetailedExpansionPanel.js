@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import ComplexGrid from './ComplexGrid';
 import { ResultContext } from '../utils/ContextApi';
+import FullWidthTabs from './NursingTab';
 
 const drawerWidth = 240;
 
@@ -38,6 +39,11 @@ const styles = theme => ({
     width: 20,
   },
   details: {
+    textAlign: 'left',
+    display: 'block',
+  },
+  detailsNursing: {
+    padding: 0,
     textAlign: 'left',
     display: 'block',
   },
@@ -92,12 +98,8 @@ function DetailedExpansionPanel(props) {
                   <Typography variant="title" className={classes.heading}>Skilled Nursing Homes</Typography>
                 </div>
               </ExpansionPanelSummary>
-              <ExpansionPanelDetails className={classes.details}>
-                {context.state.nursingList.map((e, i) => (
-                  <div key={i} >
-                    <ComplexGrid location1={e.location.display_address[0]} location2={e.location.display_address[1]} name={`${e.name}`} phone={`${e.phone}`} email={`${e.email}`} />
-                  </div>
-                ))}
+              <ExpansionPanelDetails className={classes.detailsNursing}>
+                <FullWidthTabs />
               </ExpansionPanelDetails>
               <Divider />
               <ExpansionPanelActions>
