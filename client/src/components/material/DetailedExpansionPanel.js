@@ -102,7 +102,7 @@ const ltachList = [
 ]
 
 function DetailedExpansionPanel(props) {
-  const { classes } = props;
+  const { classes } = props
   return (
     <div className={classes.root}>
       <ExpansionPanel defaultExpanded >
