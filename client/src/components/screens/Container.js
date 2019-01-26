@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import LinearIndeterminate from '../material/Loading';
 import Map from './Map';
 import { ResultContext } from '../utils/ContextApi';
+import { Divider } from '@material-ui/core';
 
 const styles = {
     paper: {
@@ -98,16 +99,19 @@ class Container extends React.Component {
                             <div style={styles.ResultsCard}>
                                 <ExpansionPanel >
                                     <ExpansionPanelSummary style={styles.sticky} expandIcon={<ExpandMoreIcon style={styles.heading} />}>
-                                        <Link to={`/`} replace style={{ display: 'flex', padding: '0 20px 0 20px' }} >
+                                        <Link to={`/`} style={{ display: 'flex', padding: '0 20px 0 20px' }} >
                                             <KeyboardArrowLeft style={styles.leftArrow} />
                                         </Link>
                                         <div style={styles.column}>
-                                            <Typography variant="title" style={styles.heading}>Therapy Clinics</Typography>
+                                            <Typography variant="title" style={styles.heading}>{context.state.searchTerm}</Typography>
                                         </div>
                                     </ExpansionPanelSummary>
                                     <ExpansionPanelDetails style={styles.details}>
                                         {context.state.resultList.map((e, i) => (
-                                            <ComplexGrid key={i} title={`${e.title}`} phone={`${e.phone}`} email={`${e.email}`} />
+                                            <div key={i} >
+                                                <ComplexGrid location1={e.location.display_address[0]} location2={e.location.display_address[1]} name={`${e.name}`} phone={`${e.phone}`} email={`${e.email}`} />
+                                                <Divider />
+                                            </div>
                                         ))}
                                     </ExpansionPanelDetails>
                                 </ExpansionPanel>

@@ -79,7 +79,7 @@ function DetailedExpansionPanel(props) {
               <Divider />
               <ExpansionPanelActions>
                 <Button size="small" color="primary" aria-label="Clinics" >
-                  <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('clinics')} >
+                  <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('Clinics')} >
                     Search Clinics
                 </Link>
                 </Button>
@@ -93,18 +93,18 @@ function DetailedExpansionPanel(props) {
                 </div>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails className={classes.details}>
-                {context.state.nursingList.map((e, i) => {
-                  return (
-                    <ComplexGrid key={i} title={`${e.title}`} phone={`${e.phone}`} email={`${e.email}`} />
-                  )
-                })}
+                {context.state.nursingList.map((e, i) => (
+                  <div key={i} >
+                    <ComplexGrid location1={e.location.display_address[0]} location2={e.location.display_address[1]} name={`${e.name}`} phone={`${e.phone}`} email={`${e.email}`} />
+                  </div>
+                ))}
               </ExpansionPanelDetails>
               <Divider />
               <ExpansionPanelActions>
                 <Button size="small" color="primary" aria-label="Nursing" >
-                  <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('nursing')}>
+                  <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('Nursing')}>
                     Search Nursing
-            </Link>
+                  </Link>
                 </Button>
               </ExpansionPanelActions>
             </ExpansionPanel>
@@ -117,13 +117,15 @@ function DetailedExpansionPanel(props) {
               </ExpansionPanelSummary>
               <ExpansionPanelDetails className={classes.details}>
                 {context.state.rehabList.map((e, i) => (
-                  <ComplexGrid key={i} title={`${e.title}`} phone={`${e.phone}`} email={`${e.email}`} />
+                  <div key={i} >
+                    <ComplexGrid location1={e.location.display_address[0]} location2={e.location.display_address[1]} name={`${e.name}`} phone={`${e.phone}`} email={`${e.email}`} />
+                  </div>
                 ))}
               </ExpansionPanelDetails>
               <Divider />
               <ExpansionPanelActions>
                 <Button size="small" color="primary" aria-label="Rehab" >
-                  <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('rehab')}>
+                  <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('Rehab')}>
                     Map View
                   </Link>
                 </Button>
@@ -136,16 +138,16 @@ function DetailedExpansionPanel(props) {
                 </div>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails className={classes.details}>
-                {context.state.ltachList.map((e, i) => {
-                  return (
-                    <ComplexGrid key={i} title={`${e.title}`} phone={`${e.phone}`} email={`${e.email}`} />
-                  )
-                })}
+                {context.state.ltachList.map((e, i) => (
+                  <div key={i} >
+                    <ComplexGrid location1={e.location.display_address[0]} location2={e.location.display_address[1]} name={`${e.name}`} phone={`${e.phone}`} email={`${e.email}`} />
+                  </div>
+                ))}
               </ExpansionPanelDetails>
               <Divider />
               <ExpansionPanelActions>
                 <Button size="small" color="primary" aria-label="LTACH" >
-                  <Link to={`/search`} replace style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('ltach')} >
+                  <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('LTACH')} >
                     Map View</Link>
                 </Button>
               </ExpansionPanelActions>

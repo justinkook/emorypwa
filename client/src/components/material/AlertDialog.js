@@ -14,12 +14,14 @@ class AlertDialog extends React.Component {
     errorMessage: '',
     servicesOn: null,
     haveOpened: false,
+    currentLocation: '',
   };
 
   componentDidMount = () => {
     let servicesOn = localStorage.getItem('servicesOn');
     if (servicesOn === 'true') {
       this.setState({ servicesOn: true })
+      this.locationServices();
     }
   }
 
@@ -37,22 +39,23 @@ class AlertDialog extends React.Component {
       .then((data) => {
         let addressComponents = data.data.results[0].address_components;
         let locationOptions = addressComponents.map(e => e.short_name);
-        let locationIndex = locationOptions.length - 1;
-        this.props.context.geocode(locationOptions[locationIndex]);
+        let locationIndex = `${locationOptions[locationOptions.length - 6]}, ${locationOptions[locationOptions.length - 4]} ${locationOptions[locationOptions.length - 2]}`;
+        this.setState({ currentLocation: locationIndex })
       })
   };
 
   handleClickOpen = () => {
     if (!this.state.haveOpened && !this.state.servicesOn) {
       this.setState({ open: true, haveOpened: true });
-    } else {
       this.locationServices();
+    } else {
+      this.props.context.geocode(this.state.currentLocation);
     }
   }
 
   handleAccept = () => {
     this.setState({ open: false });
-    this.locationServices();
+    this.props.context.geocode(this.state.currentLocation);
   }
 
   handleClose = () => {

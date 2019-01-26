@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export const ResultContext = React.createContext();
 
@@ -8,83 +9,81 @@ export class MyProvider extends Component {
         searchTerm: '',
         ltachList: [
             {
-                title: 'Emory Decatur | LTACH',
-                phone: '+14045016226',
-                email: 'justinkook@gmail.com',
+                name: "Emory Decatur-LTACH",
+                location: {
+                    display_address: [
+                        "450 N. Candler Street",
+                        "Decatur, GA 30030"
+                    ]
+                },
+                phone: "+14045016226",
             },
             {
-                title: 'Emory & Select',
-                phone: '+14044664600',
-                email: 'justinkook@gmail.com',
-            }
+                name: "Emory & Select",
+                location: {
+                    display_address: [
+                        "705 Juniper Street NE",
+                        "Atlanta, GA 30308"
+                    ]
+                },
+                phone: "+14044664600",
+            },
         ],
         rehabList: [
             {
-                title: 'Emory Rehabilitation Hospital',
-                phone: '+14047127593',
-                email: 'justinkook@gmail.com',
+                name: "Emory Rehabilitation Hospital",
+                location: {
+                    display_address: [
+                        "1441 Clifton Road",
+                        "Atlanta, GA 30322"
+                    ]
+                },
+                phone: "+14047127593",
             },
             {
-                title: 'Emory Dekalb Rehabilitation',
-                phone: '+14045013646',
-                email: 'justinkook@gmail.com',
-            }
+                name: "Emory DeKalb Rehabilitation at Decatur",
+                location: {
+                    display_address: [
+                        "2701 North Decatur Road",
+                        "Decatur, GA 30033"
+                    ]
+                },
+                phone: "+14045013646",
+            },
         ],
         nursingList: [
             {
-                title: 'Emory Rehabilitation Hospital',
-                phone: '+14047127593',
-                email: 'justinkook@gmail.com',
+                name: "Emory Decatur-LTACH",
+                location: {
+                    display_address: [
+                        "450 N. Candler Street",
+                        "Decatur, GA 30030"
+                    ]
+                },
+                phone: "+14045016226",
             },
             {
-                title: 'Emory Dekalb Rehabilitation',
-                phone: '+14045013646',
-                email: 'justinkook@gmail.com',
-            }
+                name: "Emory & Select",
+                location: {
+                    display_address: [
+                        "705 Juniper Street NE",
+                        "Atlanta, GA 30308"
+                    ]
+                },
+                phone: "+14044664600",
+            },
         ],
-        resultList: [
-            {
-                title: 'Center for Rehabilitation Medicine',
-                phone: '706-728-0283',
-                email: 'justinkook@gmail.com',
-            },
-            {
-                title: 'Dekalb',
-                phone: '706-728-0283',
-                email: 'justinkook@gmail.com',
-            },
-            {
-                title: 'Dekalb',
-                phone: '706-728-0283',
-                email: 'justinkook@gmail.com',
-            },
-            {
-                title: 'Dekalb',
-                phone: '706-728-0283',
-                email: 'justinkook@gmail.com',
-            },
-            {
-                title: 'Dekalb',
-                phone: '706-728-0283',
-                email: 'justinkook@gmail.com',
-            },
-            {
-                title: 'Dekalb',
-                phone: '706-728-0283',
-                email: 'justinkook@gmail.com',
-            },
-            {
-                title: 'Dekalb',
-                phone: '706-728-0283',
-                email: 'justinkook@gmail.com',
-            },
-            {
-                title: 'Dekalb',
-                phone: '706-728-0283',
-                email: 'justinkook@gmail.com',
-            },
-        ]
+        resultList: [],
     }
+
+    componentDidMount = () => {
+        axios.get('/api/location')
+            .then((res) => {
+                this.setState({ resultList: res.data });
+                localStorage.setItem('resultsList', res.data);
+            })
+    }
+
     render() {
         return (
             <ResultContext.Provider value={{
@@ -98,10 +97,6 @@ export class MyProvider extends Component {
                 handleLocationUpdate: (e) => this.setState({
                     locationInput: e.target.value
                 }),
-                getSearchResults: (resultList) => {
-                    this.setState({ resultList });
-                    localStorage.setItem('resultsList', resultList);
-                }
             }} >
                 {this.props.children}
             </ResultContext.Provider>

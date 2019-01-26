@@ -85,7 +85,7 @@ function IconAvatars(props) {
             {context => (
                 <div style={styles.justify}>
                     <Grid container spacing={8} justify="space-evenly" alignItems="center">
-                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('functional')} >
+                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('Functional')} >
                             <FormControlLabel
                                 value="Functional"
                                 control={<Avatar className={classes.one}>
@@ -96,7 +96,7 @@ function IconAvatars(props) {
                                 className={classes.margin}
                             />
                         </Link>
-                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('aquatic')} >
+                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('Aquatic')} >
                             <FormControlLabel
                                 value="Aquatic"
                                 control={<Avatar className={classes.six}>
@@ -107,7 +107,7 @@ function IconAvatars(props) {
                                 className={classes.margin}
                             />
                         </Link>
-                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('hand')} >
+                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('Hand')} >
                             <FormControlLabel
                                 value="Hand"
                                 control={<Avatar className={classes.seven}>
@@ -120,7 +120,7 @@ function IconAvatars(props) {
                         </Link>
                     </Grid>
                     <Grid container spacing={8} justify="space-evenly" alignItems="center">
-                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('intramuscular')} >
+                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('Intramuscular')} >
                             <FormControlLabel
                                 value="Intramuscular"
                                 control={<Avatar className={classes.two}>
@@ -131,7 +131,7 @@ function IconAvatars(props) {
                                 className={classes.margin}
                             />
                         </Link>
-                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('vestibular')} >
+                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('Vestibular')} >
                             <FormControlLabel
                                 value="Vestibular"
                                 control={<Avatar className={classes.five}>
@@ -142,7 +142,7 @@ function IconAvatars(props) {
                                 className={classes.margin}
                             />
                         </Link>
-                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('women')} >
+                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('Women')} >
                             <FormControlLabel
                                 value="Women"
                                 control={<Avatar className={classes.eight}>
@@ -155,7 +155,7 @@ function IconAvatars(props) {
                         </Link>
                     </Grid>
                     <Grid container spacing={8} justify="space-evenly" alignItems="center">
-                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('pelvic')} >
+                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('Pelvic')} >
                             <FormControlLabel
                                 value="Pelvic"
                                 control={<Avatar className={classes.three}>
@@ -166,7 +166,7 @@ function IconAvatars(props) {
                                 className={classes.margin}
                             />
                         </Link>
-                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('work')} >
+                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('Work')} >
                             <FormControlLabel
                                 value="Work"
                                 control={<Avatar className={classes.four}>
@@ -177,7 +177,7 @@ function IconAvatars(props) {
                                 className={classes.margin}
                             />
                         </Link>
-                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('needling')} >
+                        <Link to={`/search`} style={styles.link} onClick={() => context.handleSearchUpdate('Needling')} >
                             <FormControlLabel
                                 value="Needling"
                                 control={<Avatar className={classes.nine}>
