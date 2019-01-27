@@ -89,7 +89,6 @@ class Container extends React.Component {
     componentDidMount = () => {
         this.props.context.getCenter();
     }
-
     // initMap = () => {
     //     const map = new google.maps.Map(document.getElementById('map'), {
     //         zoom: 12,
