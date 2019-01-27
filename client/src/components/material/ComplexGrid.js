@@ -45,6 +45,7 @@ function ComplexGrid(props) {
                     </Grid>
                 </Grid>
             </Grid>
+            <br />
         </div>
     );
 }

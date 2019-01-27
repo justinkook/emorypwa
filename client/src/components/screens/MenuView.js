@@ -21,6 +21,7 @@ import CloudOffIcon from '@material-ui/icons/CloudOffOutlined';
 import DesktopWindowsIcon from '@material-ui/icons/DesktopWindowsOutlined';
 import Paper from '@material-ui/core/Paper';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeftOutlined';
+import SearchIcon from '@material-ui/icons/SearchOutlined';
 
 const drawerWidth = 240;
 
@@ -110,14 +111,14 @@ class ResponsiveDrawer extends React.Component {
                 </div>
                 <Divider />
                 <List>
-                    {['Insurance', 'Appointments', 'Offline', 'Desktop'].map((text, index) => (
+                    {['Search', 'Insurance', 'Appointments', 'Offline'].map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>{(() => {
                                 switch (index) {
-                                    case 0: return <BeenHereIcon />;
-                                    case 1: return <InsertInvitation />;
-                                    case 2: return <CloudOffIcon />;
-                                    case 3: return <DesktopWindowsIcon />;
+                                    case 0: return <SearchIcon />;
+                                    case 1: return <BeenHereIcon />;
+                                    case 2: return <InsertInvitation />;
+                                    case 3: return <CloudOffIcon />;
                                     default: return <CloudOffIcon />
                                 }
                             })()}
