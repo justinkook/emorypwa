@@ -142,7 +142,7 @@ class Container extends React.Component {
                                     <ExpansionPanelDetails style={styles.details}>
                                         {context.state.resultList.map((e, i) => (
                                             <div key={i} >
-                                                <ComplexGrid location1={e.location.display_address[0]} location2={e.location.display_address[1]} name={`${e.name}`} phone={`${e.phone}`} email={`${e.email}`} />
+                                                <ComplexGrid location1={e.location.display_address[0]} location2={e.location.display_address[1]} name={`${e.name}`} phone={`${e.phone}`} email={`${e.email}`} distance={e[0]} />
                                                 <Divider />
                                             </div>
                                         ))}
