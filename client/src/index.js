@@ -5,18 +5,23 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import LinearIndeterminate from './components/material/Loading';
 import { MyProvider } from './components/utils/ContextApi';
-const App = lazy(() => import('./App'));
-const GoogleApiComponent = lazy(() => import('./components/screens/Container'));
+import App from './App';
+import { ResultContext } from './components/utils/ContextApi';
+const Container = lazy(() => import('./components/screens/Container'));
 
 const router = (
     <Suspense fallback={<LinearIndeterminate />}>
         <MyProvider>
-            <BrowserRouter >
-                <div>
-                    <Route exact path="/" render={() => <App />} />
-                    <Route path="/search" render={() => <GoogleApiComponent />} />
-                </div>
-            </BrowserRouter>
+            <ResultContext.Consumer>
+                {context => (
+                    <BrowserRouter >
+                        <div>
+                            <Route exact path="/" render={() => <App />} />
+                            <Route path="/search" render={() => <Container context={context} />} />
+                        </div>
+                    </BrowserRouter>
+                )}
+            </ResultContext.Consumer>
         </MyProvider>
     </Suspense>
 )

@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-import GoogleApiComponent from '../utils/GoogleApiComponent';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -87,6 +86,40 @@ const styles = {
 
 class Container extends React.Component {
 
+    componentDidMount = () => {
+        this.props.context.getCenter();
+    }
+
+    // initMap = () => {
+    //     const map = new google.maps.Map(document.getElementById('map'), {
+    //         zoom: 12,
+    //         zoomControl: true,
+    //         gestureHandling: 'greedy',
+    //         zoomControlOptions: false,
+    //         center: {
+    //             lat: this.props.context.state.resultList[0].coordinates.latitude,
+    //             lng: this.props.context.state.resultList[0].coordinates.longitude
+    //         },
+    //         tilt: 45,
+    //         disableDefaultUI: true
+    //     })
+
+    //     for (let i = 0; i < this.props.context.state.resultList.length; i++) {
+    //         const marker = new google.maps.Marker({
+    //             position: {
+    //                 lat: this.props.context.state.resultList[i].coordinates.latitude,
+    //                 lng: this.props.context.state.resultList[i].coordinates.longitude
+    //             },
+    //             map: map,
+    //             title: this.props.context.state.resultList[i].name,
+    //             label: {
+    //                 text: `${i + 1}`,
+    //                 fontSize: '16px',
+    //             }
+    //         })
+    //     }
+    // }
+
     render() {
         return (
             <Suspense fallback={<LinearIndeterminate />} >
@@ -94,7 +127,7 @@ class Container extends React.Component {
                     {context => (
                         <div >
                             <div style={styles.map}>
-                                <Map google={this.props.google} />
+                                <Map renderMap={context.renderMap} />
                             </div>
                             <div style={styles.ResultsCard}>
                                 <ExpansionPanel >
@@ -124,6 +157,4 @@ class Container extends React.Component {
     }
 }
 
-export default GoogleApiComponent({
-    apiKey: 'AIzaSyCFA-SqdzzXS4HC_kujnGLRSIW1-rgkjqk',
-})(Container);
+export default Container;

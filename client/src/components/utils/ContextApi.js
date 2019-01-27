@@ -3,6 +3,8 @@ import axios from 'axios';
 
 export const ResultContext = React.createContext();
 
+let coordsList = [];
+
 export class MyProvider extends Component {
     state = {
         locationInput: '',
@@ -30,11 +32,56 @@ export class MyProvider extends Component {
         resultList: [],
     }
 
-    componentDidMount = () => {
-        axios.get('/api/location')
-            .then((res) => {
-                this.setState({ resultList: res.data });
-                localStorage.setItem('resultsList', res.data);
+    /**
+    * gets two coordinate inputs from api/search then calculates distance in miles
+    * @param {Object} coord1 - location input coordinates {lat: 30, lng: -84}
+    * @param {Object} coord2 - business data coordinates {latitude: 30, longitude: -84}
+    */
+    calcDistance = (coord1, coord2) => {
+        Number.prototype.toRad = function () {
+            return this * Math.PI / 180;
+        }
+        let lat2 = coord2.latitude;
+        let lon2 = coord2.longitude
+        let lat1 = coord1.lat;
+        let lon1 = coord1.lng;
+
+        let R = 6371; // km 
+        let x1 = lat2 - lat1;
+        let dLat = x1.toRad();
+        let x2 = lon2 - lon1;
+        let dLon = x2.toRad();
+
+        let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        let d = R * c;
+        let miles = d * 0.62137;
+        coordsList.push(Math.round(miles * 10) / 10);
+    }
+
+    getCenter = () => {
+        let location = this.state.locationInput;
+        const queryURL = 'api/geocode/' + location;
+        axios.get(queryURL)
+            .then(response => {
+                let centerCoord = response.data.results[0].geometry.location;
+                this.renderMap(centerCoord);
+            })
+    }
+
+    renderMap = (centerCoord) => {
+        axios.post(`/api/search/${this.state.searchTerm}/${this.state.locationInput}`)
+            .then(businessData => {
+                for (let i = 0; i < businessData.data.length; i++) {
+                    this.calcDistance(centerCoord, businessData.data[i].coordinates)
+                    Array.prototype.push.apply(businessData.data[i], [coordsList[i]]);
+                }
+                businessData.data.sort(function (a, b) {
+                    return a[0] - b[0];
+                });
+                this.setState({ resultList: businessData.data });
             })
     }
 
@@ -45,12 +92,15 @@ export class MyProvider extends Component {
                 geocode: (locationInput) => this.setState({
                     locationInput
                 }),
-                handleSearchUpdate: (searchTerm) => this.setState({
-                    searchTerm
-                }),
+                handleSearchUpdate: (searchTerm) => {
+                    this.setState({
+                        searchTerm
+                    });
+                },
                 handleLocationUpdate: (e) => this.setState({
                     locationInput: e.target.value
                 }),
+                getCenter: () => this.getCenter()
             }} >
                 {this.props.children}
             </ResultContext.Provider>

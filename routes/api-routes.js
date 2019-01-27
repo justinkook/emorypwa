@@ -1,5 +1,6 @@
-const db = require('../models/');
+const db = require('../models');
 const axios = require('axios');
+const by = require('./search');
 require("dotenv").config();
 const RestfulAPI = require('./RestClass');
 
@@ -24,11 +25,10 @@ module.exports = function (app) {
             });
     });
 
-    // app.post('/api/search', function (req, res) {
-    //     let searchTerm = req.body.searchInput;
-    //     let location = req.body.locationInput;
-    //     searchBy.keywordAndLocation(searchTerm, location, res);
-    // });
+    app.post('/api/search/:searchTerm/:locationTerm', function (req, res) {
+        const { searchTerm, location } = req.params
+        by.keywordAndLocation(searchTerm, location, res);
+    });
 
     app.get('/api/geocode/:location', function (req, res) {
         axios.get('https://maps.googleapis.com/maps/api/geocode/json', {

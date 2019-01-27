@@ -15,11 +15,12 @@ class AlertDialog extends React.Component {
     servicesOn: null,
     haveOpened: false,
     currentLocation: '',
+    centerCoord: '',
   };
 
   componentDidMount = () => {
     let servicesOn = localStorage.getItem('servicesOn');
-    if (servicesOn === 'true') {
+    if (servicesOn) {
       this.setState({ servicesOn: true })
       this.locationServices();
     }
@@ -36,11 +37,11 @@ class AlertDialog extends React.Component {
     localStorage.setItem('servicesOn', true);
     const queryURL = '/api/geocode/' + location;
     axios.get(queryURL)
-      .then((data) => {
-        let addressComponents = data.data.results[0].address_components;
+      .then((response) => {
+        let addressComponents = response.data.results[0].address_components;
         let locationOptions = addressComponents.map(e => e.short_name);
-        let locationIndex = `${locationOptions[locationOptions.length - 6]}, ${locationOptions[locationOptions.length - 4]} ${locationOptions[locationOptions.length - 2]}`;
-        this.setState({ currentLocation: locationIndex })
+        let currentLocation = `${locationOptions[locationOptions.length - 6]}, ${locationOptions[locationOptions.length - 4]} ${locationOptions[locationOptions.length - 2]}`;
+        this.setState({ currentLocation })
       })
   };
 
@@ -49,13 +50,13 @@ class AlertDialog extends React.Component {
       this.setState({ open: true, haveOpened: true });
       this.locationServices();
     } else {
-      this.props.context.geocode(this.state.currentLocation);
+      this.props.context.geocode(this.state.currentLocation, this.state.centerCoord);
     }
   }
 
   handleAccept = () => {
     this.setState({ open: false });
-    this.props.context.geocode(this.state.currentLocation);
+    this.props.context.geocode(this.state.currentLocation, this.state.centerCoord);
   }
 
   handleClose = () => {
