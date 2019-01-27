@@ -18,7 +18,6 @@ import CustomizedInputBase from '../material/SearchBar';
 import BeenHereIcon from '@material-ui/icons/BeenhereOutlined';
 import InsertInvitation from '@material-ui/icons/InsertInvitationOutlined';
 import CloudOffIcon from '@material-ui/icons/CloudOffOutlined';
-import DesktopWindowsIcon from '@material-ui/icons/DesktopWindowsOutlined';
 import Paper from '@material-ui/core/Paper';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeftOutlined';
 import SearchIcon from '@material-ui/icons/SearchOutlined';

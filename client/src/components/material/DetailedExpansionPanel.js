@@ -10,9 +10,12 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-import ComplexGrid from './ComplexGrid';
 import { ResultContext } from '../utils/ContextApi';
 import FullWidthTabs from './NursingTab';
+import HomeIcon from '@material-ui/icons/Home';
+import Avatar from '@material-ui/core/Avatar';
+import LocalHospitalIcon from '@material-ui/icons/LocalHospitalOutlined';
+import SpaIcon from '@material-ui/icons/SpaOutlined';
 
 const drawerWidth = 240;
 
@@ -25,9 +28,34 @@ const styles = theme => ({
     },
     background: 'rgba(6, 67, 134, 0)',
   },
+  avatar: {
+    margin: 15,
+    marginLeft: '35.5vw',
+    color: '#fff',
+    backgroundColor: 'rgb(0, 122, 255)',
+  },
+  skyAvatar: {
+    margin: 15,
+    marginLeft: '35.5vw',
+    color: '#fff',
+    backgroundColor: 'rgb(90, 200, 250)'
+  },
+  greenAvatar: {
+    margin: 15,
+    marginLeft: '35.5vw',
+    color: '#fff',
+    backgroundColor: 'rgb(76, 217, 100)'
+  },
+  hidden: {
+    display: 'none',
+  },
+  center: {
+    justifyContent: 'center',
+  },
   heading: {
     fontSize: theme.typography.pxToRem(15),
-    color: 'rgb(6, 67, 134)'
+    color: 'rgb(6, 67, 134)',
+    textAlign: 'center',
   },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
@@ -53,10 +81,6 @@ const styles = theme => ({
   column: {
     flexBasis: '100%',
   },
-  helper: {
-    borderLeft: `2px solid ${theme.palette.divider}`,
-    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
-  },
   link: {
     color: theme.palette.primary.main,
     textDecoration: 'none',
@@ -75,7 +99,7 @@ function DetailedExpansionPanel(props) {
           <React.Fragment>
             <ExpansionPanel defaultExpanded >
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                <div className={classes.column}>
+                <div className={classes.column} style={{ paddingRight: 0 }} >
                   <Typography variant="title" className={classes.heading}>Therapy Clinics</Typography>
                 </div>
               </ExpansionPanelSummary>
@@ -83,7 +107,7 @@ function DetailedExpansionPanel(props) {
                 {props.IconAvatars}
               </ExpansionPanelDetails>
               <Divider />
-              <ExpansionPanelActions>
+              <ExpansionPanelActions className={classes.center}>
                 <Button size="small" color="primary" aria-label="Clinics" >
                   <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('Clinics')} >
                     Search Clinics
@@ -93,8 +117,11 @@ function DetailedExpansionPanel(props) {
             </ExpansionPanel>
 
             <ExpansionPanel >
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                <div className={classes.column}>
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className={classes.hidden} />}>
+                <div className={classes.column} style={{ paddingRight: 0 }} >
+                  <Avatar className={classes.avatar}>
+                    <HomeIcon />
+                  </Avatar>
                   <Typography variant="title" className={classes.heading}>Skilled Nursing Homes</Typography>
                 </div>
               </ExpansionPanelSummary>
@@ -102,7 +129,7 @@ function DetailedExpansionPanel(props) {
                 <FullWidthTabs />
               </ExpansionPanelDetails>
               <Divider />
-              <ExpansionPanelActions>
+              <ExpansionPanelActions className={classes.center} >
                 <Button size="small" color="primary" aria-label="Nursing" >
                   <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('Nursing')}>
                     Search Nursing
@@ -111,46 +138,38 @@ function DetailedExpansionPanel(props) {
               </ExpansionPanelActions>
             </ExpansionPanel>
 
-            <ExpansionPanel >
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                <div className={classes.column}>
+            <ExpansionPanel defaultExpanded >
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className={classes.hidden} />}>
+                <div className={classes.column} style={{ paddingRight: 0 }} >
+                  <Avatar className={classes.skyAvatar}>
+                    <LocalHospitalIcon />
+                  </Avatar>
                   <Typography variant="title" className={classes.heading}>Acute Rehabilitation Hospitals</Typography>
                 </div>
               </ExpansionPanelSummary>
-              <ExpansionPanelDetails className={classes.details}>
-                {context.state.rehabList.map((e, i) => (
-                  <div key={i} >
-                    <ComplexGrid location1={e.location.display_address[0]} location2={e.location.display_address[1]} name={`${e.name}`} phone={`${e.phone}`} email={`${e.email}`} />
-                  </div>
-                ))}
-              </ExpansionPanelDetails>
               <Divider />
-              <ExpansionPanelActions>
+              <ExpansionPanelActions className={classes.center} >
                 <Button size="small" color="primary" aria-label="Rehab" >
                   <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('Rehab')}>
-                    Map View
+                    Search Rehab
                   </Link>
                 </Button>
               </ExpansionPanelActions>
             </ExpansionPanel>
-            <ExpansionPanel >
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                <div className={classes.column}>
+            <ExpansionPanel defaultExpanded >
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className={classes.hidden} />}>
+                <div className={classes.column} style={{ paddingRight: 0 }} >
+                  <Avatar className={classes.greenAvatar}>
+                    <SpaIcon />
+                  </Avatar>
                   <Typography variant="title" className={classes.heading}>Long Term Acute Hospitals</Typography>
                 </div>
               </ExpansionPanelSummary>
-              <ExpansionPanelDetails className={classes.details}>
-                {context.state.ltachList.map((e, i) => (
-                  <div key={i} >
-                    <ComplexGrid location1={e.location.display_address[0]} location2={e.location.display_address[1]} name={`${e.name}`} phone={`${e.phone}`} email={`${e.email}`} />
-                  </div>
-                ))}
-              </ExpansionPanelDetails>
               <Divider />
-              <ExpansionPanelActions>
+              <ExpansionPanelActions className={classes.center} >
                 <Button size="small" color="primary" aria-label="LTACH" >
                   <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('LTACH')} >
-                    Map View</Link>
+                    Search LTACH</Link>
                 </Button>
               </ExpansionPanelActions>
             </ExpansionPanel>

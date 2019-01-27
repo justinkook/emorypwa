@@ -7,50 +7,6 @@ export class MyProvider extends Component {
     state = {
         locationInput: '',
         searchTerm: '',
-        ltachList: [
-            {
-                name: "Emory Decatur-LTACH",
-                location: {
-                    display_address: [
-                        "450 N. Candler Street",
-                        "Decatur, GA 30030"
-                    ]
-                },
-                phone: "+14045016226",
-            },
-            {
-                name: "Emory & Select",
-                location: {
-                    display_address: [
-                        "705 Juniper Street NE",
-                        "Atlanta, GA 30308"
-                    ]
-                },
-                phone: "+14044664600",
-            },
-        ],
-        rehabList: [
-            {
-                name: "Emory Rehabilitation Hospital",
-                location: {
-                    display_address: [
-                        "1441 Clifton Road",
-                        "Atlanta, GA 30322"
-                    ]
-                },
-                phone: "+14047127593",
-            },
-            {
-                name: "Emory DeKalb Rehabilitation at Decatur",
-                location: {
-                    display_address: [
-                        "2701 North Decatur Road",
-                        "Decatur, GA 30033"
-                    ]
-                },
-                phone: "+14045013646",
-            },
-        ],
         nursingList: [
             {
                 name: "AG Rhodes",
