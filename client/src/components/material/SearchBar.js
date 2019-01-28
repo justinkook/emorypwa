@@ -42,7 +42,9 @@ function CustomizedInputBase(props) {
                     </IconButton>
                     <InputBase className={classes.input} placeholder="Search by Zip Code" autoComplete="shipping postal-code" type='tel'
                         aria-label="Search by Zip Code" value={context.state.locationInput}
-                        onChange={(e) => context.handleLocationUpdate(e)} />
+                        required={true}
+                        onChange={e => context.handleLocationUpdate(e)}
+                    />
                     <AlertDialog className={classes.iconButton} context={context} />
                 </div>
             )}

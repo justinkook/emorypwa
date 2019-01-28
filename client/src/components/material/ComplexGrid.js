@@ -10,7 +10,7 @@ const styles = theme => ({
         flexGrow: 1,
     },
     phone: {
-        paddingTop: 20,
+        paddingTop: '8%',
     },
     link: {
         color: theme.palette.primary.main,

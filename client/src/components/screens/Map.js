@@ -25,6 +25,11 @@ const styles = {
         color: '#fff',
         backgroundColor: 'rgb(0, 122, 255)',
     },
+    locationIcon: {
+        height: 45,
+        width: 45,
+        color: 'rgb(0, 122, 255)',
+    },
 }
 
 class Map extends Component {
@@ -50,7 +55,7 @@ class Map extends Component {
                 height: '100vh',
                 longitude: this.props.context.state.centerCoord.lng,
                 latitude: this.props.context.state.centerCoord.lat,
-                zoom: 12,
+                zoom: 10,
             }
         })
     };
@@ -66,7 +71,7 @@ class Map extends Component {
                 closeOnClick={false}
                 sortByDepth={true}
             >
-                <CityPin size={25} onClick={() => this.setState({ popupInfo: e })} />
+                <CityPin size={40} onClick={() => this.setState({ popupInfo: e })} />
             </Marker>
         );
     }
@@ -101,6 +106,20 @@ class Map extends Component {
         })
     }
 
+    componentDidUpdate = (prevProps) => {
+        if (prevProps.context.state.resultList[0] !== this.props.context.state.resultList[0]) {
+            this.setState({
+                viewport: {
+                    width: '100vw',
+                    height: '100vh',
+                    longitude: this.props.context.state.resultList[0].coordinates.longitude,
+                    latitude: this.props.context.state.resultList[0].coordinates.latitude,
+                    zoom: 10,
+                }
+            })
+        }
+    }
+
     render() {
         return (
             <ResultContext.Consumer>
@@ -116,6 +135,16 @@ class Map extends Component {
                             {...this.state.viewport}
                             onViewportChange={this._onViewportChange}
                         >
+                            <Marker
+                                latitude={context.state.centerCoord.lat}
+                                longitude={context.state.centerCoord.lng}
+                                dynamicPosition={false}
+                                closeButton={false}
+                                closeOnClick={false}
+                                sortByDepth={true}
+                            >
+                                <LocationOnIcon style={styles.locationIcon} />
+                            </Marker>
                             {context.state.resultList.map(this._renderCityMarker)}
                             {this._renderPopup()}
                             <div className="nav" style={styles.navStyle}>
