@@ -55,7 +55,7 @@ class Map extends Component {
                 height: '100vh',
                 longitude: this.props.context.state.centerCoord.lng,
                 latitude: this.props.context.state.centerCoord.lat,
-                zoom: 10,
+                zoom: 11,
             }
         })
     };
@@ -114,7 +114,7 @@ class Map extends Component {
                     height: '100vh',
                     longitude: this.props.context.state.resultList[0].coordinates.longitude,
                     latitude: this.props.context.state.resultList[0].coordinates.latitude,
-                    zoom: 10,
+                    zoom: 11,
                 }
             })
         }

@@ -30,19 +30,19 @@ const styles = theme => ({
   },
   avatar: {
     margin: 15,
-    marginLeft: '35.5vw',
+    marginLeft: '45%',
     color: '#fff',
     backgroundColor: 'rgb(0, 122, 255)',
   },
   skyAvatar: {
     margin: 15,
-    marginLeft: '35.5vw',
+    marginLeft: '45%',
     color: '#fff',
     backgroundColor: 'rgb(90, 200, 250)'
   },
   greenAvatar: {
     margin: 15,
-    marginLeft: '35.5vw',
+    marginLeft: '45%',
     color: '#fff',
     backgroundColor: 'rgb(76, 217, 100)'
   },

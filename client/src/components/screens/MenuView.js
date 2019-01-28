@@ -29,11 +29,6 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'flex-end',
-        // [theme.breakpoints.up('sm')]: {
-        //     position: 'absolute',
-        //     right: 0,
-        //     margin: '15px 15px 0 15px',
-        // },
     },
     drawer: {
         [theme.breakpoints.up('sm')]: {
@@ -157,7 +152,6 @@ class ResponsiveDrawer extends React.Component {
                     </Paper>
                 </AppBar>
                 <nav className={classes.drawer}>
-                    {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
                     <Hidden smUp implementation="css">
                         <Drawer
                             container={this.props.container}
