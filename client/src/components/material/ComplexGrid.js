@@ -35,10 +35,8 @@ function ComplexGrid(props) {
                             </Typography>
                             <Typography color="textSecondary" gutterBottom>{props.location1}</Typography>
                             <Typography color="textSecondary" gutterBottom>{props.location2}</Typography>
+                            <Typography color="textSecondary" gutterBottom >{`${props.distance} m`}</Typography>
                         </Grid>
-                    </Grid>
-                    <Grid item className={classes.phone} >
-                        <Typography variant="subtitle1">{`${props.distance} m`}</Typography>
                     </Grid>
                     <Grid item className={classes.phone} >
                         <a href={`tel:${props.phone}`} className={classes.link} aria-label={props.phone} >

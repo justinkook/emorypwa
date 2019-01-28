@@ -9,6 +9,7 @@ export class MyProvider extends Component {
     state = {
         locationInput: '',
         searchTerm: '',
+        centerCoord: { lat: 33.7946333, lng: -84.44877199999999 },
         nursingList: [
             {
                 name: "AG Rhodes",
@@ -67,6 +68,11 @@ export class MyProvider extends Component {
         axios.get(queryURL)
             .then(response => {
                 let centerCoord = response.data.results[0].geometry.location;
+                this.setState({
+                    centerCoord: {
+                        lat: centerCoord.lat, lng: centerCoord.lng
+                    }
+                })
                 this.renderMap(centerCoord);
             })
     }
@@ -92,10 +98,11 @@ export class MyProvider extends Component {
                 geocode: (locationInput) => this.setState({
                     locationInput
                 }),
-                handleSearchUpdate: (searchTerm) => {
+                handleSearchUpdate: async (searchTerm) => {
                     this.setState({
                         searchTerm
                     });
+                    await this.getCenter();
                 },
                 handleLocationUpdate: (e) => this.setState({
                     locationInput: e.target.value

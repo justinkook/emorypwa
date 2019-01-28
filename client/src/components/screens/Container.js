@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -8,9 +8,9 @@ import ComplexGrid from '../material/ComplexGrid';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeftOutlined';
 import { Link } from 'react-router-dom';
 import LinearIndeterminate from '../material/Loading';
-import Map from './Map';
 import { ResultContext } from '../utils/ContextApi';
 import { Divider } from '@material-ui/core';
+const Map = lazy(() => import('./Map'));
 
 const styles = {
     paper: {
@@ -68,10 +68,6 @@ const styles = {
         fill: 'rgb(6, 47, 94)',
         fontSize: 30
     },
-    map: {
-        position: 'fixed',
-        zIndex: 1,
-    },
     sticky: {
         position: 'fixed',
         top: 0,
@@ -86,48 +82,13 @@ const styles = {
 
 class Container extends React.Component {
 
-    componentDidMount = () => {
-        this.props.context.getCenter();
-    }
-    // initMap = () => {
-    //     const map = new google.maps.Map(document.getElementById('map'), {
-    //         zoom: 12,
-    //         zoomControl: true,
-    //         gestureHandling: 'greedy',
-    //         zoomControlOptions: false,
-    //         center: {
-    //             lat: this.props.context.state.resultList[0].coordinates.latitude,
-    //             lng: this.props.context.state.resultList[0].coordinates.longitude
-    //         },
-    //         tilt: 45,
-    //         disableDefaultUI: true
-    //     })
-
-    //     for (let i = 0; i < this.props.context.state.resultList.length; i++) {
-    //         const marker = new google.maps.Marker({
-    //             position: {
-    //                 lat: this.props.context.state.resultList[i].coordinates.latitude,
-    //                 lng: this.props.context.state.resultList[i].coordinates.longitude
-    //             },
-    //             map: map,
-    //             title: this.props.context.state.resultList[i].name,
-    //             label: {
-    //                 text: `${i + 1}`,
-    //                 fontSize: '16px',
-    //             }
-    //         })
-    //     }
-    // }
-
     render() {
         return (
             <Suspense fallback={<LinearIndeterminate />} >
                 <ResultContext.Consumer>
                     {context => (
                         <div >
-                            <div style={styles.map}>
-                                <Map renderMap={context.renderMap} />
-                            </div>
+                            <Map context={context} />
                             <div style={styles.ResultsCard}>
                                 <ExpansionPanel >
                                     <ExpansionPanelSummary style={styles.sticky} expandIcon={<ExpandMoreIcon style={styles.heading} />}>
