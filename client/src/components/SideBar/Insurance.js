@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import SearchIcon from '@material-ui/icons/SearchOutlined';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeftOutlined';
 import { Link } from 'react-router-dom';
 import './insurance.css';
+import InsuranceSearch from './InsuranceSearchBar';
 
 const styles = {
     paper: {
@@ -28,25 +28,33 @@ const styles = {
 class Insurance extends Component {
     state = {
         insuranceList: [],
+        completeList: [],
         inputFilter: ''
     }
 
     componentDidMount = () => {
+        this.getInsuranceList();
+    }
+
+    handleInputChange = async (event) => {
+        event.preventDefault();
+        await this.setState({ inputFilter: event.target.value });
+        const filteredList = this.state.completeList.filter(e => e.name.toLowerCase().includes(this.state.inputFilter.toLowerCase()));
+        await this.setState({ insuranceList: filteredList });
+    }
+
+    submitFilterList = (event) => {
+        event.preventDefault();
+        const filteredList = this.state.completeList.filter(e => e.name.toLowerCase().includes(this.state.inputFilter.toLowerCase()));
+        this.setState({ insuranceList: filteredList });
+    }
+
+    getInsuranceList = () => {
         axios.get('/api/insurance')
             .then(response => {
+                this.setState({ completeList: response.data })
                 this.setState({ insuranceList: response.data })
             });
-    }
-
-    handleInputChange = (e) => {
-        e.preventDefault();
-        this.setState({ inputFilter: e.target.value });
-    }
-
-    submitFilterList = (e) => {
-        e.preventDefault();
-        const filteredList = this.state.insuranceList.filter(e => e.name.toLowerCase().includes(this.state.inputFilter.toLowerCase()));
-        this.setState({ insuranceList: filteredList });
     }
 
     render() {
@@ -57,11 +65,10 @@ class Insurance extends Component {
                         <Link to={`/`} style={{ display: 'flex', padding: '0 20px 0 20px' }} >
                             <KeyboardArrowLeft style={styles.leftArrow} />
                         </Link>
-                        <div className="inputWithIcon">
-                            <SearchIcon />
-                            <input id="inputCont" className="col lg 5" type="text" placeholder="Search Insurances" name="insuranceSearch" value={this.state.inputFilter} onChange={e => this.handleInputChange(e)} />
-                            <input className="hidden" type="submit" />
-                        </div>
+                        <form className="inputWithIcon" onSubmit={event => this.submitFilterList(event)} >
+                            <InsuranceSearch value={this.state.inputFilter} onChange={this.handleInputChange} />
+                            <input type='submit' className='hidden' />
+                        </form>
                         <h6>Accepted Insurance</h6>
                     </div>
                     <table id="listArea">

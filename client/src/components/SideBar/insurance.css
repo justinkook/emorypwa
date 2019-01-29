@@ -40,33 +40,9 @@ h6 {
     font-weight: 100;
     margin-bottom: 10px;
     margin-top: 15px;
+    font-size: 16px;
     color: rgba(0, 0, 0, 0.5);
 }
-
-.inputWithIcon input[type="text"] {
-        border: 2px solid rgb(6, 67, 134);
-    }
-
-    .inputWithIcon {
-        position: relative;
-        display: inline-flex;
-        width: 100%;
-    }
-
-    .inputWithIcon .fa-search {
-        position: absolute;
-        left: 5px;
-        top: 13px;
-        padding: 7px 12px;
-        padding-right: 25px;
-        color: rgb(6, 67, 134);
-        transition: .3s;
-        cursor: pointer;
-    }
-
-    .inputWithIcon input[type="text"]:focus + p, .inputWithIcon input[type="text"]::placeholder + p {
-        color: rgb(6, 67, 134);
-    }
 
 @keyframes fadein {
     from { opacity: 0; }
@@ -165,17 +141,6 @@ form {
     text-align: left;
     margin-left: 10px;
     margin-top: 30px;
-}
-
-input[type=text]{
-    display: flex;
-    margin-bottom: 10px;
-    border: transparent;
-    border-radius: 10px;
-    width: 90%;
-    height: 50px;
-    padding-left: 50px;
-    cursor: text;
 }
 
 ::placeholder {
