@@ -30,9 +30,13 @@ const styles = theme => (
     });
 
 class LabelBottomNavigation extends React.Component {
+    value = this.props.value;
     state = {
-        value: 'search',
+        value: this.value,
     };
+    insuranceLink = props => <Link to="/insurance" {...props} data-next="true" />
+    searchLink = props => <Link to="/" {...props} data-next="true" />
+    appointmentsLink = props => <Link to="/appointments" {...props} data-next="true" />
 
     handleChange = (event, value) => {
         this.setState({ value });
@@ -44,15 +48,12 @@ class LabelBottomNavigation extends React.Component {
 
         return (
             <BottomNavigation value={value} onChange={this.handleChange} className={classes.root}>
-                <Link to={`/insurance`} className={classes.link} >
-                    <BottomNavigationAction label="Insurance" value="insurance" icon={<BeenHereIcon />} />
-                </Link>
-                <Link to={`/`} className={classes.link} >
-                    <BottomNavigationAction label="Search" value="search" icon={<SearchIcon />} />
-                </Link>
-                <Link to={`/appointments`} className={classes.link} >
-                    <BottomNavigationAction label="Appointments" value="appointments" icon={<InsertInvitation />} />
-                </Link>
+                <BottomNavigationAction component={this.insuranceLink}
+                    label="Insurance" value="insurance" icon={<BeenHereIcon />} />
+                <BottomNavigationAction component={this.searchLink}
+                    label="Search" value="search" icon={<SearchIcon />} />
+                <BottomNavigationAction component={this.appointmentsLink}
+                    label="Appointments" value="appointments" icon={<InsertInvitation />} />
             </BottomNavigation>
         );
     }

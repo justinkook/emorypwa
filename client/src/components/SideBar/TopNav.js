@@ -27,6 +27,10 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'flex-end',
+        paddingLeft: 30,
+    },
+    title: {
+        color: 'rgb(6, 67, 94)'
     },
     drawer: {
         [theme.breakpoints.up('sm')]: {
@@ -118,7 +122,7 @@ class ResponsiveDrawer extends React.Component {
                 <CssBaseline />
                 <AppBar position="fixed" className={classes.appBar}>
                     <Toolbar className={classes.root} >
-                        <Typography variant='title' >Insurance</Typography>
+                        <Typography variant='title' className={classes.title} >Insurance</Typography>
                     </Toolbar>
                     <Paper className={classes.paper}>
                         <InsuranceSearch value={value} onChange={onChange} />

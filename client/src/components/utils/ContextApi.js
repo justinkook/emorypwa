@@ -7,6 +7,7 @@ let coordsList = [];
 
 export class MyProvider extends Component {
     state = {
+        isLoading: false,
         locationInput: '',
         searchTerm: '',
         centerCoord: { lat: 33.7946333, lng: -84.44877199999999 },
@@ -32,6 +33,8 @@ export class MyProvider extends Component {
         ],
         resultList: [],
     }
+
+    signal = axios.CancelToken.source();
 
     /**
     * gets two coordinate inputs from api/search then calculates distance in miles
@@ -62,33 +65,52 @@ export class MyProvider extends Component {
         coordsList.push(Math.round(miles * 10) / 10);
     }
 
-    getCenter = () => {
-        let location = this.state.locationInput;
-        const queryURL = 'api/geocode/' + location;
-        axios.get(queryURL)
-            .then(response => {
-                let centerCoord = response.data.results[0].geometry.location;
-                this.setState({
-                    centerCoord: {
-                        lat: centerCoord.lat, lng: centerCoord.lng
-                    }
-                })
-                this.renderMap(centerCoord);
+    getCenter = async () => {
+        try {
+            this.setState({ isLoading: true });
+            let location = this.state.locationInput;
+            const queryURL = 'api/geocode/' + location;
+            let response = await axios.get(queryURL)
+            let centerCoord = response.data.results[0].geometry.location;
+            this.setState({
+                centerCoord: {
+                    lat: centerCoord.lat, lng: centerCoord.lng
+                },
+                isLoading: true
             })
+            this.renderMap(centerCoord);
+        } catch (err) {
+            if (axios.isCancel(err)) {
+            } else {
+                this.setState({ isLoading: false });
+            }
+        }
     }
 
-    renderMap = (centerCoord) => {
-        axios.post(`/api/search/${this.state.searchTerm}/${this.state.locationInput}`)
-            .then(businessData => {
-                for (let i = 0; i < businessData.data.length; i++) {
-                    this.calcDistance(centerCoord, businessData.data[i].coordinates)
-                    Array.prototype.push.apply(businessData.data[i], [coordsList[i]]);
-                }
-                businessData.data.sort(function (a, b) {
-                    return a[0] - b[0];
-                });
-                this.setState({ resultList: businessData.data });
+    renderMap = async (centerCoord) => {
+        try {
+            this.setState({ isLoading: true });
+            let businessData = await axios.post(`/api/search/${this.state.searchTerm}/${this.state.locationInput}`, {
+                cancelToken: this.signal.token,
             })
+            for (let i = 0; i < businessData.data.length; i++) {
+                this.calcDistance(centerCoord, businessData.data[i].coordinates)
+                Array.prototype.push.apply(businessData.data[i], [coordsList[i]]);
+            }
+            businessData.data.sort(function (a, b) {
+                return a[0] - b[0];
+            });
+            this.setState({ resultList: businessData.data, isLoading: true });
+        } catch (err) {
+            if (axios.isCancel(err)) {
+            } else {
+                this.setState({ isLoading: false });
+            }
+        }
+    }
+
+    componentWillUnmount() {
+        this.signal.cancel();
     }
 
     render() {

@@ -18,10 +18,13 @@ const styles = theme => ({
 })
 class Insurance extends Component {
     state = {
+        isLoading: false,
         insuranceList: [],
         completeList: [],
         inputFilter: ''
     }
+
+    signal = axios.CancelToken.source();
 
     componentDidMount = () => {
         this.getInsuranceList();
@@ -40,12 +43,24 @@ class Insurance extends Component {
         this.setState({ insuranceList: filteredList });
     }
 
-    getInsuranceList = () => {
-        axios.get('/api/insurance')
-            .then(response => {
-                this.setState({ completeList: response.data })
-                this.setState({ insuranceList: response.data })
-            });
+    getInsuranceList = async () => {
+        try {
+            this.setState({ isLoading: true });
+            let response = await axios.get('/api/insurance', {
+                cancelToken: this.signal.token,
+            })
+            this.setState({ completeList: response.data, isLoading: true })
+            this.setState({ insuranceList: response.data })
+        } catch (err) {
+            if (axios.isCancel(err)) {
+            } else {
+                this.setState({ isLoading: false });
+            }
+        }
+    }
+
+    componentWillUnmount = () => {
+        this.signal.cancel();
     }
 
     render() {
@@ -63,7 +78,7 @@ class Insurance extends Component {
                     <table id="listArea" className={classes.table}>
                         {this.state.insuranceList.map((e, i) => (<tbody key={i} ><tr><td>{e.name}</td></tr></tbody>))}
                     </table>
-                    <LabelBottomNavigation />
+                    <LabelBottomNavigation value={'insurance'} />
                 </main>
             </div>
         )

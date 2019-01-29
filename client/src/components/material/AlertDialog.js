@@ -10,6 +10,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOnOutlined';
 
 class AlertDialog extends React.Component {
   state = {
+    isLoading: false,
     open: false,
     errorMessage: '',
     servicesOn: null,
@@ -17,6 +18,8 @@ class AlertDialog extends React.Component {
     currentLocation: '',
     centerCoord: '',
   };
+
+  signal = axios.CancelToken.source();
 
   componentDidMount = () => {
     let servicesOn = localStorage.getItem('servicesOn');
@@ -33,17 +36,25 @@ class AlertDialog extends React.Component {
     )
   };
 
-  geocode = (location) => {
-    localStorage.setItem('servicesOn', true);
-    const queryURL = '/api/geocode/' + location;
-    axios.get(queryURL)
-      .then((response) => {
-        let addressComponents = response.data.results[0].address_components;
-        let locationOptions = addressComponents.map(e => e.short_name);
-        let currentLocation = `${locationOptions[locationOptions.length - 6]}, ${locationOptions[locationOptions.length - 4]} ${locationOptions[locationOptions.length - 2]}`;
-        this.setState({ currentLocation })
+  geocode = async (location) => {
+    try {
+      this.setState({ isLoading: true });
+      localStorage.setItem('servicesOn', true);
+      const queryURL = '/api/geocode/' + location;
+      let response = await axios.get(queryURL, {
+        cancelToken: this.signal.token,
       })
-  };
+      let addressComponents = response.data.results[0].address_components;
+      let locationOptions = addressComponents.map(e => e.short_name);
+      let currentLocation = `${locationOptions[locationOptions.length - 6]}, ${locationOptions[locationOptions.length - 4]} ${locationOptions[locationOptions.length - 2]}`;
+      this.setState({ currentLocation, isLoading: true })
+    } catch (err) {
+      if (axios.isCancel(err)) {
+      } else {
+        this.setState({ isLoading: false });
+      }
+    }
+  }
 
   handleClickOpen = () => {
     if (!this.state.haveOpened && !this.state.servicesOn) {
@@ -62,6 +73,10 @@ class AlertDialog extends React.Component {
   handleClose = () => {
     this.setState({ open: false });
   };
+
+  componentWillUnmount() {
+    this.signal.cancel();
+  }
 
   render() {
     return (

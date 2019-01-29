@@ -19,7 +19,7 @@ class App extends Component {
         <div style={this.styles.resultsContainer}>
           <DetailedExpansionPanel IconAvatars={<IconAvatars />} />
         </div>
-        <LabelBottomNavigation />
+        <LabelBottomNavigation value={'search'} />
       </div>
     );
   }
