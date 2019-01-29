@@ -83,6 +83,13 @@ const styles = theme => ({
         margin: '20px',
         boxShadow: 'none',
     },
+    link: {
+        color: theme.palette.primary.main,
+        textDecoration: 'none',
+        '&:hover': {
+            textDecoration: 'underline',
+        },
+    },
 });
 
 class ResponsiveDrawer extends React.Component {
@@ -107,7 +114,7 @@ class ResponsiveDrawer extends React.Component {
                 <Divider />
                 <List>
                     {['Search', 'Insurance', 'Appointments', 'Offline'].map((text, index) => (
-                        <Link to={`/insurance`} key={text} >
+                        <Link to={`/${text}`} key={text} className={classes.link} >
                             <ListItem button >
                                 <ListItemIcon>{(() => {
                                     switch (index) {
