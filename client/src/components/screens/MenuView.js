@@ -21,6 +21,7 @@ import CloudOffIcon from '@material-ui/icons/CloudOffOutlined';
 import Paper from '@material-ui/core/Paper';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeftOutlined';
 import SearchIcon from '@material-ui/icons/SearchOutlined';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -106,19 +107,21 @@ class ResponsiveDrawer extends React.Component {
                 <Divider />
                 <List>
                     {['Search', 'Insurance', 'Appointments', 'Offline'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{(() => {
-                                switch (index) {
-                                    case 0: return <SearchIcon />;
-                                    case 1: return <BeenHereIcon />;
-                                    case 2: return <InsertInvitation />;
-                                    case 3: return <CloudOffIcon />;
-                                    default: return <CloudOffIcon />
-                                }
-                            })()}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
+                        <Link to={`/insurance`} key={text} >
+                            <ListItem button >
+                                <ListItemIcon>{(() => {
+                                    switch (index) {
+                                        case 0: return <SearchIcon />;
+                                        case 1: return <BeenHereIcon />;
+                                        case 2: return <InsertInvitation />;
+                                        case 3: return <CloudOffIcon />;
+                                        default: return <CloudOffIcon />
+                                    }
+                                })()}
+                                </ListItemIcon>
+                                <ListItemText primary={text} />
+                            </ListItem>
+                        </Link>
                     ))}
                 </List>
                 <Divider />
