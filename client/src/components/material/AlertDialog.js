@@ -20,8 +20,10 @@ class AlertDialog extends React.Component {
   };
 
   signal = axios.CancelToken.source();
+  _isMounted = false;
 
   componentDidMount = () => {
+    this._isMounted = true;
     let servicesOn = localStorage.getItem('servicesOn');
     if (servicesOn) {
       this.setState({ servicesOn: true })
@@ -31,9 +33,7 @@ class AlertDialog extends React.Component {
 
   locationServices = () => {
     window.navigator.geolocation.getCurrentPosition(
-      position => this.geocode(`${position.coords.latitude},${position.coords.longitude}`),
-      err => this.setState({ servicesOn: false, errorMessage: err })
-    )
+      position => this.geocode(`${position.coords.latitude},${position.coords.longitude}`))
   };
 
   geocode = async (location) => {
@@ -47,11 +47,15 @@ class AlertDialog extends React.Component {
       let addressComponents = response.data.results[0].address_components;
       let locationOptions = addressComponents.map(e => e.short_name);
       let currentLocation = `${locationOptions[locationOptions.length - 6]}, ${locationOptions[locationOptions.length - 4]} ${locationOptions[locationOptions.length - 2]}`;
-      this.setState({ currentLocation, isLoading: true })
+      if (this._isMounted) {
+        this.setState({ currentLocation, isLoading: true })
+      }
     } catch (err) {
       if (axios.isCancel(err)) {
       } else {
-        this.setState({ isLoading: false });
+        if (this._isMounted) {
+          this.setState({ isLoading: false });
+        }
       }
     }
   }
@@ -75,6 +79,7 @@ class AlertDialog extends React.Component {
   };
 
   componentWillUnmount() {
+    this._isMounted = false;
     this.signal.cancel();
   }
 

@@ -10,6 +10,7 @@ import { ResultContext } from './components/utils/ContextApi';
 
 const Insurance = lazy(() => import('./components/SideBar/Insurance'));
 const Container = lazy(() => import('./components/screens/Container'));
+const Appointments = lazy(() => import('./components/SideBar/Appointments'));
 
 const router = (
     <Suspense fallback={<LinearIndeterminate />}>
@@ -21,6 +22,7 @@ const router = (
                             <Route exact path="/" render={() => <App />} />
                             <Route path="/search" render={() => <Container context={context} />} />
                             <Route path="/insurance" render={() => <Insurance />} />
+                            <Route path="/appointments" render={() => <Appointments />} />
                         </div>
                     </BrowserRouter>
                 )}

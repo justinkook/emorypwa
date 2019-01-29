@@ -15,15 +15,20 @@ const styles = {
         position: 'absolute',
         bottom: 0,
         right: 0,
-        padding: '4px',
+        padding: '2px',
         zIndex: 999,
     },
     avatar: {
-        margin: 5,
-        width: 60,
-        height: 60,
+        margin: 4,
+        width: 70,
+        height: 70,
         color: '#fff',
+        boxShadow: '0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)',
         backgroundColor: 'rgb(0, 122, 255)',
+    },
+    avatarIcon: {
+        height: 45,
+        width: 45,
     },
     locationIcon: {
         height: 45,
@@ -153,6 +158,7 @@ class Map extends Component {
                             <div className="nav" style={styles.navStyle}>
                                 <Avatar style={styles.avatar} >
                                     <LocationOnIcon
+                                        style={styles.avatarIcon}
                                         onClick={this._updateViewportHome} />
                                 </Avatar>
                             </div>

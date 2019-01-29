@@ -25,10 +25,8 @@ class Insurance extends Component {
     }
 
     signal = axios.CancelToken.source();
-    _isMounted = false;
 
     componentDidMount = () => {
-        this._isMounted = true;
         this.getInsuranceList();
     }
 
@@ -47,26 +45,21 @@ class Insurance extends Component {
 
     getInsuranceList = async () => {
         try {
-            if (this._isMounted) {
-                this.setState({ isLoading: true });
-                let response = await axios.get('/api/insurance', {
-                    cancelToken: this.signal.token,
-                })
-                this.setState({ completeList: response.data, isLoading: true })
-                this.setState({ insuranceList: response.data })
-            }
+            this.setState({ isLoading: true });
+            let response = await axios.get('/api/insurance', {
+                cancelToken: this.signal.token,
+            })
+            this.setState({ completeList: response.data, isLoading: true })
+            this.setState({ insuranceList: response.data })
         } catch (err) {
             if (axios.isCancel(err)) {
             } else {
-                if (this._isMounted) {
-                    this.setState({ isLoading: false });
-                }
+                this.setState({ isLoading: false });
             }
         }
     }
 
     componentWillUnmount = () => {
-        this._isMounted = false;
         this.signal.cancel();
     }
 
@@ -77,15 +70,21 @@ class Insurance extends Component {
             <div>
                 <main>
                     <div className="content">
-                        <form className="inputWithIcon" onSubmit={event => this.submitFilterList(event)} >
-                            <ResponsiveDrawer value={this.state.inputFilter} onChange={this.handleInputChange} />
-                            <input type='submit' className='hidden' />
-                        </form>
+                        To make an appointment, please call 404-778-7777 or 800-753-6679 and speak with one of our HealthConnectionsm registered nurses or representatives.
+
+    The HealthConnection Team is available Monday–Friday, from 7:30 a.m. to 6:00 p.m. EST.
+
+    They can answer almost any health related question. Plus, they can help you:
+
+    Find a convenient location
+    Plan your first visit
+    Find the right physician
+    Obtain a referral to an Emory physician
+    Register for classes and events
+    Interpret insurance coverage
+    Emory Healthcare is pleased to have the opportunity to serve you. Thank you for entrusting your care to us.
                     </div>
-                    <table id="listArea" className={classes.table}>
-                        {this.state.insuranceList.map((e, i) => (<tbody key={i} ><tr><td>{e.name}</td></tr></tbody>))}
-                    </table>
-                    <LabelBottomNavigation value={'insurance'} />
+                    <LabelBottomNavigation value={'appointments'} />
                 </main>
             </div>
         )

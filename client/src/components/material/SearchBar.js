@@ -23,11 +23,6 @@ const styles = {
         color: 'rgb(6, 47, 94)',
         paddingRight: 0
     },
-    divider: {
-        width: 1,
-        height: 28,
-        margin: 4,
-    },
 };
 
 function CustomizedInputBase(props) {

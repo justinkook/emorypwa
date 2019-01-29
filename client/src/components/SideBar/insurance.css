@@ -82,9 +82,9 @@ tbody {
     background-color: transparent;
     margin: 1px;
     color: black;
-    transition: 0.1s;
+    transition: 0.3s;
 }
-tbody:nth-child(-n+18) {
+tbody:nth-child(-n+6) {
     transition-timing-function:cubic-bezier(.25,.25,.75,.75);
     -webkit-animation: fadein .1s; 
        -moz-animation: fadein .1s; 
@@ -93,22 +93,14 @@ tbody:nth-child(-n+18) {
             animation: fadein .1s;
     background-color: transparent;
 }
-tbody:nth-child(-n+12) {
+
+tbody:nth-child(n+6) {
     transition-timing-function:cubic-bezier(.25,.25,.75,.75);
-    -webkit-animation: fadein .2s; /* Safari, Chrome and Opera > 12.1 */
-       -moz-animation: fadein .2s; /* Firefox < 16 */
-        -ms-animation: fadein .2s; /* Internet Explorer */
-         -o-animation: fadein .2s; /* Opera < 12.1 */
-            animation: fadein .2s;
-    background-color: transparent;
-}
-tbody:nth-child(-n+6) {
-    transition-timing-function:cubic-bezier(.25,.25,.75,.75);
-    -webkit-animation: fadein .4s; 
-       -moz-animation: fadein .4s; 
-        -ms-animation: fadein .4s; 
-         -o-animation: fadein .4s; 
-            animation: fadein .4s;
+    -webkit-animation: fadein .3s; 
+       -moz-animation: fadein .3s; 
+        -ms-animation: fadein .3s; 
+         -o-animation: fadein .3s; 
+            animation: fadein .3s;
     background-color: transparent;
 }
 
