@@ -10,15 +10,15 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Toolbar from '@material-ui/core/Toolbar';
-import CardMedia from '@material-ui/core/CardMedia';
 import { withStyles } from '@material-ui/core/styles';
-import CustomizedInputBase from '../material/SearchBar';
 import BeenHereIcon from '@material-ui/icons/BeenhereOutlined';
 import InsertInvitation from '@material-ui/icons/InsertInvitationOutlined';
 import CloudOffIcon from '@material-ui/icons/CloudOffOutlined';
 import Paper from '@material-ui/core/Paper';
 import SearchIcon from '@material-ui/icons/SearchOutlined';
 import { Link } from 'react-router-dom';
+import { Typography } from '@material-ui/core';
+import InsuranceSearch from './InsuranceSearchBar';
 
 const drawerWidth = 240;
 
@@ -42,19 +42,12 @@ const styles = theme => ({
         ...theme.mixins.toolbar,
     },
     appBar: {
-        marginLeft: drawerWidth,
         boxShadow: '0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)',
         [theme.breakpoints.up('sm')]: {
+            marginLeft: drawerWidth,
             width: `calc(100% - ${drawerWidth}px)`,
         },
         background: 'white',
-    },
-    media: {
-        maxWidth: 150,
-        objectFit: 'contain',
-        [theme.breakpoints.up('sm')]: {
-            height: 60,
-        },
     },
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
@@ -91,7 +84,7 @@ class ResponsiveDrawer extends React.Component {
     };
 
     render() {
-        const { classes, theme } = this.props;
+        const { classes, onChange, value, theme } = this.props;
 
         const drawer = (
             <div>
@@ -125,17 +118,10 @@ class ResponsiveDrawer extends React.Component {
                 <CssBaseline />
                 <AppBar position="fixed" className={classes.appBar}>
                     <Toolbar className={classes.root} >
-                        <CardMedia
-                            component="img"
-                            alt="Emory Rehab"
-                            className={classes.media}
-                            height="40"
-                            image="/assets/logo-emory-footer.png"
-                            title="Emory Rehab"
-                        />
+                        <Typography variant='title' >Insurance</Typography>
                     </Toolbar>
                     <Paper className={classes.paper}>
-                        <CustomizedInputBase />
+                        <InsuranceSearch value={value} onChange={onChange} />
                     </Paper>
                 </AppBar>
                 <nav className={classes.drawer}>

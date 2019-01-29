@@ -14,7 +14,7 @@ ul, li {
 
 main {
     width: 100%;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     background-size: cover;
     opacity: .9;
 }
@@ -26,22 +26,13 @@ main {
     padding-top: 25px;
 }
 #listArea {
+    margin-top: 90px;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
     text-transform: uppercase;
     font-weight: 100;
     overflow: scroll;
-}
-
-h6 {
-    text-transform: uppercase;
-    text-align: left;
-    font-weight: 100;
-    margin-bottom: 10px;
-    margin-top: 15px;
-    font-size: 16px;
-    color: rgba(0, 0, 0, 0.5);
 }
 
 @keyframes fadein {
@@ -91,33 +82,33 @@ tbody {
     background-color: transparent;
     margin: 1px;
     color: black;
-    transition: 0.5s;
+    transition: 0.1s;
 }
 tbody:nth-child(-n+18) {
     transition-timing-function:cubic-bezier(.25,.25,.75,.75);
-    -webkit-animation: fadein .6s; 
-       -moz-animation: fadein .6s; 
-        -ms-animation: fadein .6s; 
-         -o-animation: fadein .6s; 
-            animation: fadein .6s;
+    -webkit-animation: fadein .1s; 
+       -moz-animation: fadein .1s; 
+        -ms-animation: fadein .1s; 
+         -o-animation: fadein .1s; 
+            animation: fadein .1s;
     background-color: transparent;
 }
 tbody:nth-child(-n+12) {
     transition-timing-function:cubic-bezier(.25,.25,.75,.75);
-    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
-       -moz-animation: fadein 1s; /* Firefox < 16 */
-        -ms-animation: fadein 1s; /* Internet Explorer */
-         -o-animation: fadein 1s; /* Opera < 12.1 */
-            animation: fadein 1s;
+    -webkit-animation: fadein .2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein .2s; /* Firefox < 16 */
+        -ms-animation: fadein .2s; /* Internet Explorer */
+         -o-animation: fadein .2s; /* Opera < 12.1 */
+            animation: fadein .2s;
     background-color: transparent;
 }
 tbody:nth-child(-n+6) {
     transition-timing-function:cubic-bezier(.25,.25,.75,.75);
-    -webkit-animation: fadein 1.4s; 
-       -moz-animation: fadein 1.4s; 
-        -ms-animation: fadein 1.4s; 
-         -o-animation: fadein 1.4s; 
-            animation: fadein 1.4s;
+    -webkit-animation: fadein .4s; 
+       -moz-animation: fadein .4s; 
+        -ms-animation: fadein .4s; 
+         -o-animation: fadein .4s; 
+            animation: fadein .4s;
     background-color: transparent;
 }
 
@@ -144,7 +135,7 @@ form {
 }
 
 ::placeholder {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-size: 16px;
     color: rgb(6, 67, 134);
     letter-spacing: .2px;

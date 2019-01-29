@@ -1,20 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 
 const styles = {
-    root: {
-        padding: '2px 4px',
+    container: {
         display: 'flex',
-        alignItems: 'center',
-        maxWidth: 500,
-        border: '2px solid rgb(6, 67, 94)',
-        borderRadius: 6 + 'px',
-        boxShadow: 'none',
+        width: 100 + '%',
+        alignItems: 'center'
     },
     input: {
         flex: 1,
@@ -23,24 +18,25 @@ const styles = {
     },
     iconButton: {
         padding: 10,
-    },
-    divider: {
-        width: 1,
-        height: 28,
-        margin: 4,
+        color: 'rgb(6, 47, 94)',
+        paddingRight: 0
     },
 };
 
 function InsuranceSearch(props) {
-    const { classes } = props;
+    const { classes, onChange, value } = props;
 
     return (
-        <Paper className={classes.root} elevation={1}>
-            <IconButton className={classes.iconButton} aria-label="Search">
+        <div style={styles.container}>
+            <IconButton className={classes.iconButton} aria-label="Search" >
                 <SearchIcon />
             </IconButton>
-            <InputBase className={classes.input} placeholder="Search insurance" value={props.value} onChange={e => props.onChange(e)} />
-        </Paper>
+            <InputBase className={classes.input} placeholder="Search insurance"
+                aria-label="Search insurance" value={value}
+                required={true}
+                onChange={e => onChange(e)}
+            />
+        </div>
     );
 }
 

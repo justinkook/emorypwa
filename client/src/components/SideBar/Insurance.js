@@ -1,30 +1,21 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeftOutlined';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import './insurance.css';
-import InsuranceSearch from './InsuranceSearchBar';
+import LabelBottomNavigation from '../material/BottomNav';
+import ResponsiveDrawer from './TopNav';
 
-const styles = {
-    paper: {
-        padding: '2px 0 4px 0',
-        display: 'flex',
-        alignItems: 'center',
-        maxWidth: 350,
-        justifyContent: 'center',
-        borderRadius: 6 + 'px',
-        margin: '20px',
-        background: 'white',
-        position: 'sticky',
-        top: 10,
-        width: 85 + '%',
-    },
-    leftArrow: {
-        fill: 'rgb(6, 47, 94)',
-        fontSize: 30
-    },
-}
+const drawerWidth = 240;
 
+const styles = theme => ({
+    table: {
+        [theme.breakpoints.up('sm')]: {
+            marginLeft: drawerWidth,
+            width: `calc(100% - ${drawerWidth}px)`,
+        },
+    }
+})
 class Insurance extends Component {
     state = {
         insuranceList: [],
@@ -58,26 +49,31 @@ class Insurance extends Component {
     }
 
     render() {
+        const { classes } = this.props;
+
         return (
             <div>
                 <main>
                     <div className="content">
-                        <Link to={`/`} style={{ display: 'flex', padding: '0 20px 0 20px' }} >
-                            <KeyboardArrowLeft style={styles.leftArrow} />
-                        </Link>
                         <form className="inputWithIcon" onSubmit={event => this.submitFilterList(event)} >
-                            <InsuranceSearch value={this.state.inputFilter} onChange={this.handleInputChange} />
+                            <ResponsiveDrawer value={this.state.inputFilter} onChange={this.handleInputChange} />
                             <input type='submit' className='hidden' />
                         </form>
-                        <h6>Accepted Insurance</h6>
                     </div>
-                    <table id="listArea">
+                    <table id="listArea" className={classes.table}>
                         {this.state.insuranceList.map((e, i) => (<tbody key={i} ><tr><td>{e.name}</td></tr></tbody>))}
                     </table>
+                    <LabelBottomNavigation />
                 </main>
             </div>
         )
     }
 }
 
-export default Insurance;
+Insurance.propTypes = {
+    classes: PropTypes.object.isRequired,
+    container: PropTypes.object,
+    theme: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles, { withTheme: true })(Insurance);
