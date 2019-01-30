@@ -38,7 +38,9 @@ class AlertDialog extends React.Component {
 
   geocode = async (location) => {
     try {
-      this.setState({ isLoading: true });
+      if (this._isMounted) {
+        this.setState({ isLoading: true });
+      }
       localStorage.setItem('servicesOn', true);
       const queryURL = '/api/geocode/' + location;
       let response = await axios.get(queryURL, {

@@ -27,6 +27,7 @@ const styles = theme => ({
       marginLeft: drawerWidth,
     },
     background: 'rgba(6, 67, 134, 0)',
+    marginBottom: 60
   },
   avatar: {
     margin: 15,
