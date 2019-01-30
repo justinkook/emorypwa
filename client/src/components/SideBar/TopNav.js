@@ -88,7 +88,7 @@ class ResponsiveDrawer extends React.Component {
     };
 
     render() {
-        const { classes, onChange, value, theme } = this.props;
+        const { classes, onChange, value, theme, title } = this.props;
 
         const drawer = (
             <div>
@@ -122,7 +122,7 @@ class ResponsiveDrawer extends React.Component {
                 <CssBaseline />
                 <AppBar position="fixed" className={classes.appBar}>
                     <Toolbar className={classes.root} >
-                        <Typography variant='title' className={classes.title} >Insurance</Typography>
+                        <Typography variant='title' className={classes.title} >{title}</Typography>
                     </Toolbar>
                     <Paper className={classes.paper}>
                         <InsuranceSearch value={value} onChange={onChange} />

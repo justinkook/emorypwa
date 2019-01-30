@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import './insurance.css';
 import LabelBottomNavigation from '../material/BottomNav';
 import ResponsiveDrawer from './TopNav';
 
 const drawerWidth = 240;
 
 const styles = theme => ({
-    table: {
+    text: {
+        fontFamily: "Roboto, Helvetica, Arial, sans-serif",
+        marginTop: 150,
+        padding: 20,
         [theme.breakpoints.up('sm')]: {
             marginLeft: drawerWidth,
             width: `calc(100% - ${drawerWidth}px)`,
@@ -17,51 +18,6 @@ const styles = theme => ({
     }
 })
 class Insurance extends Component {
-    state = {
-        isLoading: false,
-        insuranceList: [],
-        completeList: [],
-        inputFilter: ''
-    }
-
-    signal = axios.CancelToken.source();
-
-    componentDidMount = () => {
-        this.getInsuranceList();
-    }
-
-    handleInputChange = async (event) => {
-        event.preventDefault();
-        await this.setState({ inputFilter: event.target.value });
-        const filteredList = this.state.completeList.filter(e => e.name.toLowerCase().includes(this.state.inputFilter.toLowerCase()));
-        await this.setState({ insuranceList: filteredList });
-    }
-
-    submitFilterList = (event) => {
-        event.preventDefault();
-        const filteredList = this.state.completeList.filter(e => e.name.toLowerCase().includes(this.state.inputFilter.toLowerCase()));
-        this.setState({ insuranceList: filteredList });
-    }
-
-    getInsuranceList = async () => {
-        try {
-            this.setState({ isLoading: true });
-            let response = await axios.get('/api/insurance', {
-                cancelToken: this.signal.token,
-            })
-            this.setState({ completeList: response.data, isLoading: true })
-            this.setState({ insuranceList: response.data })
-        } catch (err) {
-            if (axios.isCancel(err)) {
-            } else {
-                this.setState({ isLoading: false });
-            }
-        }
-    }
-
-    componentWillUnmount = () => {
-        this.signal.cancel();
-    }
 
     render() {
         const { classes } = this.props;
@@ -70,19 +26,39 @@ class Insurance extends Component {
             <div>
                 <main>
                     <div className="content">
-                        To make an appointment, please call 404-778-7777 or 800-753-6679 and speak with one of our HealthConnectionsm registered nurses or representatives.
-
-    The HealthConnection Team is available Monday–Friday, from 7:30 a.m. to 6:00 p.m. EST.
-
-    They can answer almost any health related question. Plus, they can help you:
-
-    Find a convenient location
-    Plan your first visit
-    Find the right physician
-    Obtain a referral to an Emory physician
-    Register for classes and events
-    Interpret insurance coverage
-    Emory Healthcare is pleased to have the opportunity to serve you. Thank you for entrusting your care to us.
+                        <ResponsiveDrawer title={'Appointments'} />
+                    </div>
+                    <div className={classes.text} >
+                        <p>To make an appointment, please call
+                            <br />
+                            <a href={`tel:+14047787777`} aria-label={'+14047787777'} >
+                                <strong>404-778-7777 </strong>
+                            </a>
+                            or
+                            <a href={`tel:+18007536679`} aria-label={'+18007536679'} >
+                                <strong> 800-753-6679</strong>
+                            </a>
+                            <br />
+                            and speak with one of our&nbsp;HealthConnection<sup>sm&nbsp;</sup>registered nurses or representatives.</p>
+                        <p><em>The HealthConnection Team is available Monday–Friday, from 7:30 a.m. to 6:00 p.m. EST.</em></p>
+                        <p>They can answer almost any health related question. Plus, they can help you:</p>
+                        <div className="row">
+                            <div className="col-sm-6">
+                                <ul>
+                                    <li>Find a convenient location</li>
+                                    <li>Plan your first visit</li>
+                                    <li>Find the right physician&nbsp;</li>
+                                </ul>
+                            </div>
+                            <div className="col-sm-6">
+                                <ul>
+                                    <li>Obtain a referral to an Emory physician</li>
+                                    <li>Register for classes and events</li>
+                                    <li>Interpret insurance coverage &nbsp;&nbsp;</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <span>Emory Healthcare&nbsp;is pleased to have the opportunity to serve you. Thank you for&nbsp;entrusting your care to us.&nbsp;</span>
                     </div>
                     <LabelBottomNavigation value={'appointments'} />
                 </main>

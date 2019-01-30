@@ -78,7 +78,7 @@ class Insurance extends Component {
                 <main>
                     <div className="content">
                         <form className="inputWithIcon" onSubmit={event => this.submitFilterList(event)} >
-                            <ResponsiveDrawer value={this.state.inputFilter} onChange={this.handleInputChange} />
+                            <ResponsiveDrawer value={this.state.inputFilter} onChange={this.handleInputChange} title={'Insurance'} />
                             <input type='submit' className='hidden' />
                         </form>
                     </div>
