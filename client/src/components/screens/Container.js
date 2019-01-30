@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import LinearIndeterminate from '../material/Loading';
 import { ResultContext } from '../utils/ContextApi';
 import { Divider } from '@material-ui/core';
+import DetailedExpansionPanel from './FilterBar';
 const Map = lazy(() => import('./Map'));
 
 const styles = {
@@ -109,6 +110,7 @@ class Container extends React.Component {
                                     </ExpansionPanelDetails>
                                 </ExpansionPanel>
                             </div>
+                            {context.state.searchTerm === 'Clinics' ? <DetailedExpansionPanel /> : null}
                         </div>
                     )}
                 </ResultContext.Consumer>
