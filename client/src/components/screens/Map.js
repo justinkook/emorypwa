@@ -140,6 +140,7 @@ class Map extends Component {
                             transitionDuration={500}
                             transitionInterpolator={new FlyToInterpolator()}
                             reuseMaps={true}
+                            mapStyle={'mapbox://styles/mapbox/light-v9?optimize=true'}
                             {...this.state.viewport}
                             onViewportChange={this._onViewportChange}
                         >

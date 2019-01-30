@@ -27,6 +27,7 @@ main {
 }
 #listArea {
     margin-top: 90px;
+    margin-bottom: 60px;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
