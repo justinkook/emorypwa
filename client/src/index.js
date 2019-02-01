@@ -7,10 +7,9 @@ import LinearIndeterminate from './components/material/Loading';
 import { MyProvider } from './components/utils/ContextApi';
 import App from './App';
 import { ResultContext } from './components/utils/ContextApi';
-
-const Insurance = lazy(() => import('./components/SideBar/Insurance'));
+import Insurance from './components/SideBar/Insurance';
+import Appointments from './components/SideBar/Appointments';
 const Container = lazy(() => import('./components/screens/Container'));
-const Appointments = lazy(() => import('./components/SideBar/Appointments'));
 
 const router = (
     <Suspense fallback={<LinearIndeterminate />}>

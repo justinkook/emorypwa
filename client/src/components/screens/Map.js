@@ -19,14 +19,6 @@ const styles = {
         zIndex: 999,
         margin: 10,
     },
-    bottomNavStyle: {
-        position: 'absolute',
-        bottom: 0,
-        right: 0,
-        padding: '2px',
-        zIndex: 999,
-        margin: 5
-    },
     avatar: {
         width: 60,
         height: 60,
@@ -164,7 +156,7 @@ class Map extends Component {
                             </Marker>
                             {context.state.resultList.map(this._renderCityMarker)}
                             {this._renderPopup()}
-                            <div className="nav" style={context.state.searchTerm !== 'Clinics' ? styles.bottomNavStyle : styles.navStyle}>
+                            <div className="nav" style={styles.navStyle}>
                                 <Avatar style={styles.avatar} >
                                     <LocationOnIcon
                                         style={styles.avatarIcon}

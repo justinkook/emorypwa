@@ -110,7 +110,7 @@ class Container extends React.Component {
                                     </ExpansionPanelDetails>
                                 </ExpansionPanel>
                             </div>
-                            {context.state.searchTerm === 'Clinics' ? <DetailedExpansionPanel /> : null}
+                            <DetailedExpansionPanel />
                         </div>
                     )}
                 </ResultContext.Consumer>

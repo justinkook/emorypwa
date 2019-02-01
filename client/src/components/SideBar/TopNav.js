@@ -30,7 +30,8 @@ const styles = theme => ({
         paddingLeft: 30,
     },
     title: {
-        color: 'rgb(6, 67, 94)'
+        color: 'rgb(6, 67, 94)',
+        fontSize: 28,
     },
     drawer: {
         [theme.breakpoints.up('sm')]: {

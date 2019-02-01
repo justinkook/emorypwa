@@ -16,7 +16,6 @@ import HomeIcon from '@material-ui/icons/Home';
 import Avatar from '@material-ui/core/Avatar';
 import LocalHospitalIcon from '@material-ui/icons/LocalHospitalOutlined';
 import SpaIcon from '@material-ui/icons/SpaOutlined';
-import IconAvatars from './IconAvatars';
 
 const drawerWidth = 240;
 
@@ -106,7 +105,6 @@ function DetailedExpansionPanel(props) {
                 </div>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails className={classes.details}>
-                <IconAvatars />
               </ExpansionPanelDetails>
               <Divider />
               <ExpansionPanelActions className={classes.center}>
