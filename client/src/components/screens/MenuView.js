@@ -19,6 +19,7 @@ import CloudOffIcon from '@material-ui/icons/CloudOffOutlined';
 import Paper from '@material-ui/core/Paper';
 import SearchIcon from '@material-ui/icons/SearchOutlined';
 import { Link } from 'react-router-dom';
+import { ResultContext } from '../utils/ContextApi';
 
 const drawerWidth = 240;
 
@@ -121,59 +122,63 @@ class ResponsiveDrawer extends React.Component {
         );
 
         return (
-            <div className={classes.root}>
-                <CssBaseline />
-                <AppBar position="fixed" className={classes.appBar}>
-                    <Toolbar className={classes.root} >
-                        <CardMedia
-                            component="img"
-                            alt="Emory Rehab"
-                            className={classes.media}
-                            height="40"
-                            image="/assets/logo-emory-footer.png"
-                            title="Emory Rehab"
-                        />
-                    </Toolbar>
-                    <Paper className={classes.paper}>
-                        <CustomizedInputBase />
-                    </Paper>
-                </AppBar>
-                <nav className={classes.drawer}>
-                    <Hidden smUp implementation="css">
-                        <Drawer
-                            container={this.props.container}
-                            variant="temporary"
-                            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-                            open={this.state.mobileOpen}
-                            onClose={this.handleDrawerToggle}
-                            classes={{
-                                paper: classes.drawerPaper,
-                            }}
-                        >
-                            {drawer}
-                        </Drawer>
-                    </Hidden>
-                    <Hidden xsDown implementation="css">
-                        <Drawer
-                            classes={{
-                                paper: classes.drawerPaper,
-                            }}
-                            variant="permanent"
-                            open
-                        >
-                            {drawer}
-                        </Drawer>
-                    </Hidden>
-                </nav>
-            </div>
-        );
+            <ResultContext.Consumer>
+                {context => (
+                    <div className={classes.root}>
+                        <CssBaseline />
+                        <AppBar position="fixed" className={classes.appBar}>
+                            <Toolbar className={classes.root} >
+                                <CardMedia
+                                    component="img"
+                                    alt="Emory Rehab"
+                                    className={classes.media}
+                                    height="40"
+                                    image="/assets/logo-emory-footer.png"
+                                    title="Emory Rehab"
+                                />
+                            </Toolbar>
+                            <Paper className={classes.paper}>
+                                <CustomizedInputBase context={context} />
+                            </Paper>
+                        </AppBar>
+                        <nav className={classes.drawer}>
+                            <Hidden smUp implementation="css">
+                                <Drawer
+                                    container={this.props.container}
+                                    variant="temporary"
+                                    anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+                                    open={this.state.mobileOpen}
+                                    onClose={this.handleDrawerToggle}
+                                    classes={{
+                                        paper: classes.drawerPaper,
+                                    }}
+                                >
+                                    {drawer}
+                                </Drawer>
+                            </Hidden>
+                            <Hidden xsDown implementation="css">
+                                <Drawer
+                                    classes={{
+                                        paper: classes.drawerPaper,
+                                    }}
+                                    variant="permanent"
+                                    open
+                                >
+                                    {drawer}
+                                </Drawer>
+                            </Hidden>
+                        </nav>
+                    </div>
+                )
+                }
+    </ResultContext.Consumer>
+        )}
     }
-}
 
-ResponsiveDrawer.propTypes = {
-    classes: PropTypes.object.isRequired,
-    container: PropTypes.object,
-    theme: PropTypes.object.isRequired,
-};
+    ResponsiveDrawer.propTypes = {
+        classes: PropTypes.object.isRequired,
+        container: PropTypes.object,
+        theme: PropTypes.object.isRequired,
+    };
 
-export default withStyles(styles, { withTheme: true })(ResponsiveDrawer);
+    export default withStyles(styles, { withTheme: true })(ResponsiveDrawer);

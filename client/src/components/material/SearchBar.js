@@ -6,6 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import AlertDialog from '../material/AlertDialog';
 import { ResultContext } from '../utils/ContextApi';
+import { Redirect } from 'react-router-dom';
 
 const styles = {
     container: {
@@ -16,7 +17,8 @@ const styles = {
     input: {
         flex: 1,
         color: 'rgb(6, 47, 94)',
-        paddingLeft: 10
+        paddingLeft: 10,
+        width: '100%'
     },
     iconButton: {
         padding: 10,
@@ -26,8 +28,11 @@ const styles = {
 };
 
 function CustomizedInputBase(props) {
-    const { classes } = props;
+    const { classes, context } = props;
 
+    if (context.state.confirmGetAll) {
+        return <Redirect to={'/search'} />
+    }
     return (
         <ResultContext.Consumer>
             {context => (
@@ -35,11 +40,13 @@ function CustomizedInputBase(props) {
                     <IconButton className={classes.iconButton} aria-label="Search" >
                         <SearchIcon />
                     </IconButton>
-                    <InputBase className={classes.input} placeholder="Search by Zip Code" autoComplete="shipping postal-code" type='tel'
-                        aria-label="Search by Zip Code" value={context.state.locationInput}
-                        required={true}
-                        onChange={e => context.handleLocationUpdate(e)}
-                    />
+                    <form onSubmit={(e) => context.handleGetAll(e)} >
+                        <InputBase className={classes.input} placeholder="Search by Zip Code" autoComplete="shipping postal-code"
+                            aria-label="Search by Zip Code" value={context.state.locationInput}
+                            required={true}
+                            onChange={e => context.handleLocationUpdate(e)}
+                        />
+                    </form>
                     <AlertDialog className={classes.iconButton} context={context} />
                 </div>
             )}

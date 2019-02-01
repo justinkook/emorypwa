@@ -28,12 +28,6 @@ const styles = theme => ({
     marginLeft: 20,
     color: '#fff',
   },
-  hidden: {
-    display: 'none',
-  },
-  center: {
-    justifyContent: 'center',
-  },
   heading: {
     textAlign: 'left',
     fontSize: 30,
@@ -48,26 +42,6 @@ const styles = theme => ({
     fontWeight: 400,
     paddingTop: 20,
     paddingLeft: 20,
-  },
-  icon: {
-    verticalAlign: 'bottom',
-    height: 20,
-    width: 20,
-  },
-  details: {
-    textAlign: 'left',
-    display: 'block',
-  },
-  detailsNursing: {
-    padding: 0,
-    textAlign: 'left',
-    display: 'block',
-  },
-  font: {
-    fontSize: 18,
-  },
-  column: {
-    flexBasis: '100%',
   },
   link: {
     color: theme.palette.primary.main,
@@ -135,7 +109,7 @@ function DetailedExpansionPanel(props) {
               </Card>
             </Link>
 
-            <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('Rehab')}>
+            <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('Rehabilitation')}>
               <Card className={classes.card}>
                 <CardContent>
                   <Typography className={classes.title} color="textSecondary" gutterBottom>

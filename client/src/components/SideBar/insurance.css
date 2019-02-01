@@ -123,8 +123,7 @@ tr:hover {
 
 form {
     text-align: left;
-    margin-left: 10px;
-    margin-top: 30px;
+    width: 100%;
 }
 
 ::placeholder {

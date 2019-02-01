@@ -75,9 +75,7 @@ class Map extends Component {
                 closeButton={false}
                 closeOnClick={false}
                 sortByDepth={true}
-                offsetLeft={-70}
             >
-                {e.name}
                 <CityPin size={40} onClick={() => this.setState({ popupInfo: e })} />
             </Marker>
         );
@@ -112,6 +110,7 @@ class Map extends Component {
                 zoom: 10,
             }
         })
+        this.props.context.confirmGetAll();
     }
 
     componentDidUpdate = (prevProps) => {

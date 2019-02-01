@@ -8,33 +8,35 @@ let coordsList = [];
 export class MyProvider extends Component {
     state = {
         isLoading: false,
+        confirmGetAll: false,
         locationInput: '',
         searchTerm: '',
         centerCoord: { lat: 33.7946333, lng: -84.44877199999999 },
-        nursingList: [
-            {
-                name: "AG Rhodes",
-                location: {
-                    display_address: [
-                        "Jornette Malone"
-                    ]
-                },
-                phone: "+14043150900",
-            },
-            {
-                name: "Budd Terrace",
-                location: {
-                    display_address: [
-                        "Sahebi Saiyed, MD - sahebi.a.saiyed@emory.edu",
-                    ]
-                },
-                phone: "+14047286515",
-            },
-        ],
         resultList: [],
     }
 
     signal = axios.CancelToken.source();
+
+    handleGetAll = async (e) => {
+        try {
+            e.preventDefault();
+            this.setState({ searchTerm: 'Nearby' })
+            this.setState({ isLoading: true });
+            const allLocations = await axios.get('/api/location', {
+                cancelToken: this.signal.token,
+            });
+            this.setState({ resultList: allLocations.data, isLoading: true, confirmGetAll: true });
+        } catch (err) {
+            if (axios.isCancel(err)) {
+            } else {
+                this.setState({ isLoading: false });
+            }
+        }
+    }
+
+    confirmGetAll = () => {
+        this.setState({ confirmGetAll: false });
+    }
 
     /**
     * gets two coordinate inputs from api/search then calculates distance in miles
@@ -70,7 +72,9 @@ export class MyProvider extends Component {
             this.setState({ isLoading: true });
             let location = this.state.locationInput;
             const queryURL = 'api/geocode/' + location;
-            let response = await axios.get(queryURL)
+            let response = await axios.get(queryURL, {
+                cancelToken: this.signal.token,
+            });
             let centerCoord = response.data.results[0].geometry.location;
             this.setState({
                 centerCoord: {
@@ -126,6 +130,8 @@ export class MyProvider extends Component {
                     });
                     await this.getCenter();
                 },
+                handleGetAll: (e) => this.handleGetAll(e),
+                confirmGetAll: () => this.confirmGetAll(),
                 handleLocationUpdate: (e) => this.setState({
                     locationInput: e.target.value
                 }),
