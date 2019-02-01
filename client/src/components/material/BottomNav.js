@@ -49,11 +49,11 @@ class LabelBottomNavigation extends React.Component {
         return (
             <BottomNavigation value={value} onChange={this.handleChange} className={classes.root}>
                 <BottomNavigationAction component={this.insuranceLink}
-                    label="" value="insurance" icon={<BeenHereIcon />} />
+                    value="insurance" icon={<BeenHereIcon />} />
                 <BottomNavigationAction component={this.searchLink}
-                    label="" value="search" icon={<SearchIcon />} />
+                    value="search" icon={<SearchIcon />} />
                 <BottomNavigationAction component={this.appointmentsLink}
-                    label="" value="appointments" icon={<InsertInvitation />} />
+                    value="appointments" icon={<InsertInvitation />} />
             </BottomNavigation>
         );
     }

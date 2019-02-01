@@ -2,20 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
 import { ResultContext } from '../utils/ContextApi';
-import FullWidthTabs from './NursingTab';
 import HomeIcon from '@material-ui/icons/Home';
-import Avatar from '@material-ui/core/Avatar';
 import LocalHospitalIcon from '@material-ui/icons/LocalHospitalOutlined';
-import SpaIcon from '@material-ui/icons/SpaOutlined';
+import SpaIcon from '@material-ui/icons/Spa';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import StoreIcon from '@material-ui/icons/Store';
 
 const drawerWidth = 240;
 
@@ -31,21 +25,8 @@ const styles = theme => ({
   },
   avatar: {
     margin: 15,
-    marginLeft: '45%',
+    marginLeft: 20,
     color: '#fff',
-    backgroundColor: 'rgb(0, 122, 255)',
-  },
-  skyAvatar: {
-    margin: 15,
-    marginLeft: '45%',
-    color: '#fff',
-    backgroundColor: 'rgb(90, 200, 250)'
-  },
-  greenAvatar: {
-    margin: 15,
-    marginLeft: '45%',
-    color: '#fff',
-    backgroundColor: 'rgb(76, 217, 100)'
   },
   hidden: {
     display: 'none',
@@ -54,13 +35,19 @@ const styles = theme => ({
     justifyContent: 'center',
   },
   heading: {
-    fontSize: theme.typography.pxToRem(15),
-    color: 'rgb(6, 67, 134)',
-    textAlign: 'center',
+    textAlign: 'left',
+    fontSize: 30,
+    fontWeight: 500,
+    marginBottom: 20,
+    paddingLeft: '0.3em',
+    color: 'rgb(6, 67, 97)',
   },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
-    color: theme.palette.text.secondary,
+    color: 'white',
+    fontWeight: 400,
+    paddingTop: 20,
+    paddingLeft: 20,
   },
   icon: {
     verticalAlign: 'bottom',
@@ -89,6 +76,25 @@ const styles = theme => ({
       textDecoration: 'underline',
     },
   },
+  h5: {
+    lineHeight: 2.03,
+    fontWeight: 'bold',
+    fontSize: 38,
+    color: 'white',
+    paddingLeft: 20,
+  },
+  card: {
+    background: '#0a28be',
+    boxShadow: 'none',
+    marginBottom: '0.8em'
+  },
+  title: {
+    color: 'white',
+    fontWeight: 400,
+    paddingTop: 20,
+    paddingLeft: 20,
+    fontSize: 18
+  }
 });
 
 function DetailedExpansionPanel(props) {
@@ -98,81 +104,65 @@ function DetailedExpansionPanel(props) {
       {context => (
         <div className={classes.root}>
           <React.Fragment>
-            <ExpansionPanel defaultExpanded >
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                <div className={classes.column} style={{ paddingRight: 0 }} >
-                  <Typography variant="title" className={classes.heading}>Therapy Clinics</Typography>
-                </div>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails className={classes.details}>
-              </ExpansionPanelDetails>
-              <Divider />
-              <ExpansionPanelActions className={classes.center}>
-                <Button size="small" color="primary" aria-label="Clinics" >
-                  <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('Clinics')} >
-                    Search Clinics
-                </Link>
-                </Button>
-              </ExpansionPanelActions>
-            </ExpansionPanel>
+            <Typography className={classes.heading} variant='title' >
+              Search by
+        </Typography>
+            <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('Clinics')} >
+              <Card className={classes.card}>
+                <CardContent>
+                  <Typography className={classes.title} color="textSecondary" gutterBottom>
+                    Therapy
+        </Typography>
+                  <Typography className={classes.h5} variant="h5" component="h2">
+                    Clinics
+        </Typography>
+                  <StoreIcon className={classes.avatar} />
+                </CardContent>
+              </Card>
+            </Link>
 
-            <ExpansionPanel >
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className={classes.hidden} />}>
-                <div className={classes.column} style={{ paddingRight: 0 }} >
-                  <Avatar className={classes.avatar}>
-                    <HomeIcon />
-                  </Avatar>
-                  <Typography variant="title" className={classes.heading}>Skilled Nursing Homes</Typography>
-                </div>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails className={classes.detailsNursing}>
-                <FullWidthTabs />
-              </ExpansionPanelDetails>
-              <Divider />
-              <ExpansionPanelActions className={classes.center} >
-                <Button size="small" color="primary" aria-label="Nursing" >
-                  <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('Nursing')}>
-                    Search Nursing
-                  </Link>
-                </Button>
-              </ExpansionPanelActions>
-            </ExpansionPanel>
+            <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('Nursing')}>
+              <Card className={classes.card}>
+                <CardContent>
+                  <Typography className={classes.title} color="textSecondary" gutterBottom>
+                    Skilled
+        </Typography>
+                  <Typography className={classes.h5} variant="h5" component="h2">
+                    Nursing
+        </Typography>
+                  <HomeIcon className={classes.avatar} />
+                </CardContent>
+              </Card>
+            </Link>
 
-            <ExpansionPanel defaultExpanded >
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className={classes.hidden} />}>
-                <div className={classes.column} style={{ paddingRight: 0 }} >
-                  <Avatar className={classes.skyAvatar}>
-                    <LocalHospitalIcon />
-                  </Avatar>
-                  <Typography variant="title" className={classes.heading}>Acute Rehabilitation Hospitals</Typography>
-                </div>
-              </ExpansionPanelSummary>
-              <Divider />
-              <ExpansionPanelActions className={classes.center} >
-                <Button size="small" color="primary" aria-label="Rehab" >
-                  <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('Rehab')}>
-                    Search Rehab
-                  </Link>
-                </Button>
-              </ExpansionPanelActions>
-            </ExpansionPanel>
-            <ExpansionPanel defaultExpanded >
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className={classes.hidden} />}>
-                <div className={classes.column} style={{ paddingRight: 0 }} >
-                  <Avatar className={classes.greenAvatar}>
-                    <SpaIcon />
-                  </Avatar>
-                  <Typography variant="title" className={classes.heading}>Long Term Acute Hospitals</Typography>
-                </div>
-              </ExpansionPanelSummary>
-              <Divider />
-              <ExpansionPanelActions className={classes.center} >
-                <Button size="small" color="primary" aria-label="LTACH" >
-                  <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('LTACH')} >
-                    Search LTACH</Link>
-                </Button>
-              </ExpansionPanelActions>
-            </ExpansionPanel>
+            <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('Rehab')}>
+              <Card className={classes.card}>
+                <CardContent>
+                  <Typography className={classes.title} color="textSecondary" gutterBottom>
+                    Acute
+        </Typography>
+                  <Typography className={classes.h5} variant="h5" component="h2">
+                    Rehabilitation
+        </Typography>
+                  <LocalHospitalIcon className={classes.avatar} />
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to={`/search`} style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }} onClick={() => context.handleSearchUpdate('LTACH')} >
+              <Card className={classes.card}>
+                <CardContent>
+                  <Typography className={classes.title} color="textSecondary" gutterBottom>
+                    Long Term
+        </Typography>
+                  <Typography className={classes.h5} variant="h5" component="h2">
+                    Acute Hospitals
+        </Typography>
+                  <SpaIcon className={classes.avatar} />
+                </CardContent>
+              </Card>
+            </Link>
+
           </React.Fragment>
         </div>
       )}

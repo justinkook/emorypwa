@@ -6,6 +6,7 @@ import DetailedExpansionPanel from './components/material/DetailedExpansionPanel
 class App extends Component {
   styles = {
     resultsContainer: {
+      padding: .8 + 'em',
       marginTop: 10.6 + 'em',
     }
   }
