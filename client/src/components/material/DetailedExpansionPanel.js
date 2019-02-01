@@ -152,7 +152,7 @@ function DetailedExpansionPanel (props) {
                     variant='h5'
                     component='h2'
                   >
-                    Rehabilitation
+                    Rehab
                   </Typography>
                   <LocalHospitalIcon className={classes.avatar} />
                 </CardContent>
