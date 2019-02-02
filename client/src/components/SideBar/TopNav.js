@@ -151,13 +151,15 @@ class ResponsiveDrawer extends React.Component {
               </Toolbar>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <Paper className={classes.paper}>
-                <InsuranceSearch
-                  value={value}
-                  onChange={onChange}
-                  handleLocationClear={handleLocationClear}
-                />
-              </Paper>
+              {!title === 'Appointments' ? (
+                <Paper className={classes.paper}>
+                  <InsuranceSearch
+                    value={value}
+                    onChange={onChange}
+                    handleLocationClear={handleLocationClear}
+                  />
+                </Paper>
+              ) : null}
             </ExpansionPanelDetails>
           </ExpansionPanel>
         </AppBar>

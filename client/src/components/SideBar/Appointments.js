@@ -30,6 +30,9 @@ const styles = theme => ({
     paddingLeft: 20,
     display: 'inline-flex'
   },
+  main: {
+    marginBottom: '3.8em'
+  },
   card: {
     background: '#0a28be',
     marginBottom: '0.8em'
@@ -66,7 +69,7 @@ class Insurance extends Component {
 
     return (
       <div>
-        <main>
+        <main className={classes.main}>
           <div className='content'>
             <ResponsiveDrawer title={'Appointments'} />
           </div>
@@ -87,14 +90,14 @@ class Insurance extends Component {
                   our&nbsp;HealthConnection
                   <sup>sm&nbsp;</sup>
                   registered nurses or representatives.
-                </Typography>
-                <Typography className={classes.p} component='p'>
+                  <br />
+                  <br />
                   <em>
                     The HealthConnection Team is available Monday–Friday, from
                     7:30 a.m. to 6:00 p.m. EST.
                   </em>
-                </Typography>
-                <Typography className={classes.p} component='p'>
+                  <br />
+                  <br />
                   <span>
                     Emory Healthcare&nbsp;is pleased to have the opportunity to
                     serve you. Thank you for&nbsp;entrusting your care to
@@ -134,6 +137,31 @@ class Insurance extends Component {
                 >
                   <Button size='small' color='primary'>
                     Learn More
+                  </Button>
+                </a>
+              </CardActions>
+            </Card>
+
+            <Card className={classes.card}>
+              <CardContent
+                style={{ paddingBottom: 0 }}
+                className={classes.cardContent}
+              >
+                <Typography className={classes.title} color='textSecondary'>
+                  Emory
+                </Typography>
+                <Typography className={classes.h5} variant='h5' component='h2'>
+                  Patient Portal
+                </Typography>
+              </CardContent>
+              <CardActions className={classes.cardActions}>
+                <a
+                  className={classes.link}
+                  href={`https://www.emoryhealthcare.org/patient-portal/index.html`}
+                  aria-label={'Emory Patient Portal'}
+                >
+                  <Button size='small' color='primary'>
+                    Log In
                   </Button>
                 </a>
               </CardActions>
