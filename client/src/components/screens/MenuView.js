@@ -111,7 +111,7 @@ class ResponsiveDrawer extends React.Component {
           <tbody key={i}>
             <tr
               onClick={async event => {
-                await context.geocode(e)
+                await context.getCenter()
                 await context.handleGetAll(event)
               }}
             >

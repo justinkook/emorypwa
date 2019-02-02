@@ -21,14 +21,22 @@ export class MyProvider extends Component {
 
   signal = axios.CancelToken.source()
 
-  handleGetAll = async e => {
+  handleGetAll = async centerCoord => {
     try {
-      e.preventDefault()
       this.setState({ searchTerm: 'Nearby' })
       this.setState({ isLoading: true })
       const allLocations = await axios.get('/api/location', {
         cancelToken: this.signal.token
       })
+
+      for (let i = 0; i < allLocations.data.length; i++) {
+        this.calcDistance(centerCoord, allLocations.data[i].coordinates)
+        Array.prototype.push.apply(allLocations.data[i], [coordsList[i]])
+      }
+      allLocations.data.sort(function (a, b) {
+        return a[0] - b[0]
+      })
+
       this.setState({
         resultList: allLocations.data,
         isLoading: false,
@@ -96,7 +104,9 @@ export class MyProvider extends Component {
         },
         placesList: [formattedAddress, ...this.state.placesList]
       })
-      if (this.state.searchTerm) this.renderMap(centerCoord)
+      this.state.searchTerm
+        ? this.renderMap(centerCoord)
+        : this.handleGetAll(centerCoord)
     } catch (err) {
       if (axios.isCancel(err)) {
       } else {

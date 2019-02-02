@@ -47,7 +47,7 @@ function CustomizedInputBase (props) {
           <IconButton className={classes.iconButton} aria-label='Search'>
             <SearchIcon />
           </IconButton>
-          <form onSubmit={e => context.handleGetAll(e)}>
+          <form onSubmit={() => context.getCenter()}>
             <InputBase
               className={classes.input}
               placeholder='Search location'
