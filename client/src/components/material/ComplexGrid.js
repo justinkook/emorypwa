@@ -11,7 +11,7 @@ const styles = theme => ({
     flexGrow: 1
   },
   phone: {
-    paddingTop: '15%',
+    paddingTop: '6%',
     paddingLeft: 2,
     color: '#0a28be',
     margin: 10
