@@ -103,7 +103,24 @@ class ResponsiveDrawer extends React.Component {
   }
 
   render () {
-    const { classes, theme } = this.props
+    const { classes, theme, context } = this.props
+
+    const placesList = (
+      <table className={classes.table}>
+        {context.state.placesList.map((e, i) => (
+          <tbody key={i}>
+            <tr
+              onClick={async event => {
+                await context.geocode(e)
+                await context.handleGetAll(event)
+              }}
+            >
+              <td>{e}</td>
+            </tr>
+          </tbody>
+        ))}
+      </table>
+    )
 
     const drawer = (
       <div>
@@ -144,6 +161,7 @@ class ResponsiveDrawer extends React.Component {
             <AppBar position='fixed' className={classes.appBar}>
               <ExpansionPanel>
                 <ExpansionPanelSummary
+                  onClick={() => context.handlePlacesOff()}
                   className={classes.summary}
                   expandIcon={<SearchIcon />}
                 >
@@ -164,6 +182,7 @@ class ResponsiveDrawer extends React.Component {
                   </Paper>
                 </ExpansionPanelDetails>
               </ExpansionPanel>
+              {context.state.placesOn ? placesList : null}
             </AppBar>
             <nav className={classes.drawer}>
               <Hidden smUp implementation='css'>

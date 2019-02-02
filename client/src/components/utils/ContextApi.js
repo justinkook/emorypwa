@@ -4,16 +4,19 @@ import axios from 'axios'
 export const ResultContext = React.createContext()
 
 let coordsList = []
+let previousLocationInput = localStorage.getItem('locationInput')
 
 export class MyProvider extends Component {
   state = {
     isLoading: false,
     onFocus: false,
     confirmGetAll: false,
-    locationInput: 'Atlanta, GA',
-    searchTerm: 'Nearby',
+    locationInput: `${previousLocationInput}`,
+    searchTerm: '',
     centerCoord: { lat: 33.78948, lng: -84.32095 },
-    resultList: []
+    resultList: [],
+    placesOn: false,
+    placesList: [previousLocationInput]
   }
 
   signal = axios.CancelToken.source()
@@ -29,8 +32,10 @@ export class MyProvider extends Component {
       this.setState({
         resultList: allLocations.data,
         isLoading: false,
-        confirmGetAll: true
+        confirmGetAll: true,
+        placesOn: false
       })
+      localStorage.setItem('locationInput', this.state.locationInput)
     } catch (err) {
       if (axios.isCancel(err)) {
       } else {
@@ -83,13 +88,15 @@ export class MyProvider extends Component {
         cancelToken: this.signal.token
       })
       let centerCoord = response.data.results[0].geometry.location
+      let formattedAddress = response.data.results[0].formatted_address
       this.setState({
         centerCoord: {
           lat: centerCoord.lat,
           lng: centerCoord.lng
-        }
+        },
+        placesList: [formattedAddress, ...this.state.placesList]
       })
-      this.renderMap(centerCoord)
+      if (this.state.searchTerm) this.renderMap(centerCoord)
     } catch (err) {
       if (axios.isCancel(err)) {
       } else {
@@ -115,6 +122,7 @@ export class MyProvider extends Component {
         return a[0] - b[0]
       })
       this.setState({ resultList: businessData.data, isLoading: false })
+      localStorage.setItem('locationInput', this.state.locationInput)
     } catch (err) {
       if (axios.isCancel(err)) {
       } else {
@@ -125,6 +133,15 @@ export class MyProvider extends Component {
 
   handleOnFocus = () => {
     this.setState({ onFocus: !this.state.onFocus })
+  }
+
+  componentDidMount = () => {
+    if (previousLocationInput === null) {
+      this.setState({ locationInput: 'Atlanta, GA' })
+    }
+    if (previousLocationInput === null) {
+      this.setState({ resultList: [] })
+    }
   }
 
   componentWillUnmount = () => {
@@ -149,15 +166,22 @@ export class MyProvider extends Component {
           },
           handleGetAll: e => this.handleGetAll(e),
           confirmGetAll: () => this.confirmGetAll(),
-          handleLocationUpdate: e =>
+          handleLocationUpdate: e => {
             this.setState({
-              locationInput: e.target.value
-            }),
+              locationInput: e.target.value,
+              placesOn: true
+            })
+            this.getCenter()
+          },
           handleLocationClear: () =>
             this.setState({
-              locationInput: ''
+              locationInput: '',
+              placesOn: false,
+              placesList: []
             }),
-          handleOnFocus: () => this.handleOnFocus()
+          handleOnFocus: () => this.handleOnFocus(),
+          handlePlacesOff: () =>
+            this.setState({ placesOn: false, placesList: [] })
         }}
       >
         {this.props.children}

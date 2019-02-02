@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import MenuView from './components/screens/MenuView'
 import LabelBottomNavigation from './components/material/BottomNav'
 import DetailedExpansionPanel from './components/material/DetailedExpansionPanel'
+import { ResultContext } from './components/utils/ContextApi'
 
 class App extends Component {
   styles = {
@@ -13,13 +14,17 @@ class App extends Component {
 
   render () {
     return (
-      <div className='App'>
-        <MenuView />
-        <div style={this.styles.resultsContainer}>
-          <DetailedExpansionPanel />
-        </div>
-        <LabelBottomNavigation value={'search'} />
-      </div>
+      <ResultContext.Consumer>
+        {context => (
+          <div className='App'>
+            <MenuView context={context} />
+            <div style={this.styles.resultsContainer}>
+              <DetailedExpansionPanel />
+            </div>
+            <LabelBottomNavigation value={'search'} />
+          </div>
+        )}
+      </ResultContext.Consumer>
     )
   }
 }

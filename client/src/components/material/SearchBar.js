@@ -64,7 +64,7 @@ function CustomizedInputBase (props) {
             <CloseIcon
               className={classes.closeButton}
               onPointerDown={() => context.handleLocationClear()}
-              ontouchstart={() => context.handleLocationClear()}
+              onTouchStart={() => context.handleLocationClear()}
             />
           ) : (
             <AlertDialog context={context} />
