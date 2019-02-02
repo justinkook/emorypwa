@@ -11,6 +11,7 @@ import LinearIndeterminate from '../material/Loading'
 import { ResultContext } from '../utils/ContextApi'
 import { Divider } from '@material-ui/core'
 import DetailedExpansionPanel from './FilterBar'
+import ErrorBoundary from '../utils/ErrorBoundary'
 const Map = lazy(() => import('./Map'))
 
 const styles = {
@@ -89,7 +90,9 @@ class Container extends React.Component {
         <ResultContext.Consumer>
           {context => (
             <div>
-              <Map context={context} />
+              <ErrorBoundary>
+                <Map context={context} />
+              </ErrorBoundary>
               <div style={styles.ResultsCard}>
                 <ExpansionPanel>
                   <ExpansionPanelSummary

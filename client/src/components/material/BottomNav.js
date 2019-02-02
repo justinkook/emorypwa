@@ -12,7 +12,6 @@ const styles = theme => ({
   root: {
     boxShadow:
       '0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)',
-    justifyContent: 'space-around',
     position: 'fixed',
     bottom: 0,
     width: '100%',
@@ -51,21 +50,25 @@ class LabelBottomNavigation extends React.Component {
     return (
       <BottomNavigation
         value={value}
+        showLabels
         onChange={this.handleChange}
         className={classes.root}
       >
         <BottomNavigationAction
           component={this.insuranceLink}
+          label='Insurance'
           value='insurance'
           icon={<BeenHereIcon />}
         />
         <BottomNavigationAction
           component={this.searchLink}
+          label='Search'
           value='search'
           icon={<SearchIcon />}
         />
         <BottomNavigationAction
           component={this.appointmentsLink}
+          label='Appointments'
           value='appointments'
           icon={<InsertInvitation />}
         />
