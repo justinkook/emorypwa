@@ -54,7 +54,8 @@ class InsuranceSearch extends Component {
         {this.state.onFocus ? (
           <CloseIcon
             className={classes.closeButton}
-            onMouseDown={() => handleLocationClear()}
+            onPointerDown={() => handleLocationClear()}
+            ontouchstart={() => handleLocationClear()}
           />
         ) : null}
       </div>
