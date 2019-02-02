@@ -21,8 +21,9 @@ export class MyProvider extends Component {
 
   signal = axios.CancelToken.source()
 
-  handleGetAll = async centerCoord => {
+  handleGetAll = async e => {
     try {
+      e.preventDefault()
       this.setState({ searchTerm: 'Nearby' })
       this.setState({ isLoading: true })
       const allLocations = await axios.get('/api/location', {
@@ -30,7 +31,10 @@ export class MyProvider extends Component {
       })
 
       for (let i = 0; i < allLocations.data.length; i++) {
-        this.calcDistance(centerCoord, allLocations.data[i].coordinates)
+        this.calcDistance(
+          this.state.centerCoord,
+          allLocations.data[i].coordinates
+        )
         Array.prototype.push.apply(allLocations.data[i], [coordsList[i]])
       }
       allLocations.data.sort(function (a, b) {
@@ -104,9 +108,7 @@ export class MyProvider extends Component {
         },
         placesList: [formattedAddress, ...this.state.placesList]
       })
-      this.state.searchTerm
-        ? this.renderMap(centerCoord)
-        : this.handleGetAll(centerCoord)
+      this.renderMap(centerCoord)
     } catch (err) {
       if (axios.isCancel(err)) {
       } else {
@@ -139,10 +141,6 @@ export class MyProvider extends Component {
         this.setState({ isLoading: false })
       }
     }
-  }
-
-  handleOnFocus = () => {
-    this.setState({ onFocus: !this.state.onFocus })
   }
 
   componentDidMount = () => {
@@ -189,7 +187,8 @@ export class MyProvider extends Component {
               placesOn: false,
               placesList: []
             }),
-          handleOnFocus: () => this.handleOnFocus(),
+          handleOnFocus: () => this.setState({ onFocus: true }),
+          handleOffFocus: () => this.setState({ onFocus: false }),
           handlePlacesOff: () =>
             this.setState({ placesOn: false, placesList: [] })
         }}

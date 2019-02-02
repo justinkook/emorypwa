@@ -47,7 +47,7 @@ function CustomizedInputBase (props) {
           <IconButton className={classes.iconButton} aria-label='Search'>
             <SearchIcon />
           </IconButton>
-          <form onSubmit={() => context.getCenter()}>
+          <form onSubmit={e => context.handleGetAll(e)}>
             <InputBase
               className={classes.input}
               placeholder='Search location'
@@ -56,7 +56,7 @@ function CustomizedInputBase (props) {
               value={context.state.locationInput}
               required
               onFocus={() => context.handleOnFocus()}
-              onBlur={() => context.handleOnFocus()}
+              onBlur={() => context.handleOffFocus()}
               onChange={e => context.handleLocationUpdate(e)}
             />
           </form>
