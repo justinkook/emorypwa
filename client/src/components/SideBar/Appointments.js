@@ -3,6 +3,11 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import LabelBottomNavigation from '../material/BottomNav'
 import ResponsiveDrawer from './TopNav'
+import Typography from '@material-ui/core/Typography'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import CardActions from '@material-ui/core/CardActions'
+import Button from '@material-ui/core/Button'
 
 const drawerWidth = 240
 
@@ -11,9 +16,47 @@ const styles = theme => ({
     fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
     marginTop: 4.6 + 'em',
     padding: 20,
+    color: 'white',
     [theme.breakpoints.up('sm')]: {
       marginLeft: drawerWidth,
       width: `calc(100% - ${drawerWidth}px)`
+    }
+  },
+  h5: {
+    lineHeight: 2.03,
+    fontWeight: 'bold',
+    fontSize: 38,
+    color: 'white',
+    paddingLeft: 20,
+    display: 'inline-flex'
+  },
+  card: {
+    background: '#0a28be',
+    marginBottom: '0.8em'
+  },
+  cardContent: {
+    padding: 0
+  },
+  title: {
+    color: 'white',
+    fontWeight: 400,
+    paddingTop: 20,
+    paddingLeft: 20,
+    fontSize: 18
+  },
+  p: {
+    color: 'white',
+    padding: 20
+  },
+  cardActions: {
+    background: 'white',
+    justifyContent: 'center'
+  },
+  link: {
+    color: theme.palette.primary.main,
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'none'
     }
   }
 })
@@ -28,50 +71,73 @@ class Insurance extends Component {
             <ResponsiveDrawer title={'Appointments'} />
           </div>
           <div className={classes.text}>
-            <p>
-              To make an appointment, please call
-              <br />
-              <a href={`tel:+14047787777`} aria-label={'+14047787777'}>
-                <strong>404-778-7777 </strong>
-              </a>
-              or
-              <a href={`tel:+18007536679`} aria-label={'+18007536679'}>
-                <strong> 800-753-6679</strong>
-              </a>
-              <br />
-              and speak with one of our&nbsp;HealthConnection<sup>sm&nbsp;</sup>
-              registered nurses or representatives.
-            </p>
-            <p>
-              <em>
-                The HealthConnection Team is available Monday–Friday, from 7:30
-                a.m. to 6:00 p.m. EST.
-              </em>
-            </p>
-            <p>
-              They can answer almost any health related question. Plus, they can
-              help you:
-            </p>
-            <div className='row'>
-              <div className='col-sm-6'>
-                <ul>
-                  <li>Find a convenient location</li>
-                  <li>Plan your first visit</li>
-                  <li>Find the right physician&nbsp;</li>
-                </ul>
-              </div>
-              <div className='col-sm-6'>
-                <ul>
-                  <li>Obtain a referral to an Emory physician</li>
-                  <li>Register for classes and events</li>
-                  <li>Interpret insurance coverage &nbsp;&nbsp;</li>
-                </ul>
-              </div>
-            </div>
-            <span>
-              Emory Healthcare&nbsp;is pleased to have the opportunity to serve
-              you. Thank you for&nbsp;entrusting your care to us.&nbsp;
-            </span>
+            <Card className={classes.card}>
+              <CardContent
+                style={{ paddingBottom: 0 }}
+                className={classes.cardContent}
+              >
+                <Typography className={classes.title} color='textSecondary'>
+                  Schedule
+                </Typography>
+                <Typography className={classes.h5} variant='h5' component='h2'>
+                  Appointments
+                </Typography>
+                <Typography className={classes.p} component='p'>
+                  To make an appointment, please call and speak with one of
+                  our&nbsp;HealthConnection
+                  <sup>sm&nbsp;</sup>
+                  registered nurses or representatives.
+                </Typography>
+                <Typography className={classes.p} component='p'>
+                  <em>
+                    The HealthConnection Team is available Monday–Friday, from
+                    7:30 a.m. to 6:00 p.m. EST.
+                  </em>
+                </Typography>
+                <Typography className={classes.p} component='p'>
+                  <span>
+                    Emory Healthcare&nbsp;is pleased to have the opportunity to
+                    serve you. Thank you for&nbsp;entrusting your care to
+                    us.&nbsp;
+                  </span>
+                </Typography>
+              </CardContent>
+              <CardActions className={classes.cardActions}>
+                <a
+                  className={classes.link}
+                  href={`tel:+14047787777`}
+                  aria-label={'+14047787777'}
+                >
+                  <Button size='small' color='primary'>
+                    Call
+                  </Button>
+                  <strong>(404) 778-7777 </strong>
+                </a>
+              </CardActions>
+              <CardActions className={classes.cardActions}>
+                <a
+                  className={classes.link}
+                  href={`tel:+18007536679`}
+                  aria-label={'+18007536679'}
+                >
+                  <Button size='small' color='primary'>
+                    Call
+                  </Button>
+                  <strong> (800) 753-6679</strong>
+                </a>
+              </CardActions>
+              <CardActions className={classes.cardActions}>
+                <a
+                  className={classes.link}
+                  href={`https://www.emoryhealthcare.org/contact/health-connection.html`}
+                  aria-label={'HealthConnection Appointments'}
+                >
+                  <Button size='small' color='primary'>
+                    Learn More
+                  </Button>
+                </a>
+              </CardActions>
+            </Card>
           </div>
           <LabelBottomNavigation value={'appointments'} />
         </main>
