@@ -82,8 +82,6 @@ export class MyProvider extends Component {
       let response = await axios.get(queryURL, {
         cancelToken: this.signal.token
       })
-      let addressComponents = response.data.results[0].address_components
-      let locationOptions = addressComponents.map(e => e.short_name)
       let centerCoord = response.data.results[0].geometry.location
       this.setState({
         centerCoord: {
