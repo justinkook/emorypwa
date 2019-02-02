@@ -28,7 +28,7 @@ export class MyProvider extends Component {
       })
       this.setState({
         resultList: allLocations.data,
-        isLoading: true,
+        isLoading: false,
         confirmGetAll: true
       })
     } catch (err) {
@@ -77,7 +77,6 @@ export class MyProvider extends Component {
 
   getCenter = async () => {
     try {
-      this.setState({ isLoading: true })
       let location = this.state.locationInput
       const queryURL = 'api/geocode/' + location
       let response = await axios.get(queryURL, {
@@ -88,8 +87,7 @@ export class MyProvider extends Component {
         centerCoord: {
           lat: centerCoord.lat,
           lng: centerCoord.lng
-        },
-        isLoading: true
+        }
       })
       this.renderMap(centerCoord)
     } catch (err) {
@@ -116,7 +114,7 @@ export class MyProvider extends Component {
       businessData.data.sort(function (a, b) {
         return a[0] - b[0]
       })
-      this.setState({ resultList: businessData.data, isLoading: true })
+      this.setState({ resultList: businessData.data, isLoading: false })
     } catch (err) {
       if (axios.isCancel(err)) {
       } else {
@@ -144,7 +142,8 @@ export class MyProvider extends Component {
             }),
           handleSearchUpdate: async searchTerm => {
             this.setState({
-              searchTerm
+              searchTerm,
+              isLoading: true
             })
             await this.getCenter()
           },
@@ -158,7 +157,6 @@ export class MyProvider extends Component {
             this.setState({
               locationInput: ''
             }),
-          getCenter: () => this.getCenter(),
           handleOnFocus: () => this.handleOnFocus()
         }}
       >

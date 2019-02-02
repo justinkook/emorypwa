@@ -64,7 +64,7 @@ class Insurance extends Component {
         let response = await axios.get('/api/insurance', {
           cancelToken: this.signal.token
         })
-        this.setState({ completeList: response.data, isLoading: true })
+        this.setState({ completeList: response.data, isLoading: false })
         this.setState({ insuranceList: response.data })
       }
     } catch (err) {
