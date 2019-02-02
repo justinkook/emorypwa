@@ -98,6 +98,7 @@ class Insurance extends Component {
                 onChange={this.handleInputChange}
                 handleLocationClear={this.handleLocationClear}
                 title={'Insurance'}
+                bar
               />
               <input type='submit' className='hidden' />
             </form>

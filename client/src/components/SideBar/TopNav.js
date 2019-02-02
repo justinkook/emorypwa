@@ -101,7 +101,8 @@ class ResponsiveDrawer extends React.Component {
       handleLocationClear,
       value,
       theme,
-      title
+      title,
+      bar
     } = this.props
 
     const drawer = (
@@ -142,7 +143,7 @@ class ResponsiveDrawer extends React.Component {
           <ExpansionPanel>
             <ExpansionPanelSummary
               className={classes.summary}
-              expandIcon={<SearchIcon />}
+              expandIcon={bar ? <SearchIcon /> : null}
             >
               <Toolbar className={classes.root}>
                 <Typography variant='title' className={classes.title}>
@@ -150,8 +151,8 @@ class ResponsiveDrawer extends React.Component {
                 </Typography>
               </Toolbar>
             </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              {!title === 'Appointments' ? (
+            {bar ? (
+              <ExpansionPanelDetails>
                 <Paper className={classes.paper}>
                   <InsuranceSearch
                     value={value}
@@ -159,8 +160,8 @@ class ResponsiveDrawer extends React.Component {
                     handleLocationClear={handleLocationClear}
                   />
                 </Paper>
-              ) : null}
-            </ExpansionPanelDetails>
+              </ExpansionPanelDetails>
+            ) : null}
           </ExpansionPanel>
         </AppBar>
         <nav className={classes.drawer}>
