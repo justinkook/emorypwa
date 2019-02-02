@@ -9,9 +9,9 @@ export class MyProvider extends Component {
   state = {
     isLoading: false,
     confirmGetAll: false,
-    locationInput: '',
-    searchTerm: '',
-    centerCoord: { lat: 33.7946333, lng: -84.44877199999999 },
+    locationInput: 'Atlanta, GA',
+    searchTerm: 'Nearby',
+    centerCoord: { lat: 33.78948, lng: -84.32095 },
     resultList: []
   }
 
