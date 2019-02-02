@@ -8,6 +8,7 @@ let coordsList = []
 export class MyProvider extends Component {
   state = {
     isLoading: false,
+    onFocus: false,
     confirmGetAll: false,
     locationInput: 'Atlanta, GA',
     searchTerm: 'Nearby',
@@ -124,7 +125,11 @@ export class MyProvider extends Component {
     }
   }
 
-  componentWillUnmount () {
+  handleOnFocus = () => {
+    this.setState({ onFocus: !this.state.onFocus })
+  }
+
+  componentWillUnmount = () => {
     this.signal.cancel()
   }
 
@@ -149,7 +154,12 @@ export class MyProvider extends Component {
             this.setState({
               locationInput: e.target.value
             }),
-          getCenter: () => this.getCenter()
+          handleLocationClear: () =>
+            this.setState({
+              locationInput: ''
+            }),
+          getCenter: () => this.getCenter(),
+          handleOnFocus: () => this.handleOnFocus()
         }}
       >
         {this.props.children}

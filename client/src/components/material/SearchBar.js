@@ -5,6 +5,7 @@ import InputBase from '@material-ui/core/InputBase'
 import IconButton from '@material-ui/core/IconButton'
 import SearchIcon from '@material-ui/icons/Search'
 import AlertDialog from '../material/AlertDialog'
+import CloseIcon from '@material-ui/icons/CloseOutlined'
 import { ResultContext } from '../utils/ContextApi'
 import { Redirect } from 'react-router-dom'
 
@@ -24,6 +25,10 @@ const styles = {
     padding: 10,
     color: 'rgb(6, 47, 94)',
     paddingRight: 0
+  },
+  closeButton: {
+    color: 'rgb(6, 47, 94)',
+    marginRight: 15
   }
 }
 
@@ -43,15 +48,24 @@ function CustomizedInputBase (props) {
           <form onSubmit={e => context.handleGetAll(e)}>
             <InputBase
               className={classes.input}
-              placeholder='Search by Zip Code'
+              placeholder='Search location'
               autoComplete='shipping postal-code'
-              aria-label='Search by Zip Code'
+              aria-label='Search location'
               value={context.state.locationInput}
               required
+              onFocus={() => context.handleOnFocus()}
+              onBlur={() => context.handleOnFocus()}
               onChange={e => context.handleLocationUpdate(e)}
             />
           </form>
-          <AlertDialog className={classes.iconButton} context={context} />
+          {context.state.onFocus ? (
+            <CloseIcon
+              className={classes.closeButton}
+              onMouseDown={() => context.handleLocationClear()}
+            />
+          ) : (
+            <AlertDialog context={context} />
+          )}
         </div>
       )}
     </ResultContext.Consumer>

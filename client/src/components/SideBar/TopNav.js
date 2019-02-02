@@ -95,7 +95,14 @@ class ResponsiveDrawer extends React.Component {
   }
 
   render () {
-    const { classes, onChange, value, theme, title } = this.props
+    const {
+      classes,
+      onChange,
+      handleLocationClear,
+      value,
+      theme,
+      title
+    } = this.props
 
     const drawer = (
       <div>
@@ -145,7 +152,11 @@ class ResponsiveDrawer extends React.Component {
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
               <Paper className={classes.paper}>
-                <InsuranceSearch value={value} onChange={onChange} />
+                <InsuranceSearch
+                  value={value}
+                  onChange={onChange}
+                  handleLocationClear={handleLocationClear}
+                />
               </Paper>
             </ExpansionPanelDetails>
           </ExpansionPanel>

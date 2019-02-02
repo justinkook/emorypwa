@@ -41,7 +41,15 @@ class Insurance extends Component {
     await this.setState({ insuranceList: filteredList })
   }
 
-  submitFilterList = event => {
+  handleLocationClear = async () => {
+    await this.setState({ inputFilter: '' })
+    const filteredList = this.state.completeList.filter(e =>
+      e.name.toLowerCase().includes(this.state.inputFilter.toLowerCase())
+    )
+    await this.setState({ insuranceList: filteredList })
+  }
+
+  submitFilterList = async event => {
     event.preventDefault()
     const filteredList = this.state.completeList.filter(e =>
       e.name.toLowerCase().includes(this.state.inputFilter.toLowerCase())
@@ -88,6 +96,7 @@ class Insurance extends Component {
               <ResponsiveDrawer
                 value={this.state.inputFilter}
                 onChange={this.handleInputChange}
+                handleLocationClear={this.handleLocationClear}
                 title={'Insurance'}
               />
               <input type='submit' className='hidden' />

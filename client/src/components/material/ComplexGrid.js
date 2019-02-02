@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import PhoneIcon from '@material-ui/icons/Phone'
+import DirectionsIcon from '@material-ui/icons/Directions'
 
 const styles = theme => ({
   root: {
@@ -11,7 +12,9 @@ const styles = theme => ({
   },
   phone: {
     paddingTop: '15%',
-    paddingLeft: 2
+    paddingLeft: 2,
+    color: '#0a28be',
+    margin: 10
   },
   link: {
     color: theme.palette.primary.main,
@@ -53,6 +56,16 @@ function ComplexGrid (props) {
             >
               {<PhoneIcon />}
               <Typography className={classes.link}>CALL</Typography>
+            </a>
+          </Grid>
+          <Grid item className={classes.phone}>
+            <a
+              href={`${props.directions}`}
+              className={classes.link}
+              aria-label={props.directions}
+            >
+              {<DirectionsIcon />}
+              <Typography className={classes.link}>GO</Typography>
             </a>
           </Grid>
         </Grid>

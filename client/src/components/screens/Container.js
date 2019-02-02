@@ -118,6 +118,9 @@ class Container extends React.Component {
                           phone={`${e.phone}`}
                           email={`${e.email}`}
                           distance={e[0]}
+                          directions={`http://maps.google.com/?q=${
+                            e.location.display_address[0]
+                          } ${e.location.display_address[1]}`}
                         />
                         <Divider />
                       </div>
