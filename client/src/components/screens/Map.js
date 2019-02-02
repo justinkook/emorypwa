@@ -50,8 +50,19 @@ class Map extends Component {
     popupInfo: null
   }
 
-  _onViewportChange = viewport => {
-    this.setState({ viewport })
+  _onViewportChange = viewport =>
+    this.setState({
+      viewport: { ...this.state.viewport, ...viewport }
+    })
+
+  _goToViewport = ({ longitude, latitude }) => {
+    this._onViewportChange({
+      longitude,
+      latitude,
+      zoom: 11,
+      transitionInterpolator: new FlyToInterpolator(),
+      transitionDuration: 400
+    })
   }
 
   _updateViewportHome = () => {
@@ -77,7 +88,16 @@ class Map extends Component {
         closeOnClick={false}
         sortByDepth
       >
-        <CityPin size={40} onClick={() => this.setState({ popupInfo: e })} />
+        <CityPin
+          size={40}
+          onClick={() => {
+            this._goToViewport({
+              longitude: e.coordinates.longitude,
+              latitude: e.coordinates.latitude
+            })
+            this.setState({ popupInfo: e })
+          }}
+        />
       </Marker>
     )
   }
@@ -145,7 +165,7 @@ class Map extends Component {
               mapboxApiAccessToken={
                 'pk.eyJ1IjoianVzdGlua29vayIsImEiOiJjanJmcGUyZDQxNjhoNDRsNW13OTU1cXRrIn0.IO6wM4mko07wPKDbyD5jOA'
               }
-              transitionDuration={500}
+              transitionDuration={400}
               transitionInterpolator={new FlyToInterpolator()}
               reuseMaps
               mapStyle={'mapbox://styles/mapbox/light-v9?optimize=true'}
