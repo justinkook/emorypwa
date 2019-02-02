@@ -26,12 +26,11 @@ main {
     padding-top: 25px;
 }
 #listArea {
-    margin-top: 36%;
+    margin-top: 16%;
     margin-bottom: 60px;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
-    text-transform: uppercase;
     font-weight: 100;
     overflow: scroll;
 }
@@ -82,7 +81,7 @@ tbody {
     align-items: center;
     background-color: transparent;
     margin: 1px;
-    color: black;
+    color: rgb(6, 67, 93);
     transition: 0.3s;
 }
 tbody:nth-child(-n+6) {
@@ -116,7 +115,7 @@ tr {
 }
 
 tr:hover {
-    background-color: rgba(6,67,134,.8);
+    background-color: #0a28be;
     color: white;
     transform: scale(1.01)
 }

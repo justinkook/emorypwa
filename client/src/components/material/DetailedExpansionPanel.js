@@ -24,9 +24,10 @@ const styles = theme => ({
     marginBottom: 60
   },
   avatar: {
-    margin: 15,
-    marginLeft: 20,
-    color: '#fff'
+    margin: 25,
+    color: '#fff',
+    position: 'absolute',
+    right: 20
   },
   heading: {
     textAlign: 'left',
@@ -55,12 +56,16 @@ const styles = theme => ({
     fontWeight: 'bold',
     fontSize: 38,
     color: 'white',
-    paddingLeft: 20
+    paddingLeft: 20,
+    display: 'inline-flex'
   },
   card: {
     background: '#0a28be',
     boxShadow: 'none',
     marginBottom: '0.8em'
+  },
+  cardContent: {
+    padding: 0
   },
   title: {
     color: 'white',
@@ -78,21 +83,17 @@ function DetailedExpansionPanel (props) {
       {context => (
         <div className={classes.root}>
           <React.Fragment>
-            <Typography className={classes.heading} variant='title'>
-              Search by
-            </Typography>
             <Link
               to={`/search`}
               style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }}
               onClick={() => context.handleSearchUpdate('Clinics')}
             >
-              <Card id='main-reveal-box1' className={classes.card}>
-                <CardContent>
-                  <Typography
-                    className={classes.title}
-                    color='textSecondary'
-                    gutterBottom
-                  >
+              <Card className={classes.card}>
+                <CardContent
+                  style={{ paddingBottom: 0 }}
+                  className={classes.cardContent}
+                >
+                  <Typography className={classes.title} color='textSecondary'>
                     Therapy
                   </Typography>
                   <Typography
@@ -112,13 +113,12 @@ function DetailedExpansionPanel (props) {
               style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }}
               onClick={() => context.handleSearchUpdate('Nursing')}
             >
-              <Card id='main-reveal-box2' className={classes.card}>
-                <CardContent>
-                  <Typography
-                    className={classes.title}
-                    color='textSecondary'
-                    gutterBottom
-                  >
+              <Card className={classes.card}>
+                <CardContent
+                  style={{ paddingBottom: 0 }}
+                  className={classes.cardContent}
+                >
+                  <Typography className={classes.title} color='textSecondary'>
                     Skilled
                   </Typography>
                   <Typography
@@ -138,13 +138,12 @@ function DetailedExpansionPanel (props) {
               style={{ color: 'rgb(25, 103, 210)', textDecoration: 'none' }}
               onClick={() => context.handleSearchUpdate('Rehabilitation')}
             >
-              <Card id='main-reveal-box3' className={classes.card}>
-                <CardContent>
-                  <Typography
-                    className={classes.title}
-                    color='textSecondary'
-                    gutterBottom
-                  >
+              <Card className={classes.card}>
+                <CardContent
+                  style={{ paddingBottom: 0 }}
+                  className={classes.cardContent}
+                >
+                  <Typography className={classes.title} color='textSecondary'>
                     Acute
                   </Typography>
                   <Typography
@@ -165,12 +164,11 @@ function DetailedExpansionPanel (props) {
               onClick={() => context.handleSearchUpdate('LTACH')}
             >
               <Card className={classes.card}>
-                <CardContent>
-                  <Typography
-                    className={classes.title}
-                    color='textSecondary'
-                    gutterBottom
-                  >
+                <CardContent
+                  style={{ paddingBottom: 0 }}
+                  className={classes.cardContent}
+                >
+                  <Typography className={classes.title} color='textSecondary'>
                     Long Term
                   </Typography>
                   <Typography
@@ -178,7 +176,7 @@ function DetailedExpansionPanel (props) {
                     variant='h5'
                     component='h2'
                   >
-                    Acute Hospitals
+                    Hospitals
                   </Typography>
                   <SpaIcon className={classes.avatar} />
                 </CardContent>
