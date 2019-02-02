@@ -129,17 +129,6 @@ class Insurance extends Component {
                   <strong> (800) 753-6679</strong>
                 </a>
               </CardActions>
-              <CardActions className={classes.cardActions}>
-                <a
-                  className={classes.link}
-                  href={`https://www.emoryhealthcare.org/contact/health-connection.html`}
-                  aria-label={'HealthConnection Appointments'}
-                >
-                  <Button size='small' color='primary'>
-                    Learn More
-                  </Button>
-                </a>
-              </CardActions>
             </Card>
 
             <Card className={classes.card}>
