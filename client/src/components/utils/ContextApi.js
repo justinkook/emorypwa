@@ -187,7 +187,7 @@ export class MyProvider extends Component {
               placesOn: false,
               placesList: []
             }),
-          handleOnFocus: () => this.setState({ onFocus: true }),
+          handleOnFocus: () => this.setState({ onFocus: true, searchTerm: '' }),
           handleOffFocus: () => this.setState({ onFocus: false }),
           handlePlacesOff: () =>
             this.setState({ placesOn: false, placesList: [] })
