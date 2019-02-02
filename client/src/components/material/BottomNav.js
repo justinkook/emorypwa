@@ -7,6 +7,7 @@ import BeenHereIcon from '@material-ui/icons/BeenhereOutlined'
 import InsertInvitation from '@material-ui/icons/InsertInvitationOutlined'
 import SearchIcon from '@material-ui/icons/SearchOutlined'
 import { Link } from 'react-router-dom'
+import { ResultContext } from '../utils/ContextApi'
 
 const styles = theme => ({
   root: {
@@ -48,31 +49,36 @@ class LabelBottomNavigation extends React.Component {
     const { value } = this.state
 
     return (
-      <BottomNavigation
-        value={value}
-        showLabels
-        onChange={this.handleChange}
-        className={classes.root}
-      >
-        <BottomNavigationAction
-          component={this.insuranceLink}
-          label='Insurance'
-          value='insurance'
-          icon={<BeenHereIcon />}
-        />
-        <BottomNavigationAction
-          component={this.searchLink}
-          label='Search'
-          value='search'
-          icon={<SearchIcon />}
-        />
-        <BottomNavigationAction
-          component={this.appointmentsLink}
-          label='Appointments'
-          value='appointments'
-          icon={<InsertInvitation />}
-        />
-      </BottomNavigation>
+      <ResultContext.Consumer>
+        {context => (
+          <BottomNavigation
+            onClick={() => context.handlePlacesOff()}
+            value={value}
+            showLabels
+            onChange={this.handleChange}
+            className={classes.root}
+          >
+            <BottomNavigationAction
+              component={this.insuranceLink}
+              label='Insurance'
+              value='insurance'
+              icon={<BeenHereIcon />}
+            />
+            <BottomNavigationAction
+              component={this.searchLink}
+              label='Search'
+              value='search'
+              icon={<SearchIcon />}
+            />
+            <BottomNavigationAction
+              component={this.appointmentsLink}
+              label='Appointments'
+              value='appointments'
+              icon={<InsertInvitation />}
+            />
+          </BottomNavigation>
+        )}
+      </ResultContext.Consumer>
     )
   }
 }
