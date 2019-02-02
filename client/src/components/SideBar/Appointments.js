@@ -9,7 +9,7 @@ const drawerWidth = 240
 const styles = theme => ({
   text: {
     fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
-    marginTop: 150,
+    marginTop: 4.6 + 'em',
     padding: 20,
     [theme.breakpoints.up('sm')]: {
       marginLeft: drawerWidth,

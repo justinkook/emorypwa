@@ -28,7 +28,9 @@ const styles = {
   },
   closeButton: {
     color: 'rgb(6, 47, 94)',
-    marginRight: 15
+    marginRight: 15,
+    marginLeft: 15,
+    cursor: 'pointer'
   }
 }
 
@@ -61,7 +63,8 @@ function CustomizedInputBase (props) {
           {context.state.onFocus ? (
             <CloseIcon
               className={classes.closeButton}
-              onMouseDown={() => context.handleLocationClear()}
+              onPointerDown={() => context.handleLocationClear()}
+              ontouchstart={() => context.handleLocationClear()}
             />
           ) : (
             <AlertDialog context={context} />
