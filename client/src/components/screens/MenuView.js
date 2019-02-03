@@ -95,13 +95,13 @@ const styles = theme => ({
   searchIcon: {
     position: 'absolute',
     right: 30,
-    top: '1.4em',
+    top: '1.3em',
     color: 'rgb(6, 67, 94)'
   },
   searchText: {
     position: 'absolute',
     right: 60,
-    top: '2.5em',
+    top: '2.45em',
     color: 'rgb(6, 67, 94)'
   }
 })
