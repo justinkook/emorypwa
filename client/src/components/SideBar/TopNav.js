@@ -159,9 +159,14 @@ class ResponsiveDrawer extends React.Component {
                   {title}
                 </Typography>
               </Toolbar>
-              <Typography style={{ padding: 0 }} className={classes.searchText}>
-                SEARCH
-              </Typography>
+              {bar ? (
+                <Typography
+                  style={{ padding: 0 }}
+                  className={classes.searchText}
+                >
+                  SEARCH
+                </Typography>
+              ) : null}
               {bar ? (
                 <SearchIcon
                   style={{ padding: 0 }}
