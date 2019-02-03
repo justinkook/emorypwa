@@ -23,6 +23,7 @@ import { ResultContext } from '../utils/ContextApi'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel'
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
+import Typography from '@material-ui/core/Typography'
 
 const drawerWidth = 240
 
@@ -95,6 +96,12 @@ const styles = theme => ({
     position: 'absolute',
     right: 30,
     top: '1.4em',
+    color: 'rgb(6, 67, 94)'
+  },
+  searchText: {
+    position: 'absolute',
+    right: 60,
+    top: '2.5em',
     color: 'rgb(6, 67, 94)'
   }
 })
@@ -180,6 +187,12 @@ class ResponsiveDrawer extends React.Component {
                       title='Emory Rehab'
                     />
                   </Toolbar>
+                  <Typography
+                    style={{ padding: 0 }}
+                    className={classes.searchText}
+                  >
+                    SEARCH
+                  </Typography>
                   <SearchIcon
                     style={{ padding: 0 }}
                     className={classes.searchIcon}
