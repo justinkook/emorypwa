@@ -34,7 +34,7 @@ const styles = theme => ({
     marginBottom: '3.8em'
   },
   card: {
-    background: 'rgb(6, 67, 134)',
+    background: '#24356f',
     marginBottom: '0.8em'
   },
   cardContent: {
