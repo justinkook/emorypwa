@@ -90,6 +90,12 @@ const styles = theme => ({
   summary: {
     padding: '0 12px 0 12px',
     margin: 0
+  },
+  searchIcon: {
+    position: 'absolute',
+    right: 30,
+    top: '1.4em',
+    color: 'rgb(6, 67, 94)'
   }
 })
 
@@ -163,7 +169,6 @@ class ResponsiveDrawer extends React.Component {
                 <ExpansionPanelSummary
                   onClick={() => context.handlePlacesOff()}
                   className={classes.summary}
-                  expandIcon={<SearchIcon />}
                 >
                   <Toolbar className={classes.root}>
                     <CardMedia
@@ -175,6 +180,10 @@ class ResponsiveDrawer extends React.Component {
                       title='Emory Rehab'
                     />
                   </Toolbar>
+                  <SearchIcon
+                    style={{ padding: 0 }}
+                    className={classes.searchIcon}
+                  />
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                   <Paper className={classes.paper}>

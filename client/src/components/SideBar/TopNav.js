@@ -82,6 +82,12 @@ const styles = theme => ({
   summary: {
     padding: '0 12px 0 12px',
     margin: 0
+  },
+  searchIcon: {
+    position: 'absolute',
+    right: 30,
+    top: '1.4em',
+    color: 'rgb(6, 67, 94)'
   }
 })
 
@@ -141,15 +147,18 @@ class ResponsiveDrawer extends React.Component {
         <CssBaseline />
         <AppBar position='fixed' className={classes.appBar}>
           <ExpansionPanel>
-            <ExpansionPanelSummary
-              className={classes.summary}
-              expandIcon={bar ? <SearchIcon /> : null}
-            >
+            <ExpansionPanelSummary className={classes.summary}>
               <Toolbar className={classes.root}>
                 <Typography variant='title' className={classes.title}>
                   {title}
                 </Typography>
               </Toolbar>
+              {bar ? (
+                <SearchIcon
+                  style={{ padding: 0 }}
+                  className={classes.searchIcon}
+                />
+              ) : null}
             </ExpansionPanelSummary>
             {bar ? (
               <ExpansionPanelDetails>

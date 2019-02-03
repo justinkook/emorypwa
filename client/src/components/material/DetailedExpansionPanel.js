@@ -60,7 +60,7 @@ const styles = theme => ({
     display: 'inline-flex'
   },
   card: {
-    background: '#0a28be',
+    background: 'rgb(6, 67, 134)',
     boxShadow: 'none',
     marginBottom: '0.8em'
   },

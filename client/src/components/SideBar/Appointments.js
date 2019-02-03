@@ -25,7 +25,7 @@ const styles = theme => ({
   h5: {
     lineHeight: 2.03,
     fontWeight: 'bold',
-    fontSize: 38,
+    fontSize: 30,
     color: 'white',
     paddingLeft: 20,
     display: 'inline-flex'
@@ -34,7 +34,7 @@ const styles = theme => ({
     marginBottom: '3.8em'
   },
   card: {
-    background: '#0a28be',
+    background: 'rgb(6, 67, 134)',
     marginBottom: '0.8em'
   },
   cardContent: {
