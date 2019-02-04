@@ -4,6 +4,11 @@
   "description": "Find Nearby Emory Care",
   "icons": [
     {
+      "src": "assets/splashscreen-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
       "src": "assets/splashscreen.png",
       "sizes": "512x512",
       "type": "image/png"
