@@ -61,7 +61,6 @@ const styles = theme => ({
   },
   card: {
     background: '#24356f',
-    boxShadow: 'none',
     marginBottom: '0.8em'
   },
   cardContent: {
