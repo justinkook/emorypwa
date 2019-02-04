@@ -9,9 +9,8 @@
       "type": "image/png"
     }
   ],
-  "start_url": "./",
-  "orientation": "portrait",
+  "start_url": "/?utm_source=a2hs",
   "display": "standalone",
-  "theme_color": "#064386",
-  "background_color": "#ffffff"
+  "theme_color": "#24356f",
+  "background_color": "#24356f"
 }
