@@ -39,42 +39,71 @@
     rel="apple-touch-startup-image" />
   <meta name="apple-mobile-web-app-title" content="Emory Acute Care">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-  <link rel="preload" href="https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fBBc4AMP6lQ.woff2" as="font"
-    crossorigin>
-  <link rel="preload" href="https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2" as="font"
-    crossorigin>
-  <link rel="preload" href="https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2" as="font"
-    crossorigin>
+  <link rel="preload" href="%PUBLIC_URL%/fonts/roboto-v18-latin-300.woff2" as="font" crossorigin>
+  <link rel="preload" href="%PUBLIC_URL%/fonts/roboto-v18-latin-regular.woff2" as="font" crossorigin>
+  <link rel="preload" href="%PUBLIC_URL%/fonts/roboto-v18-latin-500.woff2" as="font" crossorigin>
   <style>
-    /* latin 300 */
+    /* roboto-300 - latin */
     @font-face {
       font-family: 'Roboto';
       font-display: auto;
       font-style: normal;
       font-weight: 300;
-      src: local('Roboto Light'), local('Roboto-Light'), local('sans-serif-light'), url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fBBc4AMP6lQ.woff2) format('woff2');
-      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      src: url('%PUBLIC_URL%/fonts/roboto-v18-latin-300.eot');
+      /* IE9 Compat Modes */
+      src: local('Roboto Light'), local('Roboto-Light'),
+        url('%PUBLIC_URL%/fonts/roboto-v18-latin-300.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('%PUBLIC_URL%/fonts/roboto-v18-latin-300.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('%PUBLIC_URL%/fonts/roboto-v18-latin-300.woff') format('woff'),
+        /* Modern Browsers */
+        url('%PUBLIC_URL%/fonts/roboto-v18-latin-300.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('%PUBLIC_URL%/fonts/roboto-v18-latin-300.svg#Roboto') format('svg');
+      /* Legacy iOS */
     }
 
-    /* latin 400 */
+    /* roboto-regular - latin */
     @font-face {
       font-family: 'Roboto';
       font-display: auto;
       font-style: normal;
       font-weight: 400;
-      src: local('Roboto'), local('Roboto-Regular'), local('sans-serif'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2) format('woff2');
-      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      src: url('%PUBLIC_URL%/fonts/roboto-v18-latin-regular.eot');
+      /* IE9 Compat Modes */
+      src: local('Roboto'), local('Roboto-Regular'),
+        url('%PUBLIC_URL%/fonts/roboto-v18-latin-regular.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('%PUBLIC_URL%/fonts/roboto-v18-latin-regular.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('%PUBLIC_URL%/fonts/roboto-v18-latin-regular.woff') format('woff'),
+        /* Modern Browsers */
+        url('%PUBLIC_URL%/fonts/roboto-v18-latin-regular.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('%PUBLIC_URL%/fonts/roboto-v18-latin-regular.svg#Roboto') format('svg');
+      /* Legacy iOS */
     }
 
-    /* latin 500 */
+    /* roboto-500 - latin */
     @font-face {
       font-family: 'Roboto';
       font-display: auto;
       font-style: normal;
       font-weight: 500;
-      src: local('Roboto Medium'), local('Roboto-Medium'), local('sans-serif-medium'), url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2) format('woff2');
-      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      src: url('%PUBLIC_URL%/fonts/roboto-v18-latin-500.eot');
+      /* IE9 Compat Modes */
+      src: local('Roboto Medium'), local('Roboto-Medium'),
+        url('%PUBLIC_URL%/fonts/roboto-v18-latin-500.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('%PUBLIC_URL%/fonts/roboto-v18-latin-500.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('%PUBLIC_URL%/fonts/roboto-v18-latin-500.woff') format('woff'),
+        /* Modern Browsers */
+        url('%PUBLIC_URL%/fonts/roboto-v18-latin-500.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('%PUBLIC_URL%/fonts/roboto-v18-latin-500.svg#Roboto') format('svg');
+      /* Legacy iOS */
     }
   </style>
   <link rel="apple-touch-icon" sizes="512x512" href="%PUBLIC_URL%/assets/emoryapplelogo.png">
