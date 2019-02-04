@@ -115,7 +115,7 @@ tr {
 }
 
 tr:hover {
-    background-color: #0a28be;
+    background-color: #24356f;
     color: white;
     transform: scale(1.01)
 }
