@@ -105,9 +105,13 @@ export class MyProvider extends Component {
         centerCoord: {
           lat: centerCoord.lat,
           lng: centerCoord.lng
-        },
-        placesList: [formattedAddress, ...this.state.placesList]
+        }
       })
+      if (formattedAddress !== this.state.placesList[0]) {
+        this.setState({
+          placesList: [formattedAddress, ...this.state.placesList.slice(0, 4)]
+        })
+      }
       this.renderMap(centerCoord)
     } catch (err) {
       if (axios.isCancel(err)) {
