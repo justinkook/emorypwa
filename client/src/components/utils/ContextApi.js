@@ -112,7 +112,9 @@ export class MyProvider extends Component {
           placesList: [formattedAddress, ...this.state.placesList.slice(0, 4)]
         })
       }
-      this.renderMap(centerCoord)
+      if (this.state.searchTerm) {
+        this.renderMap(centerCoord)
+      }
     } catch (err) {
       if (axios.isCancel(err)) {
       } else {
