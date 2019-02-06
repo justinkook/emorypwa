@@ -137,6 +137,7 @@ export class MyProvider extends Component {
       businessData.data.sort(function (a, b) {
         return a[0] - b[0]
       })
+      coordsList = []
       this.setState({ resultList: businessData.data, isLoading: false })
       localStorage.setItem('locationInput', this.state.locationInput)
     } catch (err) {
