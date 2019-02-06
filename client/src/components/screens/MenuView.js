@@ -91,13 +91,15 @@ const styles = theme => ({
   },
   searchIcon: {
     position: 'absolute',
-    right: 30,
-    top: '1.3em',
+    right: 40,
+    height: 35,
+    width: 35,
+    top: '1.1em',
     color: 'rgb(6, 67, 94)'
   },
   searchText: {
     position: 'absolute',
-    right: 60,
+    right: 90,
     top: '2.45em',
     color: 'rgb(6, 67, 94)'
   },
