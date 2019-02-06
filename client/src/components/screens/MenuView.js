@@ -101,6 +101,9 @@ const styles = theme => ({
     right: 60,
     top: '2.45em',
     color: 'rgb(6, 67, 94)'
+  },
+  table: {
+    minHeight: '80vh'
   }
 })
 

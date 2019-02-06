@@ -26,6 +26,9 @@ const styles = theme => ({
     '&:hover': {
       textDecoration: 'underline'
     }
+  },
+  hide: {
+    display: 'none'
   }
 })
 
@@ -56,7 +59,7 @@ class LabelBottomNavigation extends React.Component {
             value={value}
             showLabels
             onChange={this.handleChange}
-            className={classes.root}
+            className={context.state.onFocus ? classes.hide : classes.root}
           >
             <BottomNavigationAction
               component={this.insuranceLink}
