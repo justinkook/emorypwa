@@ -168,7 +168,9 @@ export class MyProvider extends Component {
           state: this.state,
           geocode: locationInput =>
             this.setState({
-              locationInput
+              locationInput,
+              placesOn: false,
+              placesList: []
             }),
           handleSearchUpdate: async searchTerm => {
             this.setState({

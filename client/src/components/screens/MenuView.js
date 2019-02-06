@@ -125,9 +125,8 @@ class ResponsiveDrawer extends React.Component {
         {context.state.placesList.map((e, i) => (
           <tbody key={i}>
             <tr
-              onClick={async event => {
-                await context.geocode(e)
-                await context.handleGetAll(event)
+              onClick={() => {
+                context.geocode(e)
               }}
             >
               <td>{e}</td>
