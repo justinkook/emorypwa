@@ -35,7 +35,8 @@ const styles = theme => ({
   },
   card: {
     background: '#24356f',
-    marginBottom: '0.8em'
+    marginBottom: '0.8em',
+    maxWidth: 600
   },
   cardContent: {
     padding: 0

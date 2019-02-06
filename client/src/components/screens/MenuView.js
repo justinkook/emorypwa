@@ -75,7 +75,6 @@ const styles = theme => ({
     padding: '2px 4px',
     display: 'flex',
     alignItems: 'center',
-    maxWidth: 600,
     justifyContent: 'center',
     border: '2px solid rgb(6, 67, 94)',
     borderRadius: 6 + 'px',
