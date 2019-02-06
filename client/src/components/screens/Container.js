@@ -31,7 +31,7 @@ const styles = {
   ResultsCard: {
     position: 'relative',
     width: 100 + '%',
-    maxWidth: 500,
+    maxWidth: 600,
     zIndex: 400
   },
   heading: {
@@ -74,7 +74,7 @@ const styles = {
     position: 'fixed',
     top: 0,
     width: 100 + '%',
-    maxWidth: 500,
+    maxWidth: 600,
     padding: 0,
     height: 70,
     background: 'white',

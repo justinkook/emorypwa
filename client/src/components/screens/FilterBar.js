@@ -14,7 +14,7 @@ const styles = theme => ({
     bottom: 0,
     zIndex: 99,
     width: '100%',
-    maxWidth: 500
+    maxWidth: 600
   },
   center: {
     justifyContent: 'center'

@@ -18,6 +18,7 @@ const styles = theme => ({
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
+      maxWidth: 600,
       marginLeft: drawerWidth
     },
     background: 'rgba(6, 67, 134, 0)',
