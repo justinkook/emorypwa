@@ -44,16 +44,14 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
+    marginTop: 60,
     padding: '0 8px',
     ...theme.mixins.toolbar
   },
   appBar: {
+    zIndex: theme.zIndex.drawer + 1,
     boxShadow:
       '0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: drawerWidth,
-      width: `calc(100% - ${drawerWidth}px)`
-    },
     background: 'white'
   },
   toolbar: theme.mixins.toolbar,
