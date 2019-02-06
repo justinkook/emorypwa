@@ -99,13 +99,13 @@ class CustomizedSnackbars extends React.Component {
             horizontal: 'left'
           }}
           open={this.state.open}
-          autoHideDuration={6000}
+          autoHideDuration={4000}
           onClose={this.handleClose}
         >
           <MySnackbarContentWrapper
             onClose={this.handleClose}
             variant='info'
-            message='Install app on iPhone:
+            message='To install app on Safari iOS:
             Tap Share Icon and then Add to Home Screen'
           />
         </Snackbar>
