@@ -24,8 +24,7 @@ export class MyProvider extends Component {
   handleGetAll = async e => {
     try {
       e.preventDefault()
-      this.setState({ searchTerm: 'Nearby' })
-      this.setState({ isLoading: true })
+      this.setState({ searchTerm: 'Nearby', onFocus: false, isLoading: true })
       const allLocations = await axios.get('/api/location', {
         cancelToken: this.signal.token
       })
