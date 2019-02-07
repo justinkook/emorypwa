@@ -32,9 +32,11 @@ class AlertDialog extends React.Component {
   }
 
   locationServices = () => {
-    window.navigator.geolocation.getCurrentPosition(position =>
-      this.geocode(`${position.coords.latitude},${position.coords.longitude}`)
-    )
+    window.navigator.geolocation.getCurrentPosition(position => {
+      if (position.coords) {
+        this.geocode(`${position.coords.latitude},${position.coords.longitude}`)
+      }
+    })
   }
 
   geocode = async location => {
