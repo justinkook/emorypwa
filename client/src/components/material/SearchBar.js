@@ -52,11 +52,11 @@ function CustomizedInputBase(props) {
               className={classes.input}
               placeholder="Search location"
               autoComplete="shipping postal-code"
-              aria-label="Search location"
+              aria-label="Search by location"
               value={context.state.locationInput}
               required
               name="search"
-              type="search"
+              type="tel"
               onFocus={() => context.handleOnFocus()}
               onBlur={() => context.handleOffFocus()}
               onChange={e => context.handleLocationUpdate(e)}

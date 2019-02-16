@@ -1,65 +1,65 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import AppBar from '@material-ui/core/AppBar'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import Divider from '@material-ui/core/Divider'
-import Drawer from '@material-ui/core/Drawer'
-import Hidden from '@material-ui/core/Hidden'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import Toolbar from '@material-ui/core/Toolbar'
-import CardMedia from '@material-ui/core/CardMedia'
-import { withStyles } from '@material-ui/core/styles'
-import CustomizedInputBase from '../material/SearchBar'
-import BeenHereIcon from '@material-ui/icons/BeenhereOutlined'
-import InsertInvitation from '@material-ui/icons/InsertInvitationOutlined'
-import CloudOffIcon from '@material-ui/icons/CloudOffOutlined'
-import Paper from '@material-ui/core/Paper'
-import SearchIcon from '@material-ui/icons/SearchOutlined'
-import { Link } from 'react-router-dom'
-import { ResultContext } from '../utils/ContextApi'
-import ExpansionPanel from '@material-ui/core/ExpansionPanel'
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
-import Typography from '@material-ui/core/Typography'
+import React from "react";
+import PropTypes from "prop-types";
+import AppBar from "@material-ui/core/AppBar";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Divider from "@material-ui/core/Divider";
+import Drawer from "@material-ui/core/Drawer";
+import Hidden from "@material-ui/core/Hidden";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import Toolbar from "@material-ui/core/Toolbar";
+import CardMedia from "@material-ui/core/CardMedia";
+import { withStyles } from "@material-ui/core/styles";
+import CustomizedInputBase from "../material/SearchBar";
+import BeenHereIcon from "@material-ui/icons/BeenhereOutlined";
+import InsertInvitation from "@material-ui/icons/InsertInvitationOutlined";
+import CloudOffIcon from "@material-ui/icons/CloudOffOutlined";
+import SearchIcon from "@material-ui/icons/SearchOutlined";
+import { Link } from "react-router-dom";
+import { ResultContext } from "../utils/ContextApi";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/MenuOutlined";
 
-const drawerWidth = 240
+const drawerWidth = 240;
 
 const styles = theme => ({
   root: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
     paddingBottom: 9,
-    marginLeft: 5,
     marginTop: 5
   },
   drawer: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up("sm")]: {
       width: drawerWidth,
       flexShrink: 0
     }
   },
   toolbarIcon: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    marginTop: 60,
-    padding: '0 8px',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    marginTop: 15,
+    padding: "0 8px",
     ...theme.mixins.toolbar
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    boxShadow:
-      '0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)',
-    background: 'white'
+    height: 72,
+    // boxShadow:
+    //   "0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)",
+    background: "white",
+    boxShadow: "none"
   },
   media: {
     maxWidth: 90,
-    objectFit: 'contain',
-    [theme.breakpoints.up('sm')]: {
+    objectFit: "contain",
+    [theme.breakpoints.up("sm")]: {
       height: 50
     }
   },
@@ -72,147 +72,137 @@ const styles = theme => ({
     padding: theme.spacing.unit * 3
   },
   paper: {
-    padding: '2px 4px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    border: '2px solid rgb(6, 67, 94)',
-    borderRadius: 6 + 'px',
-    boxShadow: 'none',
-    width: '100%'
+    padding: "2px 4px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    border: "2px solid rgb(6, 67, 94)",
+    borderRadius: 6 + "px",
+    boxShadow: "none",
+    width: "100%"
   },
   link: {
     color: theme.palette.primary.main,
-    textDecoration: 'none'
+    textDecoration: "none"
   },
   summary: {
-    padding: '0 12px 0 12px',
-    margin: 0
+    padding: "0 12px 0 12px",
+    margin: 0,
+    height: "100%"
   },
   searchIcon: {
-    position: 'absolute',
-    right: 40,
-    height: 35,
-    width: 35,
-    top: '1.1em',
-    color: 'rgb(6, 67, 94)'
+    position: "absolute",
+    right: 5,
+    height: 32,
+    width: 32,
+    top: "0.5em",
+    color: "rgb(6, 67, 94)",
+    [theme.breakpoints.up("sm")]: {
+      display: "none"
+    }
   },
   searchText: {
-    position: 'absolute',
-    right: 90,
-    top: '2.45em',
-    color: 'rgb(6, 67, 94)'
+    position: "absolute",
+    right: 80,
+    top: "1.85em",
+    color: "rgb(6, 67, 94)"
   },
   table: {
-    minHeight: '80vh'
+    minHeight: "80vh"
+  },
+  height: {
+    height: 72,
+    boxShadow: "none"
+  },
+  terms: {
+    position: "fixed",
+    bottom: 0,
+    maxWidth: 240,
+    textAlign: "left"
   }
-})
+});
 
 class ResponsiveDrawer extends React.Component {
   state = {
     mobileOpen: false
-  }
+  };
 
   handleDrawerToggle = () => {
-    this.setState(state => ({ mobileOpen: !state.mobileOpen }))
-  }
+    this.setState(state => ({ mobileOpen: !state.mobileOpen }));
+  };
 
-  render () {
-    const { classes, theme, context } = this.props
-
-    const placesList = (
-      <table className={classes.table}>
-        {context.state.placesList.map((e, i) => (
-          <tbody key={i}>
-            <tr
-              onClick={() => {
-                context.geocode(e)
-              }}
-            >
-              <td>{e}</td>
-            </tr>
-          </tbody>
-        ))}
-      </table>
-    )
+  render() {
+    const { classes, theme } = this.props;
 
     const drawer = (
       <div>
         <div className={classes.toolbarIcon} />
         <Divider />
         <List>
-          {['Search', 'Insurance', 'Appointments'].map((text, index) => (
-            <Link to={`/${text}`} key={text} className={classes.link}>
-              <ListItem button>
-                <ListItemIcon>
-                  {(() => {
-                    switch (index) {
-                      case 0:
-                        return <SearchIcon />
-                      case 1:
-                        return <BeenHereIcon />
-                      case 2:
-                        return <InsertInvitation />
-                      default:
-                        return <CloudOffIcon />
-                    }
-                  })()}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            </Link>
-          ))}
+          <Link to={`/`} className={classes.link}>
+            <ListItem button>
+              <ListItemIcon>
+                <SearchIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Search"} />
+            </ListItem>
+          </Link>
+          <Link to={`/insurance`} className={classes.link}>
+            <ListItem button>
+              <ListItemIcon>
+                <BeenHereIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Insurance"} />
+            </ListItem>
+          </Link>
+          <Divider />
+          <Link to={`/`} className={classes.link}>
+            <ListItem button className={classes.terms}>
+              <ListItemText secondary={"Privacy | Terms of Use"} />
+            </ListItem>
+          </Link>
         </List>
-        <Divider />
       </div>
-    )
+    );
 
     return (
       <ResultContext.Consumer>
         {context => (
           <div className={classes.root}>
             <CssBaseline />
-            <AppBar position='fixed' className={classes.appBar}>
-              <ExpansionPanel>
+            <AppBar position="fixed" className={classes.appBar}>
+              <ExpansionPanel className={classes.height}>
                 <ExpansionPanelSummary
                   onClick={() => context.handlePlacesOff()}
                   className={classes.summary}
                 >
                   <Toolbar className={classes.root}>
                     <CardMedia
-                      component='img'
-                      alt='Emory Rehab'
+                      component="img"
+                      alt="Emory Rehab"
                       className={classes.media}
-                      height='40'
-                      image='/assets/logo-emory-footer.png'
-                      title='Emory Rehab'
+                      height="40"
+                      image="/assets/logo-emory-footer.png"
+                      title="Emory Rehab"
                     />
                   </Toolbar>
-                  <Typography
-                    style={{ padding: 0 }}
-                    className={classes.searchText}
-                  >
-                    SEARCH
-                  </Typography>
-                  <SearchIcon
-                    style={{ padding: 0 }}
+                  <IconButton
+                    color="inherit"
+                    aria-label="Open drawer"
+                    onClick={this.handleDrawerToggle}
                     className={classes.searchIcon}
-                  />
+                  >
+                    <MenuIcon />
+                  </IconButton>
                 </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                  <Paper className={classes.paper}>
-                    <CustomizedInputBase context={context} />
-                  </Paper>
-                </ExpansionPanelDetails>
               </ExpansionPanel>
-              {context.state.placesOn ? placesList : null}
             </AppBar>
             <nav className={classes.drawer}>
-              <Hidden smUp implementation='css'>
+              <Hidden smUp implementation="css">
                 <Drawer
                   container={this.props.container}
-                  variant='temporary'
-                  anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+                  variant="temporary"
+                  anchor={theme.direction === "rtl" ? "right" : "left"}
                   open={this.state.mobileOpen}
                   onClose={this.handleDrawerToggle}
                   classes={{
@@ -222,12 +212,12 @@ class ResponsiveDrawer extends React.Component {
                   {drawer}
                 </Drawer>
               </Hidden>
-              <Hidden xsDown implementation='css'>
+              <Hidden xsDown implementation="css">
                 <Drawer
                   classes={{
                     paper: classes.drawerPaper
                   }}
-                  variant='permanent'
+                  variant="permanent"
                   open
                 >
                   {drawer}
@@ -237,7 +227,7 @@ class ResponsiveDrawer extends React.Component {
           </div>
         )}
       </ResultContext.Consumer>
-    )
+    );
   }
 }
 
@@ -245,6 +235,6 @@ ResponsiveDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
   container: PropTypes.object,
   theme: PropTypes.object.isRequired
-}
+};
 
-export default withStyles(styles, { withTheme: true })(ResponsiveDrawer)
+export default withStyles(styles, { withTheme: true })(ResponsiveDrawer);

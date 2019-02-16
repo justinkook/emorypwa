@@ -1,129 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-85534612-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-<head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-85534612-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+      gtag("config", "UA-85534612-2");
+    </script>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="Find nearby Emory Acute Care for therapy clinics, rehabilitation, and nursing."
+    />
+    <meta property="og:title" content="Emory Care | Find Nearby Acute Care" />
+    <meta
+      property="og:description"
+      content="Find nearby Emory Acute Care for therapy clinics, rehabilitation, and nursing."
+    />
+    <meta property="og:image" content="%PUBLIC_URL%/assets/splashscreen.png" />
+    <meta property="og:url" content="https://emoryreact.herokuapp.com/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Emory Care | Find Nearby Acute Care" />
+    <meta
+      name="twitter:description"
+      content="Find nearby Emory Acute Care for therapy clinics, rehabilitation, and nursing."
+    />
+    <meta property="og:site_name" content="Emory Care" />
+    <meta
+      name="twitter:image:alt"
+      content="Emory Care Progressive Web App Logo"
+    />
+    <meta name="theme-color" content="#24356f" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      name="google-site-verification"
+      content="ttVZ7fx3cn4uN0XHjEqjeSzBS2ij22vaL5qs8VNnLCY"
+    />
+    <link
+      href="assets/splashscreens/iphone5_splash.png"
+      media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="assets/splashscreens/iphone6_splash.png"
+      media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="assets/splashscreens/iphoneplus_splash.png"
+      media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="assets/splashscreens/iphonex_splash.png"
+      media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="assets/splashscreens/iphonexr_splash.png"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="assets/splashscreens/iphonexsmax_splash.png"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="assets/splashscreens/ipad_splash.png"
+      media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="assets/splashscreens/ipadpro1_splash.png"
+      media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="assets/splashscreens/ipadpro3_splash.png"
+      media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="assets/splashscreens/ipadpro2_splash.png"
+      media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <meta name="apple-mobile-web-app-title" content="Emory Acute Care" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link
+      rel="preload"
+      href="%PUBLIC_URL%/fonts/roboto-v18-latin-300.woff2"
+      as="font"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="%PUBLIC_URL%/fonts/roboto-v18-latin-regular.woff2"
+      as="font"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="%PUBLIC_URL%/fonts/roboto-v18-latin-500.woff2"
+      as="font"
+      crossorigin
+    />
+    <style>
+      /* roboto-300 - latin */
+      @font-face {
+        font-family: "Roboto";
+        font-display: auto;
+        font-style: normal;
+        font-weight: 300;
+        src: url("%PUBLIC_URL%/fonts/roboto-v18-latin-300.eot");
+        /* IE9 Compat Modes */
+        src: local("Roboto Light"), local("Roboto-Light"),
+          url("%PUBLIC_URL%/fonts/roboto-v18-latin-300.eot?#iefix")
+            format("embedded-opentype"),
+          /* IE6-IE8 */ url("%PUBLIC_URL%/fonts/roboto-v18-latin-300.woff2")
+            format("woff2"),
+          /* Super Modern Browsers */
+            url("%PUBLIC_URL%/fonts/roboto-v18-latin-300.woff") format("woff"),
+          /* Modern Browsers */
+            url("%PUBLIC_URL%/fonts/roboto-v18-latin-300.ttf")
+            format("truetype"),
+          /* Safari, Android, iOS */
+            url("%PUBLIC_URL%/fonts/roboto-v18-latin-300.svg#Roboto")
+            format("svg");
+        /* Legacy iOS */
+      }
 
-    gtag('config', 'UA-85534612-2');
-  </script>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no">
-  <meta name="description" content="Find nearby Emory Acute Care for therapy clinics, rehabilitation, and nursing.">
-  <meta property="og:title" content="Emory Care | Find Nearby Acute Care">
-  <meta property="og:description" content="Find nearby Emory Acute Care for therapy clinics, rehabilitation, and nursing.">
-  <meta property="og:image" content="%PUBLIC_URL%/assets/splashscreen.png">
-  <meta property="og:url" content="https://emoryreact.herokuapp.com/">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Emory Care | Find Nearby Acute Care">
-  <meta name="twitter:description" content="Find nearby Emory Acute Care for therapy clinics, rehabilitation, and nursing.">
-  <meta property="og:site_name" content="Emory Care">
-  <meta name="twitter:image:alt" content="Emory Care Progressive Web App Logo">
-  <meta name="theme-color" content="#24356f" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="google-site-verification" content="ttVZ7fx3cn4uN0XHjEqjeSzBS2ij22vaL5qs8VNnLCY" />
-  <link href="assets/splashscreens/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
-    rel="apple-touch-startup-image" />
-  <link href="assets/splashscreens/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
-    rel="apple-touch-startup-image" />
-  <link href="assets/splashscreens/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)"
-    rel="apple-touch-startup-image" />
-  <link href="assets/splashscreens/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
-    rel="apple-touch-startup-image" />
-  <link href="assets/splashscreens/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
-    rel="apple-touch-startup-image" />
-  <link href="assets/splashscreens/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
-    rel="apple-touch-startup-image" />
-  <link href="assets/splashscreens/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
-    rel="apple-touch-startup-image" />
-  <link href="assets/splashscreens/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
-    rel="apple-touch-startup-image" />
-  <link href="assets/splashscreens/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)"
-    rel="apple-touch-startup-image" />
-  <link href="assets/splashscreens/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
-    rel="apple-touch-startup-image" />
-  <meta name="apple-mobile-web-app-title" content="Emory Acute Care">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="preload" href="%PUBLIC_URL%/fonts/roboto-v18-latin-300.woff2" as="font" crossorigin>
-  <link rel="preload" href="%PUBLIC_URL%/fonts/roboto-v18-latin-regular.woff2" as="font" crossorigin>
-  <link rel="preload" href="%PUBLIC_URL%/fonts/roboto-v18-latin-500.woff2" as="font" crossorigin>
-  <style>
-    /* roboto-300 - latin */
-    @font-face {
-      font-family: 'Roboto';
-      font-display: auto;
-      font-style: normal;
-      font-weight: 300;
-      src: url('%PUBLIC_URL%/fonts/roboto-v18-latin-300.eot');
-      /* IE9 Compat Modes */
-      src: local('Roboto Light'), local('Roboto-Light'),
-        url('%PUBLIC_URL%/fonts/roboto-v18-latin-300.eot?#iefix') format('embedded-opentype'),
-        /* IE6-IE8 */
-        url('%PUBLIC_URL%/fonts/roboto-v18-latin-300.woff2') format('woff2'),
-        /* Super Modern Browsers */
-        url('%PUBLIC_URL%/fonts/roboto-v18-latin-300.woff') format('woff'),
-        /* Modern Browsers */
-        url('%PUBLIC_URL%/fonts/roboto-v18-latin-300.ttf') format('truetype'),
-        /* Safari, Android, iOS */
-        url('%PUBLIC_URL%/fonts/roboto-v18-latin-300.svg#Roboto') format('svg');
-      /* Legacy iOS */
-    }
+      /* roboto-regular - latin */
+      @font-face {
+        font-family: "Roboto";
+        font-display: auto;
+        font-style: normal;
+        font-weight: 400;
+        src: url("%PUBLIC_URL%/fonts/roboto-v18-latin-regular.eot");
+        /* IE9 Compat Modes */
+        src: local("Roboto"), local("Roboto-Regular"),
+          url("%PUBLIC_URL%/fonts/roboto-v18-latin-regular.eot?#iefix")
+            format("embedded-opentype"),
+          /* IE6-IE8 */ url("%PUBLIC_URL%/fonts/roboto-v18-latin-regular.woff2")
+            format("woff2"),
+          /* Super Modern Browsers */
+            url("%PUBLIC_URL%/fonts/roboto-v18-latin-regular.woff")
+            format("woff"),
+          /* Modern Browsers */
+            url("%PUBLIC_URL%/fonts/roboto-v18-latin-regular.ttf")
+            format("truetype"),
+          /* Safari, Android, iOS */
+            url("%PUBLIC_URL%/fonts/roboto-v18-latin-regular.svg#Roboto")
+            format("svg");
+        /* Legacy iOS */
+      }
 
-    /* roboto-regular - latin */
-    @font-face {
-      font-family: 'Roboto';
-      font-display: auto;
-      font-style: normal;
-      font-weight: 400;
-      src: url('%PUBLIC_URL%/fonts/roboto-v18-latin-regular.eot');
-      /* IE9 Compat Modes */
-      src: local('Roboto'), local('Roboto-Regular'),
-        url('%PUBLIC_URL%/fonts/roboto-v18-latin-regular.eot?#iefix') format('embedded-opentype'),
-        /* IE6-IE8 */
-        url('%PUBLIC_URL%/fonts/roboto-v18-latin-regular.woff2') format('woff2'),
-        /* Super Modern Browsers */
-        url('%PUBLIC_URL%/fonts/roboto-v18-latin-regular.woff') format('woff'),
-        /* Modern Browsers */
-        url('%PUBLIC_URL%/fonts/roboto-v18-latin-regular.ttf') format('truetype'),
-        /* Safari, Android, iOS */
-        url('%PUBLIC_URL%/fonts/roboto-v18-latin-regular.svg#Roboto') format('svg');
-      /* Legacy iOS */
-    }
+      /* roboto-500 - latin */
+      @font-face {
+        font-family: "Roboto";
+        font-display: auto;
+        font-style: normal;
+        font-weight: 500;
+        src: url("%PUBLIC_URL%/fonts/roboto-v18-latin-500.eot");
+        /* IE9 Compat Modes */
+        src: local("Roboto Medium"), local("Roboto-Medium"),
+          url("%PUBLIC_URL%/fonts/roboto-v18-latin-500.eot?#iefix")
+            format("embedded-opentype"),
+          /* IE6-IE8 */ url("%PUBLIC_URL%/fonts/roboto-v18-latin-500.woff2")
+            format("woff2"),
+          /* Super Modern Browsers */
+            url("%PUBLIC_URL%/fonts/roboto-v18-latin-500.woff") format("woff"),
+          /* Modern Browsers */
+            url("%PUBLIC_URL%/fonts/roboto-v18-latin-500.ttf")
+            format("truetype"),
+          /* Safari, Android, iOS */
+            url("%PUBLIC_URL%/fonts/roboto-v18-latin-500.svg#Roboto")
+            format("svg");
+        /* Legacy iOS */
+      }
+    </style>
+    <link
+      rel="apple-touch-icon"
+      sizes="512x512"
+      href="%PUBLIC_URL%/assets/emoryapplelogo.png"
+    />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/assets/splashscreen.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Emory Care</title>
+  </head>
 
-    /* roboto-500 - latin */
-    @font-face {
-      font-family: 'Roboto';
-      font-display: auto;
-      font-style: normal;
-      font-weight: 500;
-      src: url('%PUBLIC_URL%/fonts/roboto-v18-latin-500.eot');
-      /* IE9 Compat Modes */
-      src: local('Roboto Medium'), local('Roboto-Medium'),
-        url('%PUBLIC_URL%/fonts/roboto-v18-latin-500.eot?#iefix') format('embedded-opentype'),
-        /* IE6-IE8 */
-        url('%PUBLIC_URL%/fonts/roboto-v18-latin-500.woff2') format('woff2'),
-        /* Super Modern Browsers */
-        url('%PUBLIC_URL%/fonts/roboto-v18-latin-500.woff') format('woff'),
-        /* Modern Browsers */
-        url('%PUBLIC_URL%/fonts/roboto-v18-latin-500.ttf') format('truetype'),
-        /* Safari, Android, iOS */
-        url('%PUBLIC_URL%/fonts/roboto-v18-latin-500.svg#Roboto') format('svg');
-      /* Legacy iOS */
-    }
-  </style>
-  <link rel="apple-touch-icon" sizes="512x512" href="%PUBLIC_URL%/assets/emoryapplelogo.png">
-  <link rel="shortcut icon" href="%PUBLIC_URL%/assets/splashscreen.png">
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <title>Emory Care</title>
-</head>
-
-<body style='background: #ffffff'>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
-</body>
-
+  <body style="background: #ffffff">
+    <noscript>Welcome, You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
 </html>

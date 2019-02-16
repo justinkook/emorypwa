@@ -1,15 +1,14 @@
-import React, { lazy, Suspense } from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
-import { BrowserRouter, Route } from 'react-router-dom'
-import * as serviceWorker from './serviceWorker'
-import LinearIndeterminate from './components/material/Loading'
-import { MyProvider } from './components/utils/ContextApi'
-import App from './App'
-import { ResultContext } from './components/utils/ContextApi'
-import Insurance from './components/SideBar/Insurance'
-import Appointments from './components/SideBar/Appointments'
-const Container = lazy(() => import('./components/screens/Container'))
+import React, { lazy, Suspense } from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import { BrowserRouter, Route } from "react-router-dom";
+import * as serviceWorker from "./serviceWorker";
+import LinearIndeterminate from "./components/material/Loading";
+import { MyProvider } from "./components/utils/ContextApi";
+import App from "./App";
+import { ResultContext } from "./components/utils/ContextApi";
+import Insurance from "./components/SideBar/Insurance";
+const Container = lazy(() => import("./components/screens/Container"));
 
 const router = (
   <Suspense fallback={<LinearIndeterminate />}>
@@ -18,20 +17,19 @@ const router = (
         {context => (
           <BrowserRouter>
             <div>
-              <Route exact path='/' render={() => <App />} />
+              <Route exact path="/" render={() => <App />} />
               <Route
-                path='/search'
+                path="/search"
                 render={() => <Container context={context} />}
               />
-              <Route path='/insurance' render={() => <Insurance />} />
-              <Route path='/appointments' render={() => <Appointments />} />
+              <Route path="/insurance" render={() => <Insurance />} />
             </div>
           </BrowserRouter>
         )}
       </ResultContext.Consumer>
     </MyProvider>
   </Suspense>
-)
+);
 
-ReactDOM.render(router, document.getElementById('root'))
-serviceWorker.register()
+ReactDOM.render(router, document.getElementById("root"));
+serviceWorker.register();
