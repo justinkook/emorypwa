@@ -148,7 +148,7 @@ class Main extends React.Component {
                       variant="subtitle2"
                       className={classes.subtitle}
                     >
-                      Find care near you
+                      Find nearby care
                     </Typography>
                     <Paper className={classes.paper}>
                       <CustomizedInputBase context={context} />
