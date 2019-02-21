@@ -1,16 +1,16 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import AddBoxIcon from '@material-ui/icons/AddBox'
-import CloseIcon from '@material-ui/icons/Close'
-import IconButton from '@material-ui/core/IconButton'
-import Snackbar from '@material-ui/core/Snackbar'
-import SnackbarContent from '@material-ui/core/SnackbarContent'
-import { withStyles } from '@material-ui/core/styles'
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import AddBoxIcon from "@material-ui/icons/AddBox";
+import CloseIcon from "@material-ui/icons/Close";
+import IconButton from "@material-ui/core/IconButton";
+import Snackbar from "@material-ui/core/Snackbar";
+import SnackbarContent from "@material-ui/core/SnackbarContent";
+import { withStyles } from "@material-ui/core/styles";
 
 const variantIcon = {
   info: AddBoxIcon
-}
+};
 
 const styles1 = theme => ({
   info: {
@@ -24,30 +24,30 @@ const styles1 = theme => ({
     marginRight: theme.spacing.unit
   },
   message: {
-    display: 'flex',
-    alignItems: 'center'
+    display: "flex",
+    alignItems: "center"
   }
-})
+});
 
-function MySnackbarContent (props) {
-  const { classes, className, message, onClose, variant, ...other } = props
-  const Icon = variantIcon[variant]
+function MySnackbarContent(props) {
+  const { classes, className, message, onClose, variant, ...other } = props;
+  const Icon = variantIcon[variant];
 
   return (
     <SnackbarContent
       className={classNames(classes[variant], className)}
-      aria-describedby='client-snackbar'
+      aria-describedby="client-snackbar"
       message={
-        <span id='client-snackbar' className={classes.message}>
+        <span id="client-snackbar" className={classes.message}>
           <Icon className={classNames(classes.icon, classes.iconVariant)} />
           {message}
         </span>
       }
       action={[
         <IconButton
-          key='close'
-          aria-label='Close'
-          color='inherit'
+          key="close"
+          aria-label="Close"
+          color="inherit"
           className={classes.close}
           onClick={onClose}
         >
@@ -56,7 +56,7 @@ function MySnackbarContent (props) {
       ]}
       {...other}
     />
-  )
+  );
 }
 
 MySnackbarContent.propTypes = {
@@ -64,54 +64,54 @@ MySnackbarContent.propTypes = {
   className: PropTypes.string,
   message: PropTypes.node,
   onClose: PropTypes.func,
-  variant: PropTypes.oneOf(['info']).isRequired
-}
+  variant: PropTypes.oneOf(["info"]).isRequired
+};
 
-const MySnackbarContentWrapper = withStyles(styles1)(MySnackbarContent)
+const MySnackbarContentWrapper = withStyles(styles1)(MySnackbarContent);
 
 class CustomizedSnackbars extends React.Component {
   state = {
     open: false
-  }
+  };
 
   handleClick = () => {
-    this.setState({ open: true })
-  }
+    this.setState({ open: true });
+  };
 
   handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return
+    if (reason === "clickaway") {
+      return;
     }
 
-    this.setState({ open: false })
-  }
+    this.setState({ open: false });
+  };
 
   componentDidMount = () => {
-    this.handleClick()
-  }
+    this.handleClick();
+  };
 
-  render () {
+  render() {
     return (
       <div>
         <Snackbar
           anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left'
+            vertical: "bottom",
+            horizontal: "left"
           }}
           open={this.state.open}
-          autoHideDuration={4000}
+          autoHideDuration={3000}
           onClose={this.handleClose}
         >
           <MySnackbarContentWrapper
             onClose={this.handleClose}
-            variant='info'
-            message='To install app on Safari iOS:
-            Tap Share Icon and then Add to Home Screen'
+            variant="info"
+            message="To install app on Safari iOS:
+            Tap Share Icon and then Add to Home Screen"
           />
         </Snackbar>
       </div>
-    )
+    );
   }
 }
 
-export default CustomizedSnackbars
+export default CustomizedSnackbars;
