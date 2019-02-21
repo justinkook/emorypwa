@@ -90,6 +90,7 @@ const styles = theme => ({
   },
   searchIcon: {
     position: "absolute",
+    paddingLeft: 32,
     right: 5,
     height: 32,
     width: 32,

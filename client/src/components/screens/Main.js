@@ -13,11 +13,13 @@ import CustomizedInputBase from "../material/SearchBar";
 import { ResultContext } from "../utils/ContextApi";
 
 const drawerWidth = 240;
+const windowHeight = window.screen.height;
 
 const styles = theme => ({
   root: {
     width: "100%",
-    flexGrow: 1
+    flexGrow: 1,
+    height: `calc(${windowHeight}px - 9em)`
   },
   header: {
     display: "flex",
@@ -52,8 +54,7 @@ const styles = theme => ({
     marginTop: ".8em"
   },
   searchPage: {
-    width: "100%",
-    height: "49em"
+    width: "100%"
   },
   mobileStepper: {
     position: "fixed",

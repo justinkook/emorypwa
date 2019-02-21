@@ -25,6 +25,7 @@ TabContainer.propTypes = {
 };
 
 const drawerWidth = 240;
+const windowHeight = window.screen.height;
 
 const styles = theme => ({
   root: {
@@ -86,6 +87,7 @@ class TabBar extends React.Component {
               axis={theme.direction === "rtl" ? "x-reverse" : "x"}
               index={this.state.value}
               onChangeIndex={this.handleChangeIndex}
+              className={classes.height}
             >
               <TabContainer dir={theme.direction}>
                 <Main context={context} />
