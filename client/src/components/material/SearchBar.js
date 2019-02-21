@@ -50,7 +50,7 @@ function CustomizedInputBase(props) {
           <form onSubmit={e => context.handleGetAll(e)}>
             <InputBase
               className={classes.input}
-              placeholder="Search location"
+              placeholder="Search by zip code"
               autoComplete="shipping postal-code"
               aria-label="Search by location"
               value={context.state.locationInput}

@@ -16,6 +16,7 @@ const drawerWidth = 240;
 const styles = theme => ({
   root: {
     width: "100%",
+    marginTop: "1em",
     [theme.breakpoints.up("sm")]: {
       width: `calc(100% - ${drawerWidth}px)`,
       maxWidth: 600,
@@ -27,7 +28,7 @@ const styles = theme => ({
   avatar: {
     margin: 25,
     color: "#fff",
-    position: "absolute"
+    float: "right"
   },
   heading: {
     textAlign: "left",
@@ -60,8 +61,7 @@ const styles = theme => ({
     display: "inline-flex"
   },
   card: {
-    // background: "#24356f",
-    background: "#1A3A8B",
+    background: "#24356f",
     marginBottom: "0.8em"
   },
   cardContent: {

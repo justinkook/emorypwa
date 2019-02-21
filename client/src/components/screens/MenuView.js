@@ -12,10 +12,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Toolbar from "@material-ui/core/Toolbar";
 import CardMedia from "@material-ui/core/CardMedia";
 import { withStyles } from "@material-ui/core/styles";
-import CustomizedInputBase from "../material/SearchBar";
 import BeenHereIcon from "@material-ui/icons/BeenhereOutlined";
-import InsertInvitation from "@material-ui/icons/InsertInvitationOutlined";
-import CloudOffIcon from "@material-ui/icons/CloudOffOutlined";
 import SearchIcon from "@material-ui/icons/SearchOutlined";
 import { Link } from "react-router-dom";
 import { ResultContext } from "../utils/ContextApi";
@@ -32,7 +29,8 @@ const styles = theme => ({
     justifyContent: "space-between",
     alignItems: "flex-end",
     paddingBottom: 9,
-    marginTop: 5
+    marginTop: 5,
+    boxShadow: "none"
   },
   drawer: {
     [theme.breakpoints.up("sm")]: {
@@ -44,17 +42,18 @@ const styles = theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
-    marginTop: 15,
-    padding: "0 8px",
-    ...theme.mixins.toolbar
+    marginTop: "52%",
+    padding: "0 8px"
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     height: 72,
-    // boxShadow:
-    //   "0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)",
+    boxShadow: "none",
     background: "white",
-    boxShadow: "none"
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: drawerWidth,
+      width: `calc(100% - ${drawerWidth}px)`
+    }
   },
   media: {
     maxWidth: 90,
@@ -78,7 +77,6 @@ const styles = theme => ({
     justifyContent: "center",
     border: "2px solid rgb(6, 67, 94)",
     borderRadius: 6 + "px",
-    boxShadow: "none",
     width: "100%"
   },
   link: {
@@ -107,9 +105,7 @@ const styles = theme => ({
     top: "1.85em",
     color: "rgb(6, 67, 94)"
   },
-  table: {
-    minHeight: "80vh"
-  },
+
   height: {
     height: 72,
     boxShadow: "none"

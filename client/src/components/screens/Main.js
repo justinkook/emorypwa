@@ -7,12 +7,10 @@ import Button from "@material-ui/core/Button";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
-import MenuView from "./MenuView";
 import DetailedExpansionPanel from "../material/DetailedExpansionPanel";
-import { Typography, Divider } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import CustomizedInputBase from "../material/SearchBar";
 import { ResultContext } from "../utils/ContextApi";
-import CardActions from "@material-ui/core/CardActions";
 
 const drawerWidth = 240;
 
@@ -41,18 +39,21 @@ const styles = theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    border: "2px solid rgb(6, 67, 94)",
-    borderRadius: 6 + "px",
+    borderRadius: 6,
     boxShadow: "none",
     width: "100%",
     marginTop: 30,
-    marginBottom: 30
+    marginBottom: 30,
+    maxWidth: 600
   },
   padding: {
-    padding: 15
+    padding: 20,
+    backgroundColor: "#24356f",
+    marginTop: ".8em"
   },
   searchPage: {
-    width: "100%"
+    width: "100%",
+    height: "49em"
   },
   mobileStepper: {
     position: "fixed",
@@ -64,7 +65,23 @@ const styles = theme => ({
     }
   },
   title: {
-    marginTop: 30
+    marginTop: "20%",
+    color: "white"
+  },
+  table: {
+    width: "100%"
+  },
+  subtitle: {
+    marginTop: 10,
+    color: "white"
+  },
+  button: {
+    color: "white",
+    border: "1px solid white",
+    marginBottom: "15%",
+    marginTop: 10,
+    borderRadius: 56,
+    padding: "4px 18px"
   }
 });
 
@@ -114,9 +131,6 @@ class Main extends React.Component {
       <ResultContext.Consumer>
         {context => (
           <div className={classes.root}>
-            <div className={classes.header}>
-              <MenuView context={context} />
-            </div>
             <SwipeableViews
               axis={theme.direction === "rtl" ? "x-reverse" : "x"}
               index={activeStep}
@@ -124,65 +138,72 @@ class Main extends React.Component {
               enableMouseEvents
               className={classes.searchPage}
             >
-              <div className={classes.searchPage}>
+              <div>
                 <div className={classes.rootPaper}>
-                  <Paper className={classes.padding}>
-                    {/* <Typography variant="title" className={classes.title}>
-                      Greetings.
-                    </Typography> */}
-                    <Typography variant="title" className={classes.title}>
-                      What's your Zip Code?
+                  <div className={classes.padding}>
+                    <Typography variant="h4" className={classes.title}>
+                      Where's your Location?
+                    </Typography>
+                    <Typography
+                      variant="subtitle2"
+                      className={classes.subtitle}
+                    >
+                      Find care near you
                     </Typography>
                     <Paper className={classes.paper}>
                       <CustomizedInputBase context={context} />
                     </Paper>
-                  </Paper>
+                    <Button
+                      size="small"
+                      className={classes.button}
+                      onClick={e => context.handleGetAll(e)}
+                    >
+                      Search Nearby
+                    </Button>
+                  </div>
                   {context.state.placesOn ? placesList : null}
-                  {/* <CardActions>
-                      <Button color="primary" size="small">
-                        Search Nearby
-                      </Button>
-                    </CardActions> */}
                 </div>
               </div>
-              <div className={classes.searchPage}>
+              <div>
                 <DetailedExpansionPanel />
               </div>
             </SwipeableViews>
-            <MobileStepper
-              steps={maxSteps}
-              position="static"
-              activeStep={activeStep}
-              className={classes.mobileStepper}
-              nextButton={
-                <Button
-                  size="small"
-                  onClick={this.handleNext}
-                  disabled={activeStep === maxSteps - 1}
-                >
-                  {"Next"}
-                  {theme.direction === "rtl" ? (
-                    <KeyboardArrowLeft />
-                  ) : (
-                    <KeyboardArrowRight />
-                  )}
-                </Button>
-              }
-              backButton={
-                <Button
-                  size="small"
-                  onClick={this.handleBack}
-                  disabled={activeStep === 0}
-                >
-                  {theme.direction === "rtl" ? (
-                    <KeyboardArrowRight />
-                  ) : (
-                    <KeyboardArrowLeft />
-                  )}
-                  Back
-                </Button>
-              }
-            />
+            <div className={classes.mobileStepper}>
+              <MobileStepper
+                steps={maxSteps}
+                position="bottom"
+                activeStep={activeStep}
+                className={classes.mobileStepper}
+                nextButton={
+                  <Button
+                    size="small"
+                    onClick={this.handleNext}
+                    disabled={activeStep === maxSteps - 1}
+                  >
+                    {"Next"}
+                    {theme.direction === "rtl" ? (
+                      <KeyboardArrowLeft />
+                    ) : (
+                      <KeyboardArrowRight />
+                    )}
+                  </Button>
+                }
+                backButton={
+                  <Button
+                    size="small"
+                    onClick={this.handleBack}
+                    disabled={activeStep === 0}
+                  >
+                    {theme.direction === "rtl" ? (
+                      <KeyboardArrowRight />
+                    ) : (
+                      <KeyboardArrowLeft />
+                    )}
+                    Back
+                  </Button>
+                }
+              />
+            </div>
           </div>
         )}
       </ResultContext.Consumer>

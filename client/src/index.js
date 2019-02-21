@@ -7,7 +7,6 @@ import LinearIndeterminate from "./components/material/Loading";
 import { MyProvider } from "./components/utils/ContextApi";
 import App from "./App";
 import { ResultContext } from "./components/utils/ContextApi";
-import Insurance from "./components/SideBar/Insurance";
 const Container = lazy(() => import("./components/screens/Container"));
 
 const router = (
@@ -22,7 +21,6 @@ const router = (
                 path="/search"
                 render={() => <Container context={context} />}
               />
-              <Route path="/insurance" render={() => <Insurance />} />
             </div>
           </BrowserRouter>
         )}

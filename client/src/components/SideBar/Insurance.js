@@ -3,18 +3,52 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import "./insurance.css";
-import ResponsiveDrawer from "./TopNav";
+import InsuranceSearch from "./InsuranceSearchBar";
+import Paper from "@material-ui/core/Paper";
+import { Typography, Divider } from "@material-ui/core";
 
 const drawerWidth = 240;
 
 const styles = theme => ({
   table: {
+    maxHeight: 0,
     [theme.breakpoints.up("sm")]: {
       marginLeft: drawerWidth,
       width: `calc(100% - ${drawerWidth}px)`
     }
+  },
+  root: {
+    display: "flex",
+    padding: 15,
+    justifyContent: "space-between",
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: drawerWidth,
+      width: `calc(100% - ${drawerWidth}px)`
+    }
+  },
+  title: {
+    color: "rgb(6, 67, 94)",
+    fontSize: 28,
+    marginTop: 20,
+    marginBottom: 30
+  },
+  paper: {
+    padding: "2px 4px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    border: "2px solid rgb(6, 67, 94)",
+    borderRadius: 6 + "px",
+    boxShadow: "none",
+    width: "100%",
+    maxWidth: 600
+  },
+  margin: {
+    marginTop: 10,
+    marginBottom: 20
   }
 });
+
 class Insurance extends Component {
   state = {
     isLoading: false,
@@ -87,21 +121,27 @@ class Insurance extends Component {
     return (
       <div>
         <main>
-          <div className="content">
+          <div className={classes.root}>
             <form
               className="inputWithIcon"
               onSubmit={event => this.submitFilterList(event)}
             >
-              <ResponsiveDrawer
-                value={this.state.inputFilter}
-                onChange={this.handleInputChange}
-                handleLocationClear={this.handleLocationClear}
-                title={"Insurance"}
-                bar
-              />
-              <input type="submit" className="hidden" />
+              <div className={classes.margin}>
+                <Typography variant="title" className={classes.title}>
+                  Insurance
+                </Typography>
+                <Paper className={classes.paper}>
+                  <InsuranceSearch
+                    value={this.state.inputFilter}
+                    onChange={this.handleInputChange}
+                    handleLocationClear={this.handleLocationClear}
+                  />
+                </Paper>
+                <input type="submit" className="hidden" />
+              </div>
             </form>
           </div>
+          <Divider />
           <table id="listArea" className={classes.table}>
             {this.state.insuranceList.map((e, i) => (
               <tbody key={i}>

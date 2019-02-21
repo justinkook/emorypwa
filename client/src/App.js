@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import MenuView from "./components/screens/MenuView";
-import DetailedExpansionPanel from "./components/material/DetailedExpansionPanel";
-import { ResultContext } from "./components/utils/ContextApi";
 import CustomizedSnackbars from "./components/utils/addToHome";
-import Main from "./components/screens/Main";
+import TabBar from "./components/material/TabContainer";
 
 const popupOnce = localStorage.getItem("popupStatus");
 class App extends Component {
@@ -39,18 +36,10 @@ class App extends Component {
 
   render() {
     return (
-      <ResultContext.Consumer>
-        {context => (
-          <div className="App">
-            <Main context={context} />
-            {/* <MenuView context={context} />
-            <div style={this.styles.resultsContainer}>
-              <DetailedExpansionPanel />
-            </div> */}
-            {this.state.showInstallMessage ? <CustomizedSnackbars /> : null}
-          </div>
-        )}
-      </ResultContext.Consumer>
+      <div className="App">
+        <TabBar />
+        {this.state.showInstallMessage ? <CustomizedSnackbars /> : null}
+      </div>
     );
   }
 }

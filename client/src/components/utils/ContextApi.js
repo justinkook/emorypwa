@@ -16,7 +16,7 @@ export class MyProvider extends Component {
     centerCoord: { lat: 33.78948, lng: -84.32095 },
     resultList: [],
     placesOn: false,
-    placesList: [previousLocationInput]
+    placesList: ["Last Location", previousLocationInput]
   };
 
   signal = axios.CancelToken.source();
@@ -94,7 +94,7 @@ export class MyProvider extends Component {
   getCenter = async () => {
     try {
       let location = this.state.locationInput;
-      const queryURL = `api/geocode/GA ${location}`;
+      const queryURL = `api/geocode/${location}`;
       let response = await axios.get(queryURL, {
         cancelToken: this.signal.token
       });
