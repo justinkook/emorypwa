@@ -25,7 +25,6 @@ TabContainer.propTypes = {
 };
 
 const drawerWidth = 240;
-const windowHeight = window.screen.height;
 
 const styles = theme => ({
   root: {

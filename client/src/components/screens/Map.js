@@ -1,31 +1,31 @@
-import React, { Component } from 'react'
-import { ResultContext } from '../utils/ContextApi'
-import ReactMapGL, { Marker, Popup, FlyToInterpolator } from 'react-map-gl'
-import 'mapbox-gl/dist/mapbox-gl.css'
-import CityPin from './CityPin'
-import LocationOnIcon from '@material-ui/icons/LocationOnOutlined'
-import Avatar from '@material-ui/core/Avatar'
+import React, { Component } from "react";
+import { ResultContext } from "../utils/ContextApi";
+import ReactMapGL, { Marker, Popup, FlyToInterpolator } from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+import CityPin from "./CityPin";
+import LocationOnIcon from "@material-ui/icons/LocationOnOutlined";
+import Avatar from "@material-ui/core/Avatar";
 
 const styles = {
   map: {
-    position: 'fixed',
+    position: "fixed",
     zIndex: 1
   },
   navStyle: {
-    position: 'absolute',
+    position: "fixed",
     bottom: 50,
     right: 0,
-    padding: '2px',
+    padding: "2px",
     zIndex: 999,
     margin: 10
   },
   avatar: {
     width: 60,
     height: 60,
-    color: '#fff',
+    color: "#fff",
     boxShadow:
-      '0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)',
-    backgroundColor: 'rgb(0, 122, 255)'
+      "0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)",
+    backgroundColor: "rgb(0, 122, 255)"
   },
   avatarIcon: {
     height: 35,
@@ -34,26 +34,26 @@ const styles = {
   locationIcon: {
     height: 45,
     width: 45,
-    color: 'rgb(0, 122, 255)'
+    color: "rgb(0, 122, 255)"
   }
-}
+};
 
 class Map extends Component {
   state = {
     viewport: {
-      width: '100vw',
-      height: '100vh',
+      width: "100vw",
+      height: "100vh",
       zoom: 10,
       longitude: -84.44877199999999,
       latitude: 33.7946333
     },
     popupInfo: null
-  }
+  };
 
   _onViewportChange = viewport =>
     this.setState({
       viewport: { ...this.state.viewport, ...viewport }
-    })
+    });
 
   _goToViewport = ({ longitude, latitude }) => {
     this._onViewportChange({
@@ -62,20 +62,20 @@ class Map extends Component {
       zoom: 11,
       transitionInterpolator: new FlyToInterpolator(),
       transitionDuration: 400
-    })
-  }
+    });
+  };
 
   _updateViewportHome = () => {
     this.setState({
       viewport: {
-        width: '100vw',
-        height: '100vh',
+        width: "100vw",
+        height: "100vh",
         longitude: this.props.context.state.centerCoord.lng,
         latitude: this.props.context.state.centerCoord.lat,
         zoom: 11
       }
-    })
-  }
+    });
+  };
 
   _renderCityMarker = (e, i) => {
     return (
@@ -94,16 +94,16 @@ class Map extends Component {
             this._goToViewport({
               longitude: e.coordinates.longitude,
               latitude: e.coordinates.latitude
-            })
-            this.setState({ popupInfo: e })
+            });
+            this.setState({ popupInfo: e });
           }}
         />
       </Marker>
-    )
-  }
+    );
+  };
 
-  _renderPopup () {
-    const { popupInfo } = this.state
+  _renderPopup() {
+    const { popupInfo } = this.state;
 
     return (
       popupInfo && (
@@ -120,21 +120,21 @@ class Map extends Component {
           {popupInfo.name}
         </Popup>
       )
-    )
+    );
   }
 
   componentDidMount = () => {
     this.setState({
       viewport: {
-        width: '100vw',
-        height: '100vh',
+        width: "100vw",
+        height: "100vh",
         longitude: this.props.context.state.centerCoord.lng,
         latitude: this.props.context.state.centerCoord.lat,
         zoom: 10
       }
-    })
-    this.props.context.confirmGetAll()
-  }
+    });
+    this.props.context.confirmGetAll();
+  };
 
   componentDidUpdate = prevProps => {
     if (
@@ -143,32 +143,32 @@ class Map extends Component {
     ) {
       this.setState({
         viewport: {
-          width: '100vw',
-          height: '100vh',
+          width: "100vw",
+          height: "100vh",
           longitude: this.props.context.state.resultList[0].coordinates
             .longitude,
           latitude: this.props.context.state.resultList[0].coordinates.latitude,
           zoom: 11
         }
-      })
+      });
     }
-  }
+  };
 
-  render () {
+  render() {
     return (
       <ResultContext.Consumer>
         {context => (
           <div style={styles.map}>
             <ReactMapGL
-              width='100%'
-              height='100%'
+              width="100%"
+              height="100%"
               mapboxApiAccessToken={
-                'pk.eyJ1IjoianVzdGlua29vayIsImEiOiJjanJmcGUyZDQxNjhoNDRsNW13OTU1cXRrIn0.IO6wM4mko07wPKDbyD5jOA'
+                "pk.eyJ1IjoianVzdGlua29vayIsImEiOiJjanJmcGUyZDQxNjhoNDRsNW13OTU1cXRrIn0.IO6wM4mko07wPKDbyD5jOA"
               }
               transitionDuration={400}
               transitionInterpolator={new FlyToInterpolator()}
               reuseMaps
-              mapStyle={'mapbox://styles/mapbox/light-v9?optimize=true'}
+              mapStyle={"mapbox://styles/mapbox/light-v9?optimize=true"}
               {...this.state.viewport}
               onViewportChange={this._onViewportChange}
             >
@@ -184,7 +184,7 @@ class Map extends Component {
               </Marker>
               {context.state.resultList.map(this._renderCityMarker)}
               {this._renderPopup()}
-              <div className='nav' style={styles.navStyle}>
+              <div className="nav" style={styles.navStyle}>
                 <Avatar style={styles.avatar}>
                   <LocationOnIcon
                     style={styles.avatarIcon}
@@ -196,8 +196,8 @@ class Map extends Component {
           </div>
         )}
       </ResultContext.Consumer>
-    )
+    );
   }
 }
 
-export default Map
+export default Map;

@@ -20,6 +20,9 @@ import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/MenuOutlined";
+import EventAvailableIcon from "@material-ui/icons/EventAvailableOutlined";
+import LocalLibraryIcon from "@material-ui/icons/LocalLibraryOutlined";
+import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 
 const drawerWidth = 240;
 
@@ -42,7 +45,7 @@ const styles = theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
-    marginTop: "52%",
+    marginTop: "30%",
     padding: "0 8px"
   },
   appBar: {
@@ -153,12 +156,51 @@ class ResponsiveDrawer extends React.Component {
             </ListItem>
           </Link>
           <Divider />
-          <Link to={`/`} className={classes.link}>
-            <ListItem button className={classes.terms}>
-              <ListItemText secondary={"Privacy | Terms of Use"} />
-            </ListItem>
-          </Link>
         </List>
+        <ListItem button>
+          <ListItemText primary={"External Links"} />
+        </ListItem>
+        <a
+          href={
+            "https://www.emoryhealthcare.org/contact/health-connection.html"
+          }
+          className={classes.link}
+        >
+          <ListItem button>
+            <ListItemIcon>
+              <EventAvailableIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Appointments"} />
+          </ListItem>
+        </a>
+        <a
+          href={"https://www.emoryhealthcare.org/patient-portal/index.html"}
+          className={classes.link}
+        >
+          <ListItem button>
+            <ListItemIcon>
+              <LocalLibraryIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Patient Portal"} />
+          </ListItem>
+        </a>
+        <a
+          href={"https://github.com/justinkook/emorypwa/issues"}
+          className={classes.link}
+        >
+          <ListItem button>
+            <ListItemIcon>
+              <ErrorOutlineIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Report an Issue"} />
+          </ListItem>
+        </a>
+        <Divider />
+        <Link to={`/`} className={classes.link}>
+          <ListItem button className={classes.terms}>
+            <ListItemText secondary={"Terms of Use"} />
+          </ListItem>
+        </Link>
       </div>
     );
 
