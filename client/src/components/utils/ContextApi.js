@@ -94,7 +94,7 @@ export class MyProvider extends Component {
   getCenter = async () => {
     try {
       let location = this.state.locationInput;
-      const queryURL = `api/geocode/${location}`;
+      const queryURL = `api/geocode/${location}, USA`;
       let response = await axios.get(queryURL, {
         cancelToken: this.signal.token
       });
@@ -108,7 +108,7 @@ export class MyProvider extends Component {
       });
       if (formattedAddress !== this.state.placesList[0]) {
         this.setState({
-          placesList: [formattedAddress, ...this.state.placesList.slice(0, 4)]
+          placesList: [formattedAddress, ...this.state.placesList.slice(0, 2)]
         });
       }
       if (this.state.searchTerm) {
@@ -183,11 +183,15 @@ export class MyProvider extends Component {
           handleGetAll: e => this.handleGetAll(e),
           confirmGetAll: () => this.confirmGetAll(),
           handleLocationUpdate: e => {
-            this.setState({
-              locationInput: e.target.value,
-              placesOn: true
-            });
-            this.getCenter();
+            this.setState(
+              {
+                locationInput: e.target.value,
+                placesOn: true
+              },
+              () => {
+                this.getCenter();
+              }
+            );
           },
           handleLocationClear: () =>
             this.setState({

@@ -70,7 +70,8 @@ const styles = theme => ({
     color: "white"
   },
   table: {
-    width: "100%"
+    width: "100%",
+    marginBottom: 50
   },
   subtitle: {
     marginTop: 10,
