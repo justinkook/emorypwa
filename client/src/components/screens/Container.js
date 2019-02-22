@@ -1,65 +1,64 @@
-import React, { lazy, Suspense } from 'react'
-import ExpansionPanel from '@material-ui/core/ExpansionPanel'
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
-import Typography from '@material-ui/core/Typography'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import ComplexGrid from '../material/ComplexGrid'
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeftOutlined'
-import { Link } from 'react-router-dom'
-import LinearIndeterminate from '../material/Loading'
-import { ResultContext } from '../utils/ContextApi'
-import { Divider } from '@material-ui/core'
-import DetailedExpansionPanel from './FilterBar'
-import ErrorBoundary from '../utils/ErrorBoundary'
-const Map = lazy(() => import('./Map'))
+import React, { lazy, Suspense } from "react";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import Typography from "@material-ui/core/Typography";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ComplexGrid from "../material/ComplexGrid";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeftOutlined";
+import { Link } from "react-router-dom";
+import LinearIndeterminate from "../material/Loading";
+import { ResultContext } from "../utils/ContextApi";
+import { Divider } from "@material-ui/core";
+import DetailedExpansionPanel from "./FilterBar";
+import ErrorBoundary from "../utils/ErrorBoundary";
+const Map = lazy(() => import("./Map"));
 
 const styles = {
   paper: {
-    padding: '2px 0 4px 0',
-    display: 'flex',
-    alignItems: 'center',
+    padding: "2px 0 4px 0",
+    display: "flex",
+    alignItems: "center",
     maxWidth: 350,
-    justifyContent: 'center',
-    borderRadius: 6 + 'px',
-    margin: '20px',
-    background: 'white',
-    position: 'sticky',
+    justifyContent: "center",
+    borderRadius: 6 + "px",
+    margin: "20px",
+    background: "white",
+    position: "sticky",
     top: 10,
-    width: 85 + '%'
+    width: 85 + "%"
   },
   ResultsCard: {
-    position: 'relative',
-    width: 100 + '%',
+    position: "relative",
+    width: 100 + "%",
     maxWidth: 600,
     zIndex: 400
   },
   heading: {
-    color: 'rgb(6, 67, 94)'
+    color: "rgb(6, 67, 94)"
   },
   details: {
-    textAlign: 'left',
-    display: 'block',
-    minHeight: 60 + 'vh',
-    flexDirection: 'column',
+    textAlign: "left",
+    display: "block",
+    flexDirection: "column",
     paddingTop: 70
   },
   column: {
-    flexBasis: '100%',
+    flexBasis: "100%",
     paddingTop: 4,
     marginLeft: 32,
-    position: 'absolute',
-    textAlign: 'center',
-    left: 10 + '%',
-    right: 10 + '%'
+    position: "absolute",
+    textAlign: "center",
+    left: 10 + "%",
+    right: 10 + "%"
   },
   input: {
     flex: 1,
-    color: 'rgb(6, 47, 94)'
+    color: "rgb(6, 47, 94)"
   },
   iconButton: {
     padding: 10,
-    color: 'rgb(6, 47, 94)'
+    color: "rgb(6, 47, 94)"
   },
   divider: {
     width: 1,
@@ -67,24 +66,24 @@ const styles = {
     margin: 4
   },
   leftArrow: {
-    fill: 'rgb(6, 47, 94)',
+    fill: "rgb(6, 47, 94)",
     fontSize: 30
   },
   sticky: {
-    position: 'fixed',
+    position: "fixed",
     top: 0,
-    width: 100 + '%',
+    width: 100 + "%",
     maxWidth: 600,
     padding: 0,
     height: 70,
-    background: 'white',
+    background: "white",
     boxShadow:
-      '0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)'
+      "0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)"
   }
-}
+};
 
 class Container extends React.Component {
-  render () {
+  render() {
     return (
       <Suspense fallback={<LinearIndeterminate />}>
         <ResultContext.Consumer>
@@ -101,12 +100,12 @@ class Container extends React.Component {
                   >
                     <Link
                       to={`/`}
-                      style={{ display: 'flex', padding: '0 20px 0 20px' }}
+                      style={{ display: "flex", padding: "0 20px 0 20px" }}
                     >
                       <KeyboardArrowLeft style={styles.leftArrow} />
                     </Link>
                     <div style={styles.column}>
-                      <Typography variant='title' style={styles.heading}>
+                      <Typography variant="title" style={styles.heading}>
                         {context.state.searchTerm}
                       </Typography>
                     </div>
@@ -136,8 +135,8 @@ class Container extends React.Component {
           )}
         </ResultContext.Consumer>
       </Suspense>
-    )
+    );
   }
 }
 
-export default Container
+export default Container;
