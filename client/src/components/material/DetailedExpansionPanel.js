@@ -16,7 +16,7 @@ const drawerWidth = 240;
 const styles = theme => ({
   root: {
     width: "100%",
-    marginTop: "1em",
+    marginTop: "0.8em",
     [theme.breakpoints.up("sm")]: {
       width: `calc(100% - ${drawerWidth}px)`,
       maxWidth: 600,
