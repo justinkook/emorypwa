@@ -118,7 +118,7 @@ const styles = theme => ({
     position: "fixed",
     bottom: 0,
     maxWidth: 240,
-    textAlign: "left"
+    textAlign: "center"
   }
 });
 
@@ -145,14 +145,6 @@ class ResponsiveDrawer extends React.Component {
                 <SearchIcon />
               </ListItemIcon>
               <ListItemText primary={"Search"} />
-            </ListItem>
-          </Link>
-          <Link to={`/insurance`} className={classes.link}>
-            <ListItem button>
-              <ListItemIcon>
-                <BeenHereIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Insurance"} />
             </ListItem>
           </Link>
           <Divider />
