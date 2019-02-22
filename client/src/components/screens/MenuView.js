@@ -12,7 +12,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Toolbar from "@material-ui/core/Toolbar";
 import CardMedia from "@material-ui/core/CardMedia";
 import { withStyles } from "@material-ui/core/styles";
-import BeenHereIcon from "@material-ui/icons/BeenhereOutlined";
 import SearchIcon from "@material-ui/icons/SearchOutlined";
 import { Link } from "react-router-dom";
 import { ResultContext } from "../utils/ContextApi";
@@ -137,21 +136,10 @@ class ResponsiveDrawer extends React.Component {
     const drawer = (
       <div>
         <div className={classes.toolbarIcon} />
-        <Divider />
-        <List>
-          <Link to={`/`} className={classes.link}>
-            <ListItem button>
-              <ListItemIcon>
-                <SearchIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Search"} />
-            </ListItem>
-          </Link>
-          <Divider />
-        </List>
         <ListItem button>
           <ListItemText primary={"External Links"} />
         </ListItem>
+        <Divider />
         <a
           href={
             "https://www.emoryhealthcare.org/contact/health-connection.html"

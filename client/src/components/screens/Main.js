@@ -144,7 +144,7 @@ class Main extends React.Component {
                 <div className={classes.rootPaper}>
                   <div className={classes.padding}>
                     <Typography variant="h4" className={classes.title}>
-                      Where's your Location?
+                      Set your Location
                     </Typography>
                     <Typography
                       variant="subtitle2"

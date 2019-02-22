@@ -38,7 +38,7 @@ const styles = theme => ({
     alignItems: "center",
     justifyContent: "center",
     border: "2px solid rgb(6, 67, 94)",
-    borderRadius: 6 + "px",
+    borderRadius: 6,
     boxShadow: "none",
     width: "100%",
     maxWidth: 600
