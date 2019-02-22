@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import CustomizedSnackbars from "./components/utils/addToHome";
 import TabBar from "./components/material/TabContainer";
 
-const popupOnce = localStorage.getItem("popupStatus");
 class App extends Component {
   state = {
     showInstallMessage: false
@@ -26,11 +25,10 @@ class App extends Component {
       "standalone" in window.navigator && window.navigator.standalone;
 
     // Checks if should display install popup notification:
-    if (isIos() && !isInStandaloneMode() && !popupOnce) {
+    if (isIos() && !isInStandaloneMode()) {
       this.setState({
         showInstallMessage: true
       });
-      localStorage.setItem("popup", true);
     }
   };
 

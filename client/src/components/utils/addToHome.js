@@ -69,6 +69,8 @@ MySnackbarContent.propTypes = {
 
 const MySnackbarContentWrapper = withStyles(styles1)(MySnackbarContent);
 
+const installStatus = localStorage.getItem("installApp");
+
 class CustomizedSnackbars extends React.Component {
   state = {
     open: false
@@ -76,6 +78,7 @@ class CustomizedSnackbars extends React.Component {
 
   handleClick = () => {
     this.setState({ open: true });
+    localStorage.setItem("installApp", true);
   };
 
   handleClose = (event, reason) => {
@@ -87,7 +90,9 @@ class CustomizedSnackbars extends React.Component {
   };
 
   componentDidMount = () => {
-    this.handleClick();
+    if (!installStatus) {
+      this.handleClick();
+    }
   };
 
   render() {
@@ -99,7 +104,7 @@ class CustomizedSnackbars extends React.Component {
             horizontal: "left"
           }}
           open={this.state.open}
-          autoHideDuration={3000}
+          autoHideDuration={6000}
           onClose={this.handleClose}
         >
           <MySnackbarContentWrapper
