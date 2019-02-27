@@ -56,7 +56,7 @@ function CustomizedInputBase(props) {
               value={context.state.locationInput}
               required
               name="search"
-              type="tel"
+              type="search"
               onFocus={() => context.handleOnFocus()}
               onBlur={() => context.handleOffFocus()}
               onChange={e => context.handleLocationUpdate(e)}
