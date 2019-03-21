@@ -16,10 +16,10 @@ This is a mobile progressive web app for Emory Rehabilitation Outpatient service
 To get started with this project you will need to clone into the repository on your machine. 
 
 ```
-git clone https://github.com/justinkook/emorypwa
+git clone https://github.com/justinkook/emorypwa.git
 ```
 
-Once you have cloned the repository you will need to run `npm install` to install all of the needed packages to run the app. After you have installed the needed packages you can start a local server by running `npm start` in your terminal. Now you are ready run our app locally. 
+Once you have cloned the repository you will need to run `yarn install` to install all of the needed packages to run the app. After you have installed the needed packages you can start a local server by running `yarn start` in your terminal. Now you are ready run our app locally. 
 
 ### Prerequisites
 
