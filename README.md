@@ -148,6 +148,60 @@ POST `/api/search/:searchTerm/:locationTerm`
 ```
 </details>
 
+**Get Geolocation data for location**
+
+GET `/api/geocode/:location`
+
+<details>
+<summary><b>Response</b></summary>
+<br>
+
+```
+{
+    "_id" : ObjectId("5c115137a14517d4129ac364"),
+    "id" : "9",
+    "alias" : "delmar-gardens-of-gwinnett",
+    "name" : "Delmar Gardens of Gwinnett",
+    "image_url" : "f",
+    "is_closed" : false,
+    "url" : "https://www.yelp.com/biz/little-cuba-atlanta?adjust_creative=CLgHiB5viuC18AJ1iDIfZA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=CLgHiB5viuC18AJ1iDIfZA",
+    "review_count" : 99,
+    "categories" : [ 
+        {
+            "alias" : "nursing",
+            "title" : "Nursing"
+        }, 
+        {
+            "alias" : "facilities",
+            "title" : "Facilities"
+        }
+    ],
+    "rating" : 3.5,
+    "coordinates" : {
+        "latitude" : 33.93757,
+        "longitude" : -84.10032
+    },
+    "transactions" : "",
+    "price" : "$",
+    "location" : {
+        "address1" : "3100 Club Drive",
+        "address2" : "",
+        "address3" : "",
+        "city" : "Lawrenceville",
+        "zip_code" : "30044",
+        "country" : "US",
+        "state" : "GA",
+        "display_address" : [ 
+            "3100 Club Drive", 
+            "Lawrenceville, GA 30044"
+        ]
+    },
+    "phone" : "+17709233100",
+    "__v" : 0
+}
+```
+</details>
+
 ## Contributing
 
 We are currently accepting contributions to this project. Feel free to open any custom issues or bugs.
