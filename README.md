@@ -92,7 +92,7 @@ GET `/api/location/:alias`
     "__v" : 0
 }
 ```
-<details>
+</details>
 
 ## Contributing
 
