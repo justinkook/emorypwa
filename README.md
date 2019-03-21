@@ -4,32 +4,39 @@ This is a mobile progressive web app for Emory Rehabilitation Outpatient service
  **Future Implementations:**
 
 * Login feature with personalized landing page
-  - Shows user's doctor, insurance, upcoming appointments.
+  - Shows user's doctor, insurance, and upcoming appointments.
 * Filter by insurance and user's current insurance provider.
-* Each location shows hours and affiliated doctors.
-* Appointment reservation system if it does not conflict with Health-Connection
-
+* Each location shows hours and affiliated doctor phone and email.
+* Appointment reservation system
+* Chat system using sockets / Pusher API
 * Swap Mongo database to Firestore for real time accepted insurances.
 
 ## Getting Started
 
-To get started with this project you will need to clone into the repository on your machine. Once you have cloned the repository you will need to run `npm install` to install all of the needed packages to run the app. After you have installed the needed packages you can start a local server by running `npm start` in your terminal. Now you are ready run our app locally. 
+To get started with this project you will need to clone into the repository on your machine. 
+
+```
+git clone https://github.com/justinkook/emorypwa
+```
+
+Once you have cloned the repository you will need to run `npm install` to install all of the needed packages to run the app. After you have installed the needed packages you can start a local server by running `npm start` in your terminal. Now you are ready run our app locally. 
 
 ### Prerequisites
 
-You will need the following isntalled on your machine to be able to run our app:
+You will need the following installed on your machine to be able to develop locally on our app:
 
 * Node.js
-* Express
-* Mongoose
+* mongodb
+* Robo 3T recommended
 
 Our project uses dotenv node package.
 
-You need to create an .env file with GEOCODE_KEY={YOUR-API-KEY} as an environmental variables for the results to render.
+You need to create an .env file with GEOCODE_KEY={YOUR-API-KEY} as an environmental variable for the results to render.
 
 ## Deployment
 
-We have our app set to run on port 3000. If you prefer to use a different port feel free to change the port after cloning into the repository.
+We have our app set to run on port 3000 for the front end client and port 5000 for REST API server.
+If you prefer to use a different port feel free to change the port after cloning into the repository.
 
 ## Contributing
 
